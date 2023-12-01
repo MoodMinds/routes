@@ -9215,7 +9215,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
 
 
     /**
-     * Throwing unexpected exception route attempt definition object.
+     * Throwing the unexpected exception route attempt definition object.
      *
      * @param <$A> the type of the throwing expected exception attempt definition object
      * @param <$R> the type of the route definition result
@@ -9271,7 +9271,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
     }
 
     /**
-     * Throwing unexpected exception action attempt definition object.
+     * Throwing the unexpected exception action attempt definition object.
      *
      * @param <$F> the type of the flow definition interface
      * @param <H>  the type of possible unexpected exception that might be thrown
@@ -9282,7 +9282,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
     }
 
     /**
-     * Throwing unexpected exception stream attempt definition object.
+     * Throwing the unexpected exception stream attempt definition object.
      *
      * @param <V> the type of the emitting values
      * @param <H> the type of possible unexpected exception that might be thrown
