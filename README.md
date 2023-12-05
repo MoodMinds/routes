@@ -66,6 +66,7 @@ Let's take a look at the basic principles of the Routes API usage by examples.
 import org.moodminds.route.*;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.text.ParseException;
 import java.util.logging.Logger;
 
