@@ -29,7 +29,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      *
      * @param <$R> the type of the route definition result
      * @return route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <$R extends Routing<?>> $R escape();
 
@@ -39,7 +39,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param value the specified value definition object
      * @param <V>   the type of the emitting value
      * @return emitting result definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> Emitting<V> expect(Value<? extends V> value);
 
@@ -49,7 +49,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param exception the specified exception definition object
      * @param <$R>      the type of the route definition result
      * @return route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <$R extends Routing<?>> $R except(ValueLevel1<? extends E> exception);
 
@@ -59,7 +59,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param exception the specified exception definition object
      * @param <$R>      the type of the route definition result
      * @return route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <$R extends Routing<?>> $R except(ValueLevel2<? extends RuntimeException> exception);
 
@@ -69,7 +69,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param exception the specified exception definition object
      * @param <$R>      the type of the route definition result
      * @return route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <$R extends Routing<?>> $R except(ValueLevel3<E> exception);
 
@@ -79,7 +79,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param resource the specified {@link Resource} value
      * @param <H>      the type of unexpected exception that might be thrown
      * @return the flow definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <H extends Exception> CatchingAction<$F, H, E> refuse(ValueLevel0<? extends Resource<?, ? extends H>> resource);
 
@@ -88,7 +88,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      *
      * @param resource the specified {@link Resource} value
      * @return the flow definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     ExpectingAction<$F, E> refuse(ValueLevel1<? extends Resource<?, ? extends E>> resource);
 
@@ -97,7 +97,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      *
      * @param resource the specified {@link Resource} value
      * @return the flow definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     ExpectingAction<$F, E> refuse(ValueLevel2<? extends Resource<?, ? extends RuntimeException>> resource);
 
@@ -106,7 +106,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      *
      * @param resource the specified {@link Resource} value
      * @return the flow definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     ExpectingAction<$F, E> refuse(ValueLevel3<? extends Resource<?, E>> resource);
 
@@ -116,7 +116,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      *
      * @param chars the specified chars array
      * @return emitting result definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     Emitting<Character> source(char[] chars);
 
@@ -125,7 +125,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      *
      * @param bytes the specified bytes array
      * @return emitting result definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     Emitting<Byte> source(byte[] bytes);
 
@@ -134,7 +134,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      *
      * @param shorts the specified shorts array
      * @return emitting result definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     Emitting<Short> source(short[] shorts);
 
@@ -143,7 +143,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      *
      * @param ints the specified ints array
      * @return emitting result definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     Emitting<Integer> source(int[] ints);
 
@@ -152,7 +152,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      *
      * @param longs the specified longs array
      * @return emitting result definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     Emitting<Long> source(long[] longs);
 
@@ -161,7 +161,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      *
      * @param floats the specified floats array
      * @return emitting result definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     Emitting<Float> source(float[] floats);
 
@@ -170,7 +170,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      *
      * @param doubles the specified doubles array
      * @return emitting result definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     Emitting<Double> source(double[] doubles);
 
@@ -179,7 +179,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      *
      * @param booleans the specified booleans array
      * @return emitting result definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     Emitting<Boolean> source(boolean[] booleans);
 
@@ -189,7 +189,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param values the specified values array
      * @param <V>    the type of the emitting values
      * @return emitting result definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> Emitting<V> source(V[] values);
 
@@ -200,7 +200,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param value2 the specified value 2
      * @param <V>    the type of the emitting values
      * @return emitting result definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> Emitting<V> source(V value1, V value2);
 
@@ -212,7 +212,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param value3 the specified value 3
      * @param <V>    the type of the emitting values
      * @return emitting result definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> Emitting<V> source(V value1, V value2, V value3);
 
@@ -225,7 +225,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param value4 the specified value 4
      * @param <V>    the type of the emitting values
      * @return emitting result definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> Emitting<V> source(V value1, V value2, V value3, V value4);
 
@@ -239,7 +239,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param value5 the specified value 5
      * @param <V>    the type of the emitting values
      * @return emitting result definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> Emitting<V> source(V value1, V value2, V value3, V value4, V value5);
 
@@ -254,7 +254,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param value6 the specified value 6
      * @param <V>    the type of the emitting values
      * @return emitting result definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> Emitting<V> source(V value1, V value2, V value3, V value4, V value5, V value6);
 
@@ -270,7 +270,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param value7 the specified value 7
      * @param <V>    the type of the emitting values
      * @return emitting result definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> Emitting<V> source(V value1, V value2, V value3, V value4, V value5, V value6, V value7);
 
@@ -287,7 +287,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param value8 the specified value 8
      * @param <V>    the type of the emitting values
      * @return emitting result definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> Emitting<V> source(V value1, V value2, V value3, V value4, V value5, V value6, V value7, V value8);
 
@@ -305,7 +305,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param values the specified values
      * @param <V>    the type of the emitting values
      * @return emitting result definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     @SuppressWarnings("unchecked")
     <V> Emitting<V> source(V value1, V value2, V value3, V value4, V value5, V value6, V value7, V value8, V... values);
@@ -317,7 +317,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param supplier the specified {@link Evaluable} supplier
      * @param <V>      the type of the emitting values
      * @return emitting result definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> Emitting<V> repeat(EvaluableThrowing1<? extends V, ? extends E> supplier);
 
@@ -329,7 +329,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param times    the specified number of times to generate values
      * @param <V>      the type of the emitting values
      * @return emitting result definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> Emitting<V> repeat(EvaluableThrowing1<? extends V, ? extends E> supplier, long times);
 
@@ -341,7 +341,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param function the {@link Evaluable1Throwing1} function to be applied to the previous value
      * @param <V>      the type of the emitting values
      * @return emitting result definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> Emitting<V> repeat(V seed, Evaluable1Throwing1<? super V, ? extends V, ? extends E> function);
 
@@ -355,7 +355,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param predicate the specified {@link Testable1Throwing1} predicate
      * @param <V>       the type of the emitting values
      * @return emitting result definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> Emitting<V> repeat(V seed, Evaluable1Throwing1<? super V, ? extends V, ? extends E> function, Testable1Throwing1<? super V, ? extends E> predicate);
 
@@ -365,7 +365,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      *
      * @param execution the specified {@link Executable} execution
      * @return the flow definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     ExpectingAction<$F, E> effect(ExecutableThrowing1<? extends E> execution);
 
@@ -375,7 +375,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param route the specified {@link Emittable} definition object
      * @param <H>   the type of unexpected exception that might be thrown
      * @return the action attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <H extends Exception> CatchingAction<$F, H, E> action(ValueLevel0<? extends Emittable<?, ? extends H>> route);
 
@@ -384,7 +384,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      *
      * @param route the specified {@link Emittable} definition object
      * @return the action attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     ExpectingAction<$F, E> action(ValueLevel1<? extends Emittable<?, ? extends E>> route);
 
@@ -393,7 +393,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      *
      * @param route the specified {@link Emittable} definition object
      * @return the action attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     ExpectingAction<$F, E> action(ValueLevel2<? extends Emittable<?, ? extends RuntimeException>> route);
 
@@ -402,7 +402,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      *
      * @param route the specified {@link Emittable} definition object
      * @return the action attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     ExpectingAction<$F, E> action(ValueLevel3<? extends Emittable<?, E>> route);
 
@@ -413,7 +413,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param supplier the specified value {@link Evaluable} supplier
      * @param <V>      the type of the emitting value
      * @return emitting result definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ExpectingStream<V, E> supply(EvaluableThrowing1<? extends V, ? extends E> supplier);
 
@@ -425,7 +425,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>      the type of the emitting value
      * @param <$R>     the type of the route definition result
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V, $R extends Routing<?>> $R supply(EvaluableThrowing1<? extends V, ? extends E> supplier, Block1<? super V, ? extends Routing<? extends $R>> handler);
 
@@ -435,7 +435,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param source the supplying {@link BaseStream} source
      * @param <V>    the type of the emitting value
      * @return emitting result definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ExpectingStream<V, E> source(Value<? extends Iterable<V>> source);
 
@@ -445,7 +445,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param source the supplying {@link BaseStream} source
      * @param <V>    the type of the emitting value
      * @return emitting result definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ExpectingStream<V, E> source(EvaluableThrowing1<? extends BaseStream<V, ?>, ? extends E> source);
 
@@ -457,7 +457,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>     the type of the emitting value
      * @param <$R>    the type of the route definition result
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V, $R extends Routing<?>> $R source(EvaluableThrowing1<? extends BaseStream<V, ?>, ? extends E> source, Block1<? super V, ? extends Routing<? extends $R>> handler);
 
@@ -467,7 +467,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      *
      * @param route the specified route definition
      * @return the action attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     ExpectingAction<$F, E> action(Block<? extends Flowing<?>> route);
 
@@ -477,7 +477,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param route the specified route definition
      * @param <H>   the type of unexpected exception that might be thrown
      * @return the action attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <H extends Exception> CatchingAction<$F, H, E> action(RouteLevel0<? extends H, ?> route);
 
@@ -486,7 +486,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      *
      * @param route the specified route definition
      * @return the action attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     ExpectingAction<$F, E> action(RouteLevel1<? extends E, ?> route);
 
@@ -495,7 +495,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      *
      * @param route the specified route definition
      * @return the action attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     ExpectingAction<$F, E> action(RouteLevel2<? extends RuntimeException, ?> route);
 
@@ -504,7 +504,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      *
      * @param route the specified route definition
      * @return the action attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     ExpectingAction<$F, E> action(RouteLevel3<E, ?> route);
 
@@ -514,7 +514,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param stream the specified streaming route
      * @param <V>    the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ExpectingStream<V, E> stream(Block<? extends Emitting<? extends V>> stream);
 
@@ -526,7 +526,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <O>     the type of the source emitting values
      * @param <$R>    the type of the route definition result
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <O, $R extends Routing<?>> $R stream(Block<? extends Emitting<? extends O>> stream, Block1<? super O, ? extends Routing<? extends $R>> handler);
 
@@ -537,7 +537,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>    the type of the emitting values
      * @param <H>    the type of unexpected exception that might be thrown
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V, H extends Exception> CatchingStream<V, H, E> stream(RouteLevel0<? extends H, ? extends Emitting<? extends V>> stream);
 
@@ -547,7 +547,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param stream the specified streaming route
      * @param <V>    the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ExpectingStream<V, E> stream(RouteLevel1<? extends E, ? extends Emitting<? extends V>> stream);
 
@@ -559,7 +559,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <O>     the type of the source emitting values
      * @param <$R>    the type of the route definition result
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <O, $R extends Routing<?>> $R stream(RouteLevel1<? extends E, ? extends Emitting<? extends O>> stream, Block1<? super O, ? extends Routing<? extends $R>> handler);
 
@@ -569,7 +569,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param stream the specified streaming route
      * @param <V>    the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ExpectingStream<V, E> stream(RouteLevel2<? extends RuntimeException, ? extends Emitting<? extends V>> stream);
 
@@ -581,7 +581,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <O>     the type of the source emitting values
      * @param <$R>    the type of the route definition result
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <O, $R extends Routing<?>> $R stream(RouteLevel2<? extends RuntimeException, ? extends Emitting<? extends O>> stream, Block1<? super O, ? extends Routing<? extends $R>> handler);
 
@@ -591,7 +591,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param stream the specified streaming route
      * @param <V>    the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ExpectingStream<V, E> stream(RouteLevel3<E, ? extends Emitting<? extends V>> stream);
 
@@ -603,7 +603,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <O>     the type of the source emitting values
      * @param <$R>    the type of the route definition result
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <O, $R extends Routing<?>> $R stream(RouteLevel3<E, ? extends Emitting<? extends O>> stream, Block1<? super O, ? extends Routing<? extends $R>> handler);
 
@@ -614,7 +614,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>    the type of the emitting values
      * @param <H>    the type of unexpected exception that might be thrown
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V, H extends Exception> CatchingStream<V, H, E> stream(ValueLevel0<? extends Emittable<? extends V, ? extends H>> stream);
 
@@ -624,7 +624,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param stream the specified {@link Emittable} definition object
      * @param <V>    the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ExpectingStream<V, E> stream(ValueLevel1<? extends Emittable<? extends V, ? extends E>> stream);
 
@@ -636,7 +636,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <O>     the type of the source emitting values
      * @param <$R>    the type of the route definition result
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <O, $R extends Routing<?>> $R stream(ValueLevel1<? extends Emittable<? extends O, ? extends E>> stream, Block1<? super O, ? extends Routing<? extends $R>> handler);
 
@@ -646,7 +646,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param stream the specified {@link Emittable} definition object
      * @param <V>    the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ExpectingStream<V, E> stream(ValueLevel2<? extends Emittable<? extends V, ? extends RuntimeException>> stream);
 
@@ -658,7 +658,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <O>     the type of the source emitting values
      * @param <$R>    the type of the route definition result
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <O, $R extends Routing<?>> $R stream(ValueLevel2<? extends Emittable<? extends O, ? extends RuntimeException>> stream, Block1<? super O, ? extends Routing<? extends $R>> handler);
 
@@ -668,7 +668,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param stream the specified {@link Emittable} definition object
      * @param <V>    the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ExpectingStream<V, E> stream(ValueLevel3<? extends Emittable<? extends V, E>> stream);
 
@@ -680,7 +680,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <O>     the type of the source emitting values
      * @param <$R>    the type of the route definition result
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <O, $R extends Routing<?>> $R stream(ValueLevel3<? extends Emittable<? extends O, E>> stream, Block1<? super O, ? extends Routing<? extends $R>> handler);
 
@@ -692,7 +692,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <O>     the type of the source emitting values
      * @param <$R>    the type of the route definition result
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <O, $R extends Routing<?>> $R handle(ValueLevel2<? extends Resource<? extends O, ? extends E>> stream, Block1<? super O, ? extends Routing<? extends $R>> handler);
 
@@ -704,7 +704,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <O>     the type of the source emitting values
      * @param <$R>    the type of the route definition result
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <O, $R extends Routing<?>> $R handle(ValueLevel3<? extends Resource<? extends O, ? extends RuntimeException>> stream, Block1<? super O, ? extends Routing<? extends $R>> handler);
 
@@ -716,7 +716,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <O>     the type of the source emitting values
      * @param <$R>    the type of the route definition result
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <O, $R extends Routing<?>> $R handle(Value<? extends Resource<? extends O, E>> stream, Block1<? super O, ? extends Routing<? extends $R>> handler);
 
@@ -727,7 +727,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param stream the specified streaming route
      * @param <V>    the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V extends Comparable<V>> ExpectingStream<V, E> sort(Block<? extends Emitting<? extends V>> stream);
 
@@ -740,7 +740,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>     the type of the emitting values
      * @param <$R>    the type of the route definition result
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V extends Comparable<V>, $R extends Routing<?>> $R sort(Block<? extends Emitting<? extends V>> stream, Block1<? super V, ? extends Routing<? extends $R>> handler);
 
@@ -751,7 +751,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param stream the specified streaming route
      * @param <V>    the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V extends Comparable<V>> ExpectingStream<V, E> sort(RouteLevel1<? extends E, ? extends Emitting<? extends V>> stream);
 
@@ -764,7 +764,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>     the type of the emitting values
      * @param <$R>    the type of the route definition result
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V extends Comparable<V>, $R extends Routing<?>> $R sort(RouteLevel1<? extends E, ? extends Emitting<? extends V>> stream, Block1<? super V, ? extends Routing<? extends $R>> handler);
 
@@ -775,7 +775,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param stream the specified streaming route
      * @param <V>    the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V extends Comparable<V>> ExpectingStream<V, E> sort(RouteLevel2<? extends RuntimeException, ? extends Emitting<? extends V>> stream);
 
@@ -788,7 +788,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>     the type of the emitting values
      * @param <$R>    the type of the route definition result
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V extends Comparable<V>, $R extends Routing<?>> $R sort(RouteLevel2<? extends RuntimeException, ? extends Emitting<? extends V>> stream, Block1<? super V, ? extends Routing<? extends $R>> handler);
 
@@ -799,7 +799,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param stream the specified streaming route
      * @param <V>    the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V extends Comparable<V>> ExpectingStream<V, E> sort(RouteLevel3<E, ? extends Emitting<? extends V>> stream);
 
@@ -812,7 +812,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>     the type of the emitting values
      * @param <$R>    the type of the route definition result
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V extends Comparable<V>, $R extends Routing<?>> $R sort(RouteLevel3<E, ? extends Emitting<? extends V>> stream, Block1<? super V, ? extends Routing<? extends $R>> handler);
 
@@ -825,7 +825,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param comparator the given values {@link Comparator}
      * @param <V>        the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ExpectingStream<V, E> sort(Block<? extends Emitting<? extends V>> stream, Comparator<? super V> comparator);
 
@@ -839,7 +839,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>        the type of the emitting values
      * @param <$R>       the type of the route definition result
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V, $R extends Routing<?>> $R sort(Block<? extends Emitting<? extends V>> stream, Comparator<? super V> comparator, Block1<? super V, ? extends Routing<? extends $R>> handler);
 
@@ -851,7 +851,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param comparator the given values {@link Comparator}
      * @param <V>        the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ExpectingStream<V, E> sort(RouteLevel1<? extends E, ? extends Emitting<? extends V>> stream, Comparator<? super V> comparator);
 
@@ -865,7 +865,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>        the type of the emitting values
      * @param <$R>       the type of the route definition result
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V, $R extends Routing<?>> $R sort(RouteLevel1<? extends E, ? extends Emitting<? extends V>> stream, Comparator<? super V> comparator, Block1<? super V, ? extends Routing<? extends $R>> handler);
 
@@ -877,7 +877,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param comparator the given values {@link Comparator}
      * @param <V>        the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ExpectingStream<V, E> sort(RouteLevel2<? extends RuntimeException, ? extends Emitting<? extends V>> stream, Comparator<? super V> comparator);
 
@@ -891,7 +891,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>        the type of the emitting values
      * @param <$R>       the type of the route definition result
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V, $R extends Routing<?>> $R sort(RouteLevel2<? extends RuntimeException, ? extends Emitting<? extends V>> stream, Comparator<? super V> comparator, Block1<? super V, ? extends Routing<? extends $R>> handler);
 
@@ -903,7 +903,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param comparator the given values {@link Comparator}
      * @param <V>        the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ExpectingStream<V, E> sort(RouteLevel3<E, ? extends Emitting<? extends V>> stream, Comparator<? super V> comparator);
 
@@ -917,7 +917,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>        the type of the emitting values
      * @param <$R>       the type of the route definition result
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V, $R extends Routing<?>> $R sort(RouteLevel3<E, ? extends Emitting<? extends V>> stream, Comparator<? super V> comparator, Block1<? super V, ? extends Routing<? extends $R>> handler);
 
@@ -929,7 +929,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param stream the specified streaming route
      * @param <V>    the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ExpectingStream<V, E> unique(Block<? extends Emitting<? extends V>> stream);
 
@@ -942,7 +942,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>         the type of the emitting values
      * @param <K>         the type of the value to compare for uniqueness
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V, K> ExpectingStream<V, E> unique(Block<? extends Emitting<? extends V>> stream, Evaluable1Throwing1<? super V, ? extends K, ? extends E> keySelector);
 
@@ -953,7 +953,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param stream the specified streaming route
      * @param <V>    the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ExpectingStream<V, E> unique(RouteLevel1<? extends E, ? extends Emitting<? extends V>> stream);
 
@@ -966,7 +966,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>         the type of the emitting values
      * @param <K>         the type of the value to compare for uniqueness
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V, K> ExpectingStream<V, E> unique(RouteLevel1<? extends E, ? extends Emitting<? extends V>> stream, Evaluable1Throwing1<? super V, ? extends K, ? extends E> keySelector);
 
@@ -977,7 +977,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param stream the specified streaming route
      * @param <V>    the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ExpectingStream<V, E> unique(RouteLevel2<? extends RuntimeException, ? extends Emitting<? extends V>> stream);
 
@@ -990,7 +990,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>         the type of the emitting values
      * @param <K>         the type of the value to compare for uniqueness
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V, K> ExpectingStream<V, E> unique(RouteLevel2<? extends RuntimeException, ? extends Emitting<? extends V>> stream, Evaluable1Throwing1<? super V, ? extends K, ? extends E> keySelector);
 
@@ -1001,7 +1001,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param stream the specified streaming route
      * @param <V>    the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ExpectingStream<V, E> unique(RouteLevel3<E, ? extends Emitting<? extends V>> stream);
 
@@ -1014,7 +1014,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>         the type of the emitting values
      * @param <K>         the type of the value to compare for uniqueness
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V, K> ExpectingStream<V, E> unique(RouteLevel3<E, ? extends Emitting<? extends V>> stream, Evaluable1Throwing1<? super V, ? extends K, ? extends E> keySelector);
 
@@ -1027,7 +1027,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param filter the given {@link Testable1Throwing1} filter
      * @param <V>    the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ExpectingStream<V, E> filter(Block<? extends Emitting<? extends V>> stream, Testable1Throwing1<? super V, ? extends E> filter);
 
@@ -1041,7 +1041,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>     the type of the emitting values
      * @param <$R>    the type of the route definition result
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V, $R extends Routing<?>> $R filter(Block<? extends Emitting<? extends V>> stream, Testable1Throwing1<? super V, ? extends E> filter, Block1<? super V, ? extends Routing<? extends $R>> handler);
 
@@ -1053,7 +1053,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param filter the given {@link Testable1Throwing1} filter
      * @param <V>    the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ExpectingStream<V, E> filter(RouteLevel1<? extends E, ? extends Emitting<? extends V>> stream, Testable1Throwing1<? super V, ? extends E> filter);
 
@@ -1067,7 +1067,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>     the type of the emitting values
      * @param <$R>    the type of the route definition result
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V, $R extends Routing<?>> $R filter(RouteLevel1<? extends E, ? extends Emitting<? extends V>> stream, Testable1Throwing1<? super V, ? extends E> filter, Block1<? super V, ? extends Routing<? extends $R>> handler);
 
@@ -1079,7 +1079,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param filter the given {@link Testable1Throwing1} filter
      * @param <V>    the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ExpectingStream<V, E> filter(RouteLevel2<? extends RuntimeException, ? extends Emitting<? extends V>> stream, Testable1Throwing1<? super V, ? extends E> filter);
 
@@ -1093,7 +1093,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>     the type of the emitting values
      * @param <$R>    the type of the route definition result
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V, $R extends Routing<?>> $R filter(RouteLevel2<? extends RuntimeException, ? extends Emitting<? extends V>> stream, Testable1Throwing1<? super V, ? extends E> filter, Block1<? super V, ? extends Routing<? extends $R>> handler);
 
@@ -1105,7 +1105,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param filter the given {@link Testable1Throwing1} filter
      * @param <V>    the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ExpectingStream<V, E> filter(RouteLevel3<E, ? extends Emitting<? extends V>> stream, Testable1Throwing1<? super V, ? extends E> filter);
 
@@ -1119,7 +1119,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>     the type of the emitting values
      * @param <$R>    the type of the route definition result
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V, $R extends Routing<?>> $R filter(RouteLevel3<E, ? extends Emitting<? extends V>> stream, Testable1Throwing1<? super V, ? extends E> filter, Block1<? super V, ? extends Routing<? extends $R>> handler);
 
@@ -1133,7 +1133,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <O>       the type of the source emitting values
      * @param <V>       the type of the target emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <O, V> ExpectingStream<V, E> map(Block<? extends Emitting<? extends O>> stream, Evaluable1Throwing1<? super O, ? extends V, ? extends E> converter);
 
@@ -1148,7 +1148,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>       the type of the target emitting values
      * @param <$R>      the type of the route definition result
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <O, V, $R extends Routing<?>> $R map(Block<? extends Emitting<? extends O>> stream, Evaluable1Throwing1<? super O, ? extends V, ? extends E> converter, Block1<? super V, ? extends Routing<? extends $R>> handler);
 
@@ -1161,7 +1161,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <O>       the type of the source emitting values
      * @param <V>       the type of the target emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <O, V> ExpectingStream<V, E> map(RouteLevel1<? extends E, ? extends Emitting<? extends O>> stream, Evaluable1Throwing1<? super O, ? extends V, ? extends E> converter);
 
@@ -1176,7 +1176,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>       the type of the target emitting values
      * @param <$R>      the type of the route definition result
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <O, V, $R extends Routing<?>> $R map(RouteLevel1<? extends E, ? extends Emitting<? extends O>> stream, Evaluable1Throwing1<? super O, ? extends V, ? extends E> converter, Block1<? super V, ? extends Routing<? extends $R>> handler);
 
@@ -1189,7 +1189,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <O>       the type of the source emitting values
      * @param <V>       the type of the target emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <O, V> ExpectingStream<V, E> map(RouteLevel2<? extends RuntimeException, ? extends Emitting<? extends O>> stream, Evaluable1Throwing1<? super O, ? extends V, ? extends E> converter);
 
@@ -1204,7 +1204,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>       the type of the target emitting values
      * @param <$R>      the type of the route definition result
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <O, V, $R extends Routing<?>> $R map(RouteLevel2<? extends RuntimeException, ? extends Emitting<? extends O>> stream, Evaluable1Throwing1<? super O, ? extends V, ? extends E> converter, Block1<? super V, ? extends Routing<? extends $R>> handler);
 
@@ -1217,7 +1217,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <O>       the type of the source emitting values
      * @param <V>       the type of the target emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <O, V> ExpectingStream<V, E> map(RouteLevel3<E, ? extends Emitting<? extends O>> stream, Evaluable1Throwing1<? super O, ? extends V, ? extends E> converter);
 
@@ -1232,7 +1232,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>       the type of the target emitting values
      * @param <$R>      the type of the route definition result
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <O, V, $R extends Routing<?>> $R map(RouteLevel3<E, ? extends Emitting<? extends O>> stream, Evaluable1Throwing1<? super O, ? extends V, ? extends E> converter, Block1<? super V, ? extends Routing<? extends $R>> handler);
 
@@ -1244,7 +1244,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param stream the specified streaming route
      * @param <V>    the type of the target emitting value
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ExpectingStream<V, E> first(Block<? extends Emitting<? extends V>> stream);
 
@@ -1257,7 +1257,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>     the type of the emitting value
      * @param <$R>    the type of the route definition result
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V, $R extends Routing<?>> $R first(Block<? extends Emitting<? extends V>> stream, Block1<? super V, ? extends Routing<? extends $R>> handler);
 
@@ -1268,7 +1268,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param stream the specified streaming route
      * @param <V>    the type of the emitting value
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ExpectingStream<V, E> first(RouteLevel1<? extends E, ? extends Emitting<? extends V>> stream);
 
@@ -1281,7 +1281,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>     the type of the emitting value
      * @param <$R>    the type of the route definition result
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V, $R extends Routing<?>> $R first(RouteLevel1<? extends E, ? extends Emitting<? extends V>> stream, Block1<? super V, ? extends Routing<? extends $R>> handler);
 
@@ -1292,7 +1292,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param stream the specified streaming route
      * @param <V>    the type of the emitting value
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ExpectingStream<V, E> first(RouteLevel2<? extends RuntimeException, ? extends Emitting<? extends V>> stream);
 
@@ -1305,7 +1305,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>     the type of the emitting value
      * @param <$R>    the type of the route definition result
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V, $R extends Routing<?>> $R first(RouteLevel2<? extends RuntimeException, ? extends Emitting<? extends V>> stream, Block1<? super V, ? extends Routing<? extends $R>> handler);
 
@@ -1316,7 +1316,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param stream the specified streaming route
      * @param <V>    the type of the emitting value
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ExpectingStream<V, E> first(RouteLevel3<E, ? extends Emitting<? extends V>> stream);
 
@@ -1329,7 +1329,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>     the type of the emitting value
      * @param <$R>    the type of the route definition result
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V, $R extends Routing<?>> $R first(RouteLevel3<E, ? extends Emitting<? extends V>> stream, Block1<? super V, ? extends Routing<? extends $R>> handler);
 
@@ -1342,7 +1342,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param stream the specified streaming route
      * @param <V>    the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ExpectingStream<V, E> take(long number, Block<? extends Emitting<? extends V>> stream);
 
@@ -1356,7 +1356,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>     the type of the emitting values
      * @param <$R>    the type of the route definition result
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V, $R extends Routing<?>> $R take(long number, Block<? extends Emitting<? extends V>> stream, Block1<? super V, ? extends Routing<? extends $R>> handler);
 
@@ -1368,7 +1368,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param stream the specified streaming route
      * @param <V>    the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ExpectingStream<V, E> take(long number, RouteLevel1<? extends E, ? extends Emitting<? extends V>> stream);
 
@@ -1382,7 +1382,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>     the type of the emitting values
      * @param <$R>    the type of the route definition result
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V, $R extends Routing<?>> $R take(long number, RouteLevel1<? extends E, ? extends Emitting<? extends V>> stream, Block1<? super V, ? extends Routing<? extends $R>> handler);
 
@@ -1394,7 +1394,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param stream the specified streaming route
      * @param <V>    the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ExpectingStream<V, E> take(long number, RouteLevel2<? extends RuntimeException, ? extends Emitting<? extends V>> stream);
 
@@ -1408,7 +1408,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>     the type of the emitting values
      * @param <$R>    the type of the route definition result
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V, $R extends Routing<?>> $R take(long number, RouteLevel2<? extends RuntimeException, ? extends Emitting<? extends V>> stream, Block1<? super V, ? extends Routing<? extends $R>> handler);
 
@@ -1420,7 +1420,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param stream the specified streaming route
      * @param <V>    the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ExpectingStream<V, E> take(long number, RouteLevel3<E, ? extends Emitting<? extends V>> stream);
 
@@ -1434,7 +1434,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>     the type of the emitting values
      * @param <$R>    the type of the route definition result
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V, $R extends Routing<?>> $R take(long number, RouteLevel3<E, ? extends Emitting<? extends V>> stream, Block1<? super V, ? extends Routing<? extends $R>> handler);
 
@@ -1447,7 +1447,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param predicate the provided {@link Testable1Throwing1} predicate
      * @param <V>       the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ExpectingStream<V, E> take(Block<? extends Emitting<? extends V>> stream, Testable1Throwing1<? super V, ? extends E> predicate);
 
@@ -1461,7 +1461,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>       the type of the emitting values
      * @param <$R>      the type of the route definition result
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V, $R extends Routing<?>> $R take(Block<? extends Emitting<? extends V>> stream, Testable1Throwing1<? super V, ? extends E> predicate, Block1<? super V, ? extends Routing<? extends $R>> handler);
 
@@ -1473,7 +1473,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param predicate the provided {@link Testable1Throwing1} predicate
      * @param <V>       the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ExpectingStream<V, E> take(RouteLevel1<? extends E, ? extends Emitting<? extends V>> stream, Testable1Throwing1<? super V, ? extends E> predicate);
 
@@ -1487,7 +1487,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>       the type of the emitting values
      * @param <$R>      the type of the route definition result
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V, $R extends Routing<?>> $R take(RouteLevel1<? extends E, ? extends Emitting<? extends V>> stream, Testable1Throwing1<? super V, ? extends E> predicate, Block1<? super V, ? extends Routing<? extends $R>> handler);
 
@@ -1499,7 +1499,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param predicate the provided {@link Testable1Throwing1} predicate
      * @param <V>       the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ExpectingStream<V, E> take(RouteLevel2<? extends RuntimeException, ? extends Emitting<? extends V>> stream, Testable1Throwing1<? super V, ? extends E> predicate);
 
@@ -1513,7 +1513,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>       the type of the emitting values
      * @param <$R>      the type of the route definition result
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V, $R extends Routing<?>> $R take(RouteLevel2<? extends RuntimeException, ? extends Emitting<? extends V>> stream, Testable1Throwing1<? super V, ? extends E> predicate, Block1<? super V, ? extends Routing<? extends $R>> handler);
 
@@ -1525,7 +1525,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param predicate the provided {@link Testable1Throwing1} predicate
      * @param <V>       the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ExpectingStream<V, E> take(RouteLevel3<E, ? extends Emitting<? extends V>> stream, Testable1Throwing1<? super V, ? extends E> predicate);
 
@@ -1539,7 +1539,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>       the type of the emitting values
      * @param <$R>      the type of the route definition result
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V, $R extends Routing<?>> $R take(RouteLevel3<E, ? extends Emitting<? extends V>> stream, Testable1Throwing1<? super V, ? extends E> predicate, Block1<? super V, ? extends Routing<? extends $R>> handler);
 
@@ -1552,7 +1552,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param stream the specified streaming route
      * @param <V>    the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ExpectingStream<V, E> skip(long number, Block<? extends Emitting<? extends V>> stream);
 
@@ -1566,7 +1566,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>     the type of the emitting values
      * @param <$R>    the type of the route definition result
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V, $R extends Routing<?>> $R skip(long number, Block<? extends Emitting<? extends V>> stream, Block1<? super V, ? extends Routing<? extends $R>> handler);
 
@@ -1578,7 +1578,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param stream the specified streaming route
      * @param <V>    the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ExpectingStream<V, E> skip(long number, RouteLevel1<? extends E, ? extends Emitting<? extends V>> stream);
 
@@ -1592,7 +1592,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>     the type of the emitting values
      * @param <$R>    the type of the route definition result
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V, $R extends Routing<?>> $R skip(long number, RouteLevel1<? extends E, ? extends Emitting<? extends V>> stream, Block1<? super V, ? extends Routing<? extends $R>> handler);
 
@@ -1604,7 +1604,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param stream the specified streaming route
      * @param <V>    the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ExpectingStream<V, E> skip(long number, RouteLevel2<? extends RuntimeException, ? extends Emitting<? extends V>> stream);
 
@@ -1618,7 +1618,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>     the type of the emitting values
      * @param <$R>    the type of the route definition result
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V, $R extends Routing<?>> $R skip(long number, RouteLevel2<? extends RuntimeException, ? extends Emitting<? extends V>> stream, Block1<? super V, ? extends Routing<? extends $R>> handler);
 
@@ -1630,7 +1630,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param stream the specified streaming route
      * @param <V>    the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ExpectingStream<V, E> skip(long number, RouteLevel3<E, ? extends Emitting<? extends V>> stream);
 
@@ -1644,7 +1644,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>     the type of the emitting values
      * @param <$R>    the type of the route definition result
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V, $R extends Routing<?>> $R skip(long number, RouteLevel3<E, ? extends Emitting<? extends V>> stream, Block1<? super V, ? extends Routing<? extends $R>> handler);
 
@@ -1657,7 +1657,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param predicate the provided {@link Testable1Throwing1} predicate
      * @param <V>       the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ExpectingStream<V, E> skip(Block<? extends Emitting<? extends V>> stream, Testable1Throwing1<? super V, ? extends E> predicate);
 
@@ -1671,7 +1671,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>       the type of the emitting values
      * @param <$R>      the type of the route definition result
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V, $R extends Routing<?>> $R skip(Block<? extends Emitting<? extends V>> stream, Testable1Throwing1<? super V, ? extends E> predicate, Block1<? super V, ? extends Routing<? extends $R>> handler);
 
@@ -1683,7 +1683,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param predicate the provided {@link Testable1Throwing1} predicate
      * @param <V>       the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ExpectingStream<V, E> skip(RouteLevel1<? extends E, ? extends Emitting<? extends V>> stream, Testable1Throwing1<? super V, ? extends E> predicate);
 
@@ -1697,7 +1697,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>       the type of the emitting values
      * @param <$R>      the type of the route definition result
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V, $R extends Routing<?>> $R skip(RouteLevel1<? extends E, ? extends Emitting<? extends V>> stream, Testable1Throwing1<? super V, ? extends E> predicate, Block1<? super V, ? extends Routing<? extends $R>> handler);
 
@@ -1709,7 +1709,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param predicate the provided {@link Testable1Throwing1} predicate
      * @param <V>       the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ExpectingStream<V, E> skip(RouteLevel2<? extends RuntimeException, ? extends Emitting<? extends V>> stream, Testable1Throwing1<? super V, ? extends E> predicate);
 
@@ -1723,7 +1723,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>       the type of the emitting values
      * @param <$R>      the type of the route definition result
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V, $R extends Routing<?>> $R skip(RouteLevel2<? extends RuntimeException, ? extends Emitting<? extends V>> stream, Testable1Throwing1<? super V, ? extends E> predicate, Block1<? super V, ? extends Routing<? extends $R>> handler);
 
@@ -1735,7 +1735,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param predicate the provided {@link Testable1Throwing1} predicate
      * @param <V>       the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ExpectingStream<V, E> skip(RouteLevel3<E, ? extends Emitting<? extends V>> stream, Testable1Throwing1<? super V, ? extends E> predicate);
 
@@ -1749,7 +1749,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>       the type of the emitting values
      * @param <$R>      the type of the route definition result
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V, $R extends Routing<?>> $R skip(RouteLevel3<E, ? extends Emitting<? extends V>> stream, Testable1Throwing1<? super V, ? extends E> predicate, Block1<? super V, ? extends Routing<? extends $R>> handler);
 
@@ -1762,7 +1762,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param predicate the given values {@link Testable1Throwing1} predicate
      * @param <V>       the type of the source emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ExpectingStream<Boolean, E> all(Block<? extends Emitting<? extends V>> stream, Testable1Throwing1<? super V, ? extends E> predicate);
 
@@ -1787,7 +1787,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param predicate the given values {@link Testable1Throwing1} predicate
      * @param <V>       the type of the source emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ExpectingStream<Boolean, E> all(RouteLevel1<? extends E, ? extends Emitting<? extends V>> stream, Testable1Throwing1<? super V, ? extends E> predicate);
 
@@ -1812,7 +1812,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param predicate the given values {@link Testable1Throwing1} predicate
      * @param <V>       the type of the source emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ExpectingStream<Boolean, E> all(RouteLevel2<? extends RuntimeException, ? extends Emitting<? extends V>> stream, Testable1Throwing1<? super V, ? extends E> predicate);
 
@@ -1837,7 +1837,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param predicate the given values {@link Testable1Throwing1} predicate
      * @param <V>       the type of the source emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ExpectingStream<Boolean, E> all(RouteLevel3<E, ? extends Emitting<? extends V>> stream, Testable1Throwing1<? super V, ? extends E> predicate);
 
@@ -1863,7 +1863,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param predicate the given values {@link Testable1Throwing1} predicate
      * @param <V>       the type of the source emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ExpectingStream<Boolean, E> any(Block<? extends Emitting<? extends V>> stream, Testable1Throwing1<? super V, ? extends E> predicate);
 
@@ -1888,7 +1888,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param predicate the given values {@link Testable1Throwing1} predicate
      * @param <V>       the type of the source emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ExpectingStream<Boolean, E> any(RouteLevel1<? extends E, ? extends Emitting<? extends V>> stream, Testable1Throwing1<? super V, ? extends E> predicate);
 
@@ -1913,7 +1913,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param predicate the given values {@link Testable1Throwing1} predicate
      * @param <V>       the type of the source emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ExpectingStream<Boolean, E> any(RouteLevel2<? extends RuntimeException, ? extends Emitting<? extends V>> stream, Testable1Throwing1<? super V, ? extends E> predicate);
 
@@ -1938,7 +1938,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param predicate the given values {@link Testable1Throwing1} predicate
      * @param <V>       the type of the source emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ExpectingStream<Boolean, E> any(RouteLevel3<E, ? extends Emitting<? extends V>> stream, Testable1Throwing1<? super V, ? extends E> predicate);
 
@@ -1964,7 +1964,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param predicate the given values {@link Testable1Throwing1} predicate
      * @param <V>       the type of the source emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ExpectingStream<Boolean, E> none(Block<? extends Emitting<? extends V>> stream, Testable1Throwing1<? super V, ? extends E> predicate);
 
@@ -1990,7 +1990,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param predicate the given values {@link Testable1Throwing1} predicate
      * @param <V>       the type of the source emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ExpectingStream<Boolean, E> none(RouteLevel1<? extends E, ? extends Emitting<? extends V>> stream, Testable1Throwing1<? super V, ? extends E> predicate);
 
@@ -2015,7 +2015,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param predicate the given values {@link Testable1Throwing1} predicate
      * @param <V>       the type of the source emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ExpectingStream<Boolean, E> none(RouteLevel2<? extends RuntimeException, ? extends Emitting<? extends V>> stream, Testable1Throwing1<? super V, ? extends E> predicate);
 
@@ -2040,7 +2040,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param predicate the given values {@link Testable1Throwing1} predicate
      * @param <V>       the type of the source emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ExpectingStream<Boolean, E> none(RouteLevel3<E, ? extends Emitting<? extends V>> stream, Testable1Throwing1<? super V, ? extends E> predicate);
 
@@ -2064,7 +2064,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param stream the specified streaming route
      * @param <V>    the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V extends Comparable<V>> ExpectingStream<V, E> min(Block<? extends Emitting<? extends V>> stream);
 
@@ -2077,7 +2077,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>     the type of the emitting values
      * @param <$R>    the type of the route definition result
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V extends Comparable<V>, $R extends Routing<?>> $R min(Block<? extends Emitting<? extends V>> stream, Block1<? super V, ? extends Routing<? extends $R>> handler);
 
@@ -2088,7 +2088,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param stream the specified streaming route
      * @param <V>    the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V extends Comparable<V>> ExpectingStream<V, E> min(RouteLevel1<? extends E, ? extends Emitting<? extends V>> stream);
 
@@ -2101,7 +2101,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>     the type of the emitting values
      * @param <$R>    the type of the route definition result
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V extends Comparable<V>, $R extends Routing<?>> $R min(RouteLevel1<? extends E, ? extends Emitting<? extends V>> stream, Block1<? super V, ? extends Routing<? extends $R>> handler);
 
@@ -2112,7 +2112,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param stream the specified streaming route
      * @param <V>    the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V extends Comparable<V>> ExpectingStream<V, E> min(RouteLevel2<? extends RuntimeException, ? extends Emitting<? extends V>> stream);
 
@@ -2125,7 +2125,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>     the type of the emitting values
      * @param <$R>    the type of the route definition result
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V extends Comparable<V>, $R extends Routing<?>> $R min(RouteLevel2<? extends RuntimeException, ? extends Emitting<? extends V>> stream, Block1<? super V, ? extends Routing<? extends $R>> handler);
 
@@ -2136,7 +2136,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param stream the specified streaming route
      * @param <V>    the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V extends Comparable<V>> ExpectingStream<V, E> min(RouteLevel3<E, ? extends Emitting<? extends V>> stream);
 
@@ -2149,7 +2149,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>     the type of the emitting values
      * @param <$R>    the type of the route definition result
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V extends Comparable<V>, $R extends Routing<?>> $R min(RouteLevel3<E, ? extends Emitting<? extends V>> stream, Block1<? super V, ? extends Routing<? extends $R>> handler);
 
@@ -2162,7 +2162,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param comparator the specified {@link Comparator}
      * @param <V>        the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ExpectingStream<V, E> min(Block<? extends Emitting<? extends V>> stream, Comparator<? super V> comparator);
 
@@ -2176,7 +2176,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>        the type of the emitting values
      * @param <$R>       the type of the route definition result
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V, $R extends Routing<?>> $R min(Block<? extends Emitting<? extends V>> stream, Comparator<? super V> comparator, Block1<? super V, ? extends Routing<? extends $R>> handler);
 
@@ -2188,7 +2188,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param comparator the specified {@link Comparator}
      * @param <V>        the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ExpectingStream<V, E> min(RouteLevel1<? extends E, ? extends Emitting<? extends V>> stream, Comparator<? super V> comparator);
 
@@ -2202,7 +2202,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>        the type of the emitting values
      * @param <$R>       the type of the route definition result
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V, $R extends Routing<?>> $R min(RouteLevel1<? extends E, ? extends Emitting<? extends V>> stream, Comparator<? super V> comparator, Block1<? super V, ? extends Routing<? extends $R>> handler);
 
@@ -2214,7 +2214,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param comparator the specified {@link Comparator}
      * @param <V>        the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ExpectingStream<V, E> min(RouteLevel2<? extends RuntimeException, ? extends Emitting<? extends V>> stream, Comparator<? super V> comparator);
 
@@ -2228,7 +2228,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>        the type of the emitting values
      * @param <$R>       the type of the route definition result
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V, $R extends Routing<?>> $R min(RouteLevel2<? extends RuntimeException, ? extends Emitting<? extends V>> stream, Comparator<? super V> comparator, Block1<? super V, ? extends Routing<? extends $R>> handler);
 
@@ -2240,7 +2240,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param comparator the specified {@link Comparator}
      * @param <V>        the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ExpectingStream<V, E> min(RouteLevel3<E, ? extends Emitting<? extends V>> stream, Comparator<? super V> comparator);
 
@@ -2254,7 +2254,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>        the type of the emitting values
      * @param <$R>       the type of the route definition result
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V, $R extends Routing<?>> $R min(RouteLevel3<E, ? extends Emitting<? extends V>> stream, Comparator<? super V> comparator, Block1<? super V, ? extends Routing<? extends $R>> handler);
 
@@ -2266,7 +2266,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param stream the specified streaming route
      * @param <V>    the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V extends Comparable<V>> ExpectingStream<V, E> max(Block<? extends Emitting<? extends V>> stream);
 
@@ -2279,7 +2279,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>     the type of the emitting values
      * @param <$R>    the type of the route definition result
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V extends Comparable<V>, $R extends Routing<?>> $R max(Block<? extends Emitting<? extends V>> stream, Block1<? super V, ? extends Routing<? extends $R>> handler);
 
@@ -2290,7 +2290,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param stream the specified streaming route
      * @param <V>    the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V extends Comparable<V>> ExpectingStream<V, E> max(RouteLevel1<? extends E, ? extends Emitting<? extends V>> stream);
 
@@ -2303,7 +2303,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>     the type of the emitting values
      * @param <$R>    the type of the route definition result
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V extends Comparable<V>, $R extends Routing<?>> $R max(RouteLevel1<? extends E, ? extends Emitting<? extends V>> stream, Block1<? super V, ? extends Routing<? extends $R>> handler);
 
@@ -2314,7 +2314,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param stream the specified streaming route
      * @param <V>    the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V extends Comparable<V>> ExpectingStream<V, E> max(RouteLevel2<? extends RuntimeException, ? extends Emitting<? extends V>> stream);
 
@@ -2327,7 +2327,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>     the type of the emitting values
      * @param <$R>    the type of the route definition result
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V extends Comparable<V>, $R extends Routing<?>> $R max(RouteLevel2<? extends RuntimeException, ? extends Emitting<? extends V>> stream, Block1<? super V, ? extends Routing<? extends $R>> handler);
 
@@ -2338,7 +2338,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param stream the specified streaming route
      * @param <V>    the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V extends Comparable<V>> ExpectingStream<V, E> max(RouteLevel3<E, ? extends Emitting<? extends V>> stream);
 
@@ -2351,7 +2351,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>     the type of the emitting values
      * @param <$R>    the type of the route definition result
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V extends Comparable<V>, $R extends Routing<?>> $R max(RouteLevel3<E, ? extends Emitting<? extends V>> stream, Block1<? super V, ? extends Routing<? extends $R>> handler);
 
@@ -2364,7 +2364,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param comparator the specified {@link Comparator}
      * @param <V>        the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ExpectingStream<V, E> max(Block<? extends Emitting<? extends V>> stream, Comparator<? super V> comparator);
 
@@ -2378,7 +2378,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>        the type of the emitting values
      * @param <$R>       the type of the route definition result
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V, $R extends Routing<?>> $R max(Block<? extends Emitting<? extends V>> stream, Comparator<? super V> comparator, Block1<? super V, ? extends Routing<? extends $R>> handler);
 
@@ -2390,7 +2390,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param comparator the specified {@link Comparator}
      * @param <V>        the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ExpectingStream<V, E> max(RouteLevel1<? extends E, ? extends Emitting<? extends V>> stream, Comparator<? super V> comparator);
 
@@ -2404,7 +2404,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>        the type of the emitting values
      * @param <$R>       the type of the route definition result
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V, $R extends Routing<?>> $R max(RouteLevel1<? extends E, ? extends Emitting<? extends V>> stream, Comparator<? super V> comparator, Block1<? super V, ? extends Routing<? extends $R>> handler);
 
@@ -2416,7 +2416,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param comparator the specified {@link Comparator}
      * @param <V>        the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ExpectingStream<V, E> max(RouteLevel2<? extends RuntimeException, ? extends Emitting<? extends V>> stream, Comparator<? super V> comparator);
 
@@ -2430,7 +2430,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>        the type of the emitting values
      * @param <$R>       the type of the route definition result
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V, $R extends Routing<?>> $R max(RouteLevel2<? extends RuntimeException, ? extends Emitting<? extends V>> stream, Comparator<? super V> comparator, Block1<? super V, ? extends Routing<? extends $R>> handler);
 
@@ -2442,7 +2442,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param comparator the specified {@link Comparator}
      * @param <V>        the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ExpectingStream<V, E> max(RouteLevel3<E, ? extends Emitting<? extends V>> stream, Comparator<? super V> comparator);
 
@@ -2456,7 +2456,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>        the type of the emitting values
      * @param <$R>       the type of the route definition result
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V, $R extends Routing<?>> $R max(RouteLevel3<E, ? extends Emitting<? extends V>> stream, Comparator<? super V> comparator, Block1<? super V, ? extends Routing<? extends $R>> handler);
 
@@ -2469,7 +2469,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param stream      the specified streaming route
      * @param accumulator two values combination function
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ExpectingStream<V, E> reduce(Block<? extends Emitting<? extends V>> stream, Evaluable2<? super V, ? super V, ? extends V> accumulator);
 
@@ -2483,7 +2483,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param accumulator two values combination function
      * @param handler     the given reduction value handling route
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V, $R extends Routing<?>> $R reduce(Block<? extends Emitting<? extends V>> stream, Evaluable2<? super V, ? super V, ? extends V> accumulator, Block1<? super V, ? extends Routing<? extends $R>> handler);
 
@@ -2495,7 +2495,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param stream      the specified streaming route
      * @param accumulator two values combination function
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ExpectingStream<V, E> reduce(RouteLevel1<? extends E, ? extends Emitting<? extends V>> stream, Evaluable2<? super V, ? super V, ? extends V> accumulator);
 
@@ -2509,7 +2509,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param accumulator two values combination function
      * @param handler     the given reduction value handling route
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V, $R extends Routing<?>> $R reduce(RouteLevel1<? extends E, ? extends Emitting<? extends V>> stream, Evaluable2<? super V, ? super V, ? extends V> accumulator, Block1<? super V, ? extends Routing<? extends $R>> handler);
 
@@ -2521,7 +2521,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param stream      the specified streaming route
      * @param accumulator two values combination function
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ExpectingStream<V, E> reduce(RouteLevel2<? extends RuntimeException, ? extends Emitting<? extends V>> stream, Evaluable2<? super V, ? super V, ? extends V> accumulator);
 
@@ -2535,7 +2535,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param accumulator two values combination function
      * @param handler     the given reduction value handling route
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V, $R extends Routing<?>> $R reduce(RouteLevel2<? extends RuntimeException, ? extends Emitting<? extends V>> stream, Evaluable2<? super V, ? super V, ? extends V> accumulator, Block1<? super V, ? extends Routing<? extends $R>> handler);
 
@@ -2547,7 +2547,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param stream      the specified streaming route
      * @param accumulator two values combination function
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ExpectingStream<V, E> reduce(RouteLevel3<E, ? extends Emitting<? extends V>> stream, Evaluable2<? super V, ? super V, ? extends V> accumulator);
 
@@ -2561,7 +2561,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param accumulator two values combination function
      * @param handler     the given reduction value handling route
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V, $R extends Routing<?>> $R reduce(RouteLevel3<E, ? extends Emitting<? extends V>> stream, Evaluable2<? super V, ? super V, ? extends V> accumulator, Block1<? super V, ? extends Routing<? extends $R>> handler);
 
@@ -2576,7 +2576,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param stream      the specified streaming route
      * @param accumulator two values combination function
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <O, V> ExpectingStream<V, E> reduce(V initial, Block<? extends Emitting<? extends O>> stream, Evaluable2<? super V, ? super O, ? extends V> accumulator);
 
@@ -2592,7 +2592,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>         the type of the target emitting values
      * @param <$R>        the type of the route definition result
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <O, V, $R extends Routing<?>> $R reduce(V initial, Block<? extends Emitting<? extends O>> stream, Evaluable2<? super V, ? super O, ? extends V> accumulator, Block1<? super V, ? extends Routing<? extends $R>> handler);
 
@@ -2606,7 +2606,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <O>         the type of the source emitting values
      * @param <V>         the type of the target emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <O, V> ExpectingStream<V, E> reduce(V initial, RouteLevel1<? extends E, ? extends Emitting<? extends O>> stream, Evaluable2<? super V, ? super O, ? extends V> accumulator);
 
@@ -2622,7 +2622,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>         the type of the target emitting values
      * @param <$R>        the type of the route definition result
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <O, V, $R extends Routing<?>> $R reduce(V initial, RouteLevel1<? extends E, ? extends Emitting<? extends O>> stream, Evaluable2<? super V, ? super O, ? extends V> accumulator, Block1<? super V, ? extends Routing<? extends $R>> handler);
 
@@ -2636,7 +2636,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <O>         the type of the source emitting values
      * @param <V>         the type of the target emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <O, V> ExpectingStream<V, E> reduce(V initial, RouteLevel2<? extends RuntimeException, ? extends Emitting<? extends O>> stream, Evaluable2<? super V, ? super O, ? extends V> accumulator);
 
@@ -2652,7 +2652,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>         the type of the target emitting values
      * @param <$R>        the type of the route definition result
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <O, V, $R extends Routing<?>> $R reduce(V initial, RouteLevel2<? extends RuntimeException, ? extends Emitting<? extends O>> stream, Evaluable2<? super V, ? super O, ? extends V> accumulator, Block1<? super V, ? extends Routing<? extends $R>> handler);
 
@@ -2666,7 +2666,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <O>         the type of the source emitting values
      * @param <V>         the type of the target emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <O, V> ExpectingStream<V, E> reduce(V initial, RouteLevel3<E, ? extends Emitting<? extends O>> stream, Evaluable2<? super V, ? super O, ? extends V> accumulator);
 
@@ -2682,7 +2682,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>         the type of the target emitting values
      * @param <$R>        the type of the route definition result
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <O, V, $R extends Routing<?>> $R reduce(V initial, RouteLevel3<E, ? extends Emitting<? extends O>> stream, Evaluable2<? super V, ? super O, ? extends V> accumulator, Block1<? super V, ? extends Routing<? extends $R>> handler);
 
@@ -2696,7 +2696,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <O>       the type of the source emitting values
      * @param <V>       the type of the target emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <O, V> ExpectingStream<V, E> collect(Block<? extends Emitting<? extends O>> stream, Collector<? super O, ?, ? extends V> collector);
 
@@ -2711,7 +2711,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>       the type of the target emitting values
      * @param <$R>      the type of the route definition result
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <O, V, $R extends Routing<?>> $R collect(Block<? extends Emitting<? extends O>> stream, Collector<? super O, ?, ? extends V> collector, Block1<? super V, ? extends Routing<? extends $R>> handler);
 
@@ -2724,7 +2724,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <O>       the type of the source emitting values
      * @param <V>       the type of the target emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <O, V> ExpectingStream<V, E> collect(RouteLevel1<? extends E, ? extends Emitting<? extends O>> stream, Collector<? super O, ?, ? extends V> collector);
 
@@ -2739,7 +2739,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>       the type of the target emitting values
      * @param <$R>      the type of the route definition result
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <O, V, $R extends Routing<?>> $R collect(RouteLevel1<? extends E, ? extends Emitting<? extends O>> stream, Collector<? super O, ?, ? extends V> collector, Block1<? super V, ? extends Routing<? extends $R>> handler);
 
@@ -2752,7 +2752,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <O>       the type of the source emitting values
      * @param <V>       the type of the target emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <O, V> ExpectingStream<V, E> collect(RouteLevel2<? extends RuntimeException, ? extends Emitting<? extends O>> stream, Collector<? super O, ?, ? extends V> collector);
 
@@ -2767,7 +2767,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>       the type of the target emitting values
      * @param <$R>      the type of the route definition result
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <O, V, $R extends Routing<?>> $R collect(RouteLevel2<? extends RuntimeException, ? extends Emitting<? extends O>> stream, Collector<? super O, ?, ? extends V> collector, Block1<? super V, ? extends Routing<? extends $R>> handler);
 
@@ -2780,7 +2780,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <O>       the type of the source emitting values
      * @param <V>       the type of the target emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <O, V> ExpectingStream<V, E> collect(RouteLevel3<E, ? extends Emitting<? extends O>> stream, Collector<? super O, ?, ? extends V> collector);
 
@@ -2795,7 +2795,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>       the type of the target emitting values
      * @param <$R>      the type of the route definition result
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <O, V, $R extends Routing<?>> $R collect(RouteLevel3<E, ? extends Emitting<? extends O>> stream, Collector<? super O, ?, ? extends V> collector, Block1<? super V, ? extends Routing<? extends $R>> handler);
 
@@ -2808,7 +2808,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param stream2 the specified streaming route 2
      * @param <V>     the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ExpectingStream<V, E> concat(Block<? extends Emitting<? extends V>> stream1, Block<? extends Emitting<? extends V>> stream2);
 
@@ -2822,7 +2822,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>     the type of the emitting values
      * @param <$R>    the type of the route definition result
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V, $R extends Routing<?>> $R concat(Block<? extends Emitting<? extends V>> stream1, Block<? extends Emitting<? extends V>> stream2, Block1<? super V, ? extends Routing<? extends $R>> handler);
 
@@ -2834,7 +2834,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param stream2 the specified streaming route 2
      * @param <V>     the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ExpectingStream<V, E> concat(Block<? extends Emitting<? extends V>> stream1, RouteLevel1<? extends E, ? extends Emitting<? extends V>> stream2);
 
@@ -2848,7 +2848,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>     the type of the emitting values
      * @param <$R>    the type of the route definition result
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V, $R extends Routing<?>> $R concat(Block<? extends Emitting<? extends V>> stream1, RouteLevel1<? extends E, ? extends Emitting<? extends V>> stream2, Block1<? super V, ? extends Routing<? extends $R>> handler);
 
@@ -2860,7 +2860,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param stream2 the specified streaming route 2
      * @param <V>     the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ExpectingStream<V, E> concat(Block<? extends Emitting<? extends V>> stream1, RouteLevel2<? extends RuntimeException, ? extends Emitting<? extends V>> stream2);
 
@@ -2874,7 +2874,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>     the type of the emitting values
      * @param <$R>    the type of the route definition result
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V, $R extends Routing<?>> $R concat(Block<? extends Emitting<? extends V>> stream1, RouteLevel2<? extends RuntimeException, ? extends Emitting<? extends V>> stream2, Block1<? super V, ? extends Routing<? extends $R>> handler);
 
@@ -2886,7 +2886,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param stream2 the specified streaming route 2
      * @param <V>     the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ExpectingStream<V, E> concat(Block<? extends Emitting<? extends V>> stream1, RouteLevel3<E, ? extends Emitting<? extends V>> stream2);
 
@@ -2900,7 +2900,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>     the type of the emitting values
      * @param <$R>    the type of the route definition result
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V, $R extends Routing<?>> $R concat(Block<? extends Emitting<? extends V>> stream1, RouteLevel3<E, ? extends Emitting<? extends V>> stream2, Block1<? super V, ? extends Routing<? extends $R>> handler);
 
@@ -2913,7 +2913,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param stream2 the specified streaming route 2
      * @param <V>     the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ExpectingStream<V, E> concat(RouteLevel1<? extends E, ? extends Emitting<? extends V>> stream1, Block<? extends Emitting<? extends V>> stream2);
 
@@ -2927,7 +2927,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>     the type of the emitting values
      * @param <$R>    the type of the route definition result
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V, $R extends Routing<?>> $R concat(RouteLevel1<? extends E, ? extends Emitting<? extends V>> stream1, Block<? extends Emitting<? extends V>> stream2, Block1<? super V, ? extends Routing<? extends $R>> handler);
 
@@ -2939,7 +2939,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param stream2 the specified streaming route 2
      * @param <V>     the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ExpectingStream<V, E> concat(RouteLevel1<? extends E, ? extends Emitting<? extends V>> stream1, RouteLevel1<? extends E, ? extends Emitting<? extends V>> stream2);
 
@@ -2953,7 +2953,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>     the type of the emitting values
      * @param <$R>    the type of the route definition result
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V, $R extends Routing<?>> $R concat(RouteLevel1<? extends E, ? extends Emitting<? extends V>> stream1, RouteLevel1<? extends E, ? extends Emitting<? extends V>> stream2, Block1<? super V, ? extends Routing<? extends $R>> handler);
 
@@ -2965,7 +2965,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param stream2 the specified streaming route 2
      * @param <V>     the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ExpectingStream<V, E> concat(RouteLevel1<? extends E, ? extends Emitting<? extends V>> stream1, RouteLevel2<? extends RuntimeException, ? extends Emitting<? extends V>> stream2);
 
@@ -2979,7 +2979,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>     the type of the emitting values
      * @param <$R>    the type of the route definition result
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V, $R extends Routing<?>> $R concat(RouteLevel1<? extends E, ? extends Emitting<? extends V>> stream1, RouteLevel2<? extends RuntimeException, ? extends Emitting<? extends V>> stream2, Block1<? super V, ? extends Routing<? extends $R>> handler);
 
@@ -2991,7 +2991,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param stream2 the specified streaming route 2
      * @param <V>     the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ExpectingStream<V, E> concat(RouteLevel1<? extends E, ? extends Emitting<? extends V>> stream1, RouteLevel3<E, ? extends Emitting<? extends V>> stream2);
 
@@ -3005,7 +3005,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>     the type of the emitting values
      * @param <$R>    the type of the route definition result
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V, $R extends Routing<?>> $R concat(RouteLevel1<? extends E, ? extends Emitting<? extends V>> stream1, RouteLevel3<E, ? extends Emitting<? extends V>> stream2, Block1<? super V, ? extends Routing<? extends $R>> handler);
 
@@ -3018,7 +3018,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param stream2 the specified streaming route 2
      * @param <V>     the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ExpectingStream<V, E> concat(RouteLevel2<? extends RuntimeException, ? extends Emitting<? extends V>> stream1, Block<? extends Emitting<? extends V>> stream2);
 
@@ -3032,7 +3032,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>     the type of the emitting values
      * @param <$R>    the type of the route definition result
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V, $R extends Routing<?>> $R concat(RouteLevel2<? extends RuntimeException, ? extends Emitting<? extends V>> stream1, Block<? extends Emitting<? extends V>> stream2, Block1<? super V, ? extends Routing<? extends $R>> handler);
 
@@ -3044,7 +3044,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param stream2 the specified streaming route 2
      * @param <V>     the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ExpectingStream<V, E> concat(RouteLevel2<? extends RuntimeException, ? extends Emitting<? extends V>> stream1, RouteLevel1<? extends E, ? extends Emitting<? extends V>> stream2);
 
@@ -3058,7 +3058,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>     the type of the emitting values
      * @param <$R>    the type of the route definition result
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V, $R extends Routing<?>> $R concat(RouteLevel2<? extends RuntimeException, ? extends Emitting<? extends V>> stream1, RouteLevel1<? extends E, ? extends Emitting<? extends V>> stream2, Block1<? super V, ? extends Routing<? extends $R>> handler);
 
@@ -3070,7 +3070,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param stream2 the specified streaming route 2
      * @param <V>     the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ExpectingStream<V, E> concat(RouteLevel2<? extends RuntimeException, ? extends Emitting<? extends V>> stream1, RouteLevel2<? extends RuntimeException, ? extends Emitting<? extends V>> stream2);
 
@@ -3084,7 +3084,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>     the type of the emitting values
      * @param <$R>    the type of the route definition result
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V, $R extends Routing<?>> $R concat(RouteLevel2<? extends RuntimeException, ? extends Emitting<? extends V>> stream1, RouteLevel2<? extends RuntimeException, ? extends Emitting<? extends V>> stream2, Block1<? super V, ? extends Routing<? extends $R>> handler);
 
@@ -3096,7 +3096,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param stream2 the specified streaming route 2
      * @param <V>     the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ExpectingStream<V, E> concat(RouteLevel2<? extends RuntimeException, ? extends Emitting<? extends V>> stream1, RouteLevel3<E, ? extends Emitting<? extends V>> stream2);
 
@@ -3110,7 +3110,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>     the type of the emitting values
      * @param <$R>    the type of the route definition result
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V, $R extends Routing<?>> $R concat(RouteLevel2<? extends RuntimeException, ? extends Emitting<? extends V>> stream1, RouteLevel3<E, ? extends Emitting<? extends V>> stream2, Block1<? super V, ? extends Routing<? extends $R>> handler);
 
@@ -3123,7 +3123,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param stream2 the specified streaming route 2
      * @param <V>     the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ExpectingStream<V, E> concat(RouteLevel3<E, ? extends Emitting<? extends V>> stream1, Block<? extends Emitting<? extends V>> stream2);
 
@@ -3137,7 +3137,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>     the type of the emitting values
      * @param <$R>    the type of the route definition result
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V, $R extends Routing<?>> $R concat(RouteLevel3<E, ? extends Emitting<? extends V>> stream1, Block<? extends Emitting<? extends V>> stream2, Block1<? super V, ? extends Routing<? extends $R>> handler);
 
@@ -3149,7 +3149,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param stream2 the specified streaming route 2
      * @param <V>     the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ExpectingStream<V, E> concat(RouteLevel3<E, ? extends Emitting<? extends V>> stream1, RouteLevel1<? extends E, ? extends Emitting<? extends V>> stream2);
 
@@ -3163,7 +3163,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>     the type of the emitting values
      * @param <$R>    the type of the route definition result
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V, $R extends Routing<?>> $R concat(RouteLevel3<E, ? extends Emitting<? extends V>> stream1, RouteLevel1<? extends E, ? extends Emitting<? extends V>> stream2, Block1<? super V, ? extends Routing<? extends $R>> handler);
 
@@ -3175,7 +3175,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param stream2 the specified streaming route 2
      * @param <V>     the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ExpectingStream<V, E> concat(RouteLevel3<E, ? extends Emitting<? extends V>> stream1, RouteLevel2<? extends RuntimeException, ? extends Emitting<? extends V>> stream2);
 
@@ -3189,7 +3189,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>     the type of the emitting values
      * @param <$R>    the type of the route definition result
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V, $R extends Routing<?>> $R concat(RouteLevel3<E, ? extends Emitting<? extends V>> stream1, RouteLevel2<? extends RuntimeException, ? extends Emitting<? extends V>> stream2, Block1<? super V, ? extends Routing<? extends $R>> handler);
 
@@ -3201,7 +3201,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param stream2 the specified streaming route 2
      * @param <V>     the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ExpectingStream<V, E> concat(RouteLevel3<E, ? extends Emitting<? extends V>> stream1, RouteLevel3<E, ? extends Emitting<? extends V>> stream2);
 
@@ -3215,7 +3215,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>     the type of the emitting values
      * @param <$R>    the type of the route definition result
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V, $R extends Routing<?>> $R concat(RouteLevel3<E, ? extends Emitting<? extends V>> stream1, RouteLevel3<E, ? extends Emitting<? extends V>> stream2, Block1<? super V, ? extends Routing<? extends $R>> handler);
 
@@ -3227,7 +3227,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param predicate the specified boolean result value
      * @param route     the specified route definition
      * @return the action choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     ChoosingAction<$F, E> option(Value<Boolean> predicate, Block<? extends Flowing<?>> route);
 
@@ -3238,7 +3238,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param predicate the specified boolean result value
      * @param route     the specified route definition
      * @return the action choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     ChoosingAction<$F, E> option(Value<Boolean> predicate, RouteLevel1<? extends E, ?> route);
 
@@ -3249,7 +3249,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param predicate the specified boolean result value
      * @param route     the specified route definition
      * @return the action choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     ChoosingAction<$F, E> option(Value<Boolean> predicate, RouteLevel2<? extends RuntimeException, ?> route);
 
@@ -3260,7 +3260,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param predicate the specified boolean result value
      * @param route     the specified route definition
      * @return the action choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     ChoosingAction<$F, E> option(Value<Boolean> predicate, RouteLevel3<E, ?> route);
 
@@ -3272,7 +3272,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param route     the specified route definition
      * @param <V>       the type of the emitting values
      * @return the streaming choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ChoosingStream<V, E> choice(Value<Boolean> predicate, Block<? extends Emitting<? extends V>> route);
 
@@ -3284,7 +3284,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param route     the specified route definition
      * @param <V>       the type of the emitting values
      * @return the streaming choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ChoosingStream<V, E> choice(Value<Boolean> predicate, RouteLevel1<? extends E, ? extends Emitting<? extends V>> route);
 
@@ -3296,7 +3296,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param route     the specified route definition
      * @param <V>       the type of the emitting values
      * @return the streaming choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ChoosingStream<V, E> choice(Value<Boolean> predicate, RouteLevel2<? extends RuntimeException, ? extends Emitting<? extends V>> route);
 
@@ -3308,7 +3308,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param route     the specified route definition
      * @param <V>       the type of the emitting values
      * @return the streaming choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ChoosingStream<V, E> choice(Value<Boolean> predicate, RouteLevel3<E, ? extends Emitting<? extends V>> route);
 
@@ -3319,7 +3319,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param predicate the specified {@link Testable}
      * @param route     the specified route definition
      * @return the action choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     ChoosingAction<$F, E> option(TestableThrowing1<? extends E> predicate, Block<? extends Flowing<?>> route);
 
@@ -3330,7 +3330,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param predicate the specified {@link Testable}
      * @param route     the specified route definition
      * @return the action choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     ChoosingAction<$F, E> option(TestableThrowing1<? extends E> predicate, RouteLevel1<? extends E, ?> route);
 
@@ -3341,7 +3341,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param predicate the specified {@link Testable}
      * @param route     the specified route definition
      * @return the action choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     ChoosingAction<$F, E> option(TestableThrowing1<? extends E> predicate, RouteLevel2<? extends RuntimeException, ?> route);
 
@@ -3352,7 +3352,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param predicate the specified {@link Testable}
      * @param route     the specified route definition
      * @return the action choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     ChoosingAction<$F, E> option(TestableThrowing1<? extends E> predicate, RouteLevel3<E, ?> route);
 
@@ -3364,7 +3364,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param route     the specified route definition
      * @param <V>       the type of the emitting values
      * @return the streaming choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ChoosingStream<V, E> choice(TestableThrowing1<? extends E> predicate, Block<? extends Emitting<? extends V>> route);
 
@@ -3376,7 +3376,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param route     the specified route definition
      * @param <V>       the type of the emitting values
      * @return the streaming choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ChoosingStream<V, E> choice(TestableThrowing1<? extends E> predicate, RouteLevel1<? extends E, ? extends Emitting<? extends V>> route);
 
@@ -3388,7 +3388,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param route     the specified route definition
      * @param <V>       the type of the emitting values
      * @return the streaming choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ChoosingStream<V, E> choice(TestableThrowing1<? extends E> predicate, RouteLevel2<? extends RuntimeException, ? extends Emitting<? extends V>> route);
 
@@ -3400,7 +3400,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param route     the specified route definition
      * @param <V>       the type of the emitting values
      * @return the streaming choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ChoosingStream<V, E> choice(TestableThrowing1<? extends E> predicate, RouteLevel3<E, ? extends Emitting<? extends V>> route);
 
@@ -3412,7 +3412,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param execution the specified {@link Executable1} execution
      * @param <I>       the type of the argument
      * @return the flow definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I> ExpectingAction<$F, E> effect(Value<? extends I> value, Executable1Throwing1<? super I, ? extends E> execution);
 
@@ -3426,7 +3426,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I>      the type of the argument
      * @param <V>      the type of the emitting value
      * @return emitting result definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I, V> ExpectingStream<V, E> supply(Value<? extends I> value, Evaluable1Throwing1<? super I, ? extends V, ? extends E> supplier);
 
@@ -3441,7 +3441,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>      the type of the emitting value
      * @param <$R>     the type of the route definition result
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I, V, $R extends Routing<?>> $R supply(Value<? extends I> value, Evaluable1Throwing1<? super I, ? extends V, ? extends E> supplier, Block1<? super V, ? extends Routing<? extends $R>> handler);
 
@@ -3455,7 +3455,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I>    the type of the argument
      * @param <V>    the type of the emitting values
      * @return emitting result definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I, V> ExpectingStream<V, E> source(Value<? extends I> value, Evaluable1Throwing1<? super I, ? extends BaseStream<V, ?>, ? extends E> source);
 
@@ -3470,7 +3470,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>     the type of the emitting values
      * @param <$R>    the type of the route definition result
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I, V, $R extends Routing<?>> $R source(Value<? extends I> value, Evaluable1Throwing1<? super I, ? extends BaseStream<V, ?>, ? extends E> source, Block1<? super V, ? extends Routing<? extends $R>> handler);
 
@@ -3483,7 +3483,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I>   the type of the argument
      * @param <H>   the type of unexpected exception that might be thrown
      * @return the action attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I, H extends Exception> CatchingAction<$F, H, E> action(Route1Level0<? super I, ? extends H, ?> route, Value<? extends I> value);
 
@@ -3494,7 +3494,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param value the specified argument value
      * @param <I>   the type of the argument
      * @return the action attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I> ExpectingAction<$F, E> action(Route1Level1<? super I, ? extends E, ?> route, Value<? extends I> value);
 
@@ -3505,7 +3505,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param value the specified argument value
      * @param <I>   the type of the argument
      * @return the action attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I> ExpectingAction<$F, E> action(Route1Level2<? super I, ? extends RuntimeException, ?> route, Value<? extends I> value);
 
@@ -3516,7 +3516,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param value the specified argument value
      * @param <I>   the type of the argument
      * @return the action attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I> ExpectingAction<$F, E> action(Route1Level3<? super I, E, ?> route, Value<? extends I> value);
 
@@ -3530,7 +3530,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I>   the type of the argument
      * @param <H>   the type of unexpected exception that might be thrown
      * @return the action attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I, H extends Exception> CatchingAction<$F, H, E> action(ValueLevel0<? extends Evaluable1Throwing1<? super I, ? extends Emittable<?, ? extends H>, ? extends H>> route, Value<? extends I> value);
 
@@ -3542,7 +3542,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param value the specified argument value
      * @param <I>   the type of the argument
      * @return the action attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I> ExpectingAction<$F, E> action(ValueLevel1<? extends Evaluable1Throwing1<? super I, ? extends Emittable<?, ? extends E>, ? extends E>> route, Value<? extends I> value);
 
@@ -3554,7 +3554,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param value the specified argument value
      * @param <I>   the type of the argument
      * @return the action attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I> ExpectingAction<$F, E> action(ValueLevel2<? extends Evaluable1Throwing1<? super I, ? extends Emittable<?, ? extends RuntimeException>, ? extends RuntimeException>> route, Value<? extends I> value);
 
@@ -3566,7 +3566,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param value the specified argument value
      * @param <I>   the type of the argument
      * @return the action attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I> ExpectingAction<$F, E> action(ValueLevel3<? extends Evaluable1Throwing1<? super I, ? extends Emittable<?, E>, E>> route, Value<? extends I> value);
 
@@ -3581,7 +3581,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>    the type of the emitting values
      * @param <H>    the type of unexpected exception that might be thrown
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I, V, H extends Exception> CatchingStream<V, H, E> stream(Route1Level0<? super I, ? extends H, ? extends Emitting<? extends V>> stream, Value<? extends I> value);
 
@@ -3594,7 +3594,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I>    the type of the argument
      * @param <V>    the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I, V> ExpectingStream<V, E> stream(Route1Level1<? super I, ? extends E, ? extends Emitting<? extends V>> stream, Value<? extends I> value);
 
@@ -3607,7 +3607,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I>    the type of the argument
      * @param <V>    the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I, V> ExpectingStream<V, E> stream(Route1Level2<? super I, ? extends RuntimeException, ? extends Emitting<? extends V>> stream, Value<? extends I> value);
 
@@ -3620,7 +3620,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I>    the type of the argument
      * @param <V>    the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I, V> ExpectingStream<V, E> stream(Route1Level3<? super I, E, ? extends Emitting<? extends V>> stream, Value<? extends I> value);
 
@@ -3635,7 +3635,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>    the type of the emitting values
      * @param <H>    the type of unexpected exception that might be thrown
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I, V, H extends Exception> CatchingStream<V, H, E> stream(ValueLevel0<? extends Evaluable1Throwing1<? super I, ? extends Emittable<? extends V, ? extends H>, ? extends H>> stream, Value<? extends I> value);
 
@@ -3648,7 +3648,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I>    the type of the argument
      * @param <V>    the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I, V> ExpectingStream<V, E> stream(ValueLevel1<? extends Evaluable1Throwing1<? super I, ? extends Emittable<? extends V, ? extends E>, ? extends E>> stream, Value<? extends I> value);
 
@@ -3661,7 +3661,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I>    the type of the argument
      * @param <V>    the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I, V> ExpectingStream<V, E> stream(ValueLevel2<? extends Evaluable1Throwing1<? super I, ? extends Emittable<? extends V, ? extends RuntimeException>, ? extends RuntimeException>> stream, Value<? extends I> value);
 
@@ -3674,7 +3674,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I>    the type of the argument
      * @param <V>    the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I, V> ExpectingStream<V, E> stream(ValueLevel3<? extends Evaluable1Throwing1<? super I, ? extends Emittable<? extends V, E>, E>> stream, Value<? extends I> value);
 
@@ -3687,7 +3687,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param route     the specified route definition
      * @param <I>       the type of the argument
      * @return the action choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I> ChoosingAction<$F, E> option(Value<? extends I> value, Testable1Throwing1<? super I, ? extends E> predicate, Block<? extends Flowing<?>> route);
 
@@ -3700,7 +3700,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param route     the specified route definition
      * @param <I>       the type of the argument
      * @return the action choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I> ChoosingAction<$F, E> option(Value<? extends I> value, Testable1Throwing1<? super I, ? extends E> predicate, RouteLevel1<? extends E, ?> route);
 
@@ -3713,7 +3713,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param route     the specified route definition
      * @param <I>       the type of the argument
      * @return the action choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I> ChoosingAction<$F, E> option(Value<? extends I> value, Testable1Throwing1<? super I, ? extends E> predicate, RouteLevel2<? extends RuntimeException, ?> route);
 
@@ -3726,7 +3726,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param route     the specified route definition
      * @param <I>       the type of the argument
      * @return the action choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I> ChoosingAction<$F, E> option(Value<? extends I> value, Testable1Throwing1<? super I, ? extends E> predicate, RouteLevel3<E, ?> route);
 
@@ -3740,7 +3740,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I>       the type of the argument
      * @param <V>       the type of the emitting values
      * @return the streaming choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I, V> ChoosingStream<V, E> choice(Value<? extends I> value, Testable1Throwing1<? super I, ? extends E> predicate, Block<? extends Emitting<? extends V>> route);
 
@@ -3754,7 +3754,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I>       the type of the argument
      * @param <V>       the type of the emitting values
      * @return the streaming choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I, V> ChoosingStream<V, E> choice(Value<? extends I> value, Testable1Throwing1<? super I, ? extends E> predicate, RouteLevel1<? extends E, ? extends Emitting<? extends V>> route);
 
@@ -3768,7 +3768,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I>       the type of the argument
      * @param <V>       the type of the emitting values
      * @return the streaming choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I, V> ChoosingStream<V, E> choice(Value<? extends I> value, Testable1Throwing1<? super I, ? extends E> predicate, RouteLevel2<? extends RuntimeException, ? extends Emitting<? extends V>> route);
 
@@ -3782,7 +3782,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I>       the type of the argument
      * @param <V>       the type of the emitting values
      * @return the streaming choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I, V> ChoosingStream<V, E> choice(Value<? extends I> value, Testable1Throwing1<? super I, ? extends E> predicate, RouteLevel3<E, ? extends Emitting<? extends V>> route);
 
@@ -3795,7 +3795,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I>     the type of value 1 of the tuple
      * @param <$R>    the type of the route definition result
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I, $R extends Routing<?>> $R expand(Value<? extends Tuple1<? extends I>> tuple, Block1<? super I, ? extends Routing<? extends $R>> handler);
 
@@ -3809,7 +3809,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I1>      the type of argument 1
      * @param <I2>      the type of argument 2
      * @return the flow definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2> ExpectingAction<$F, E> effect(Value<? extends I1> value1, Value<? extends I2> value2, Executable2Throwing1<? super I1, ? super I2, ? extends E> execution);
 
@@ -3825,7 +3825,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I2>     the type of argument 2
      * @param <V>      the type of the emitting value
      * @return emitting result definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, V> ExpectingStream<V, E> supply(Value<? extends I1> value1, Value<? extends I2> value2, Evaluable2Throwing1<? super I1, ? super I2, ? extends V, ? extends E> supplier);
 
@@ -3842,7 +3842,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>      the type of the emitting value
      * @param <$R>     the type of the route definition result
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, V, $R extends Routing<?>> $R supply(Value<? extends I1> value1, Value<? extends I2> value2, Evaluable2Throwing1<? super I1, ? super I2, ? extends V, ? extends E> supplier, Block1<? super V, ? extends Routing<? extends $R>> handler);
 
@@ -3858,7 +3858,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I2>   the type of argument 2
      * @param <V>    the type of the emitting values
      * @return emitting result definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, V> ExpectingStream<V, E> source(Value<? extends I1> value1, Value<? extends I2> value2, Evaluable2Throwing1<? super I1, ? super I2, ? extends BaseStream<V, ?>, ? extends E> source);
 
@@ -3875,7 +3875,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>     the type of the emitting values
      * @param <$R>    the type of the route definition result
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, V, $R extends Routing<?>> $R source(Value<? extends I1> value1, Value<? extends I2> value2, Evaluable2Throwing1<? super I1, ? super I2, ? extends BaseStream<V, ?>, ? extends E> source, Block1<? super V, ? extends Routing<? extends $R>> handler);
 
@@ -3890,7 +3890,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I2>   the type of the route argument 2
      * @param <H>    the type of unexpected exception that might be thrown
      * @return the action attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, H extends Exception> CatchingAction<$F, H, E> action(Route2Level0<? super I1, ? super I2, ? extends H, ?> route, Value<? extends I1> value1, Value<? extends I2> value2);
 
@@ -3903,7 +3903,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I1>   the type of the route argument 1
      * @param <I2>   the type of the route argument 2
      * @return the action attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2> ExpectingAction<$F, E> action(Route2Level1<? super I1, ? super I2, ? extends E, ?> route, Value<? extends I1> value1, Value<? extends I2> value2);
 
@@ -3916,7 +3916,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I1>   the type of the route argument 1
      * @param <I2>   the type of the route argument 2
      * @return the action attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2> ExpectingAction<$F, E> action(Route2Level2<? super I1, ? super I2, ? extends RuntimeException, ?> route, Value<? extends I1> value1, Value<? extends I2> value2);
 
@@ -3929,7 +3929,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I1>   the type of the route argument 1
      * @param <I2>   the type of the route argument 2
      * @return the action attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2> ExpectingAction<$F, E> action(Route2Level3<? super I1, ? super I2, E, ?> route, Value<? extends I1> value1, Value<? extends I2> value2);
 
@@ -3945,7 +3945,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I2>   the type of the route argument 2
      * @param <H>    the type of unexpected exception that might be thrown
      * @return the action attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, H extends Exception> CatchingAction<$F, H, E> action(ValueLevel0<? extends Evaluable2Throwing1<? super I1, ? super I2, ? extends Emittable<?, ? extends H>, ? extends H>> route, Value<? extends I1> value1, Value<? extends I2> value2);
 
@@ -3960,7 +3960,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I1>   the type of the route argument 1
      * @param <I2>   the type of the route argument 2
      * @return the action attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2> ExpectingAction<$F, E> action(ValueLevel1<? extends Evaluable2Throwing1<? super I1, ? super I2, ? extends Emittable<?, ? extends E>, ? extends E>> route, Value<? extends I1> value1, Value<? extends I2> value2);
 
@@ -3974,7 +3974,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I1>   the type of the route argument 1
      * @param <I2>   the type of the route argument 2
      * @return the action attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2> ExpectingAction<$F, E> action(ValueLevel2<? extends Evaluable2Throwing1<? super I1, ? super I2, ? extends Emittable<?, ? extends RuntimeException>, ? extends RuntimeException>> route, Value<? extends I1> value1, Value<? extends I2> value2);
 
@@ -3988,7 +3988,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I1>   the type of the route argument 1
      * @param <I2>   the type of the route argument 2
      * @return the action attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2> ExpectingAction<$F, E> action(ValueLevel3<? extends Evaluable2Throwing1<? super I1, ? super I2, ? extends Emittable<?, E>, E>> route, Value<? extends I1> value1, Value<? extends I2> value2);
 
@@ -4005,7 +4005,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>    the type of the emitting values
      * @param <H>    the type of unexpected exception that might be thrown
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, V, H extends Exception> CatchingStream<V, H, E> stream(Route2Level0<? super I1, ? super I2, ? extends H, ? extends Emitting<? extends V>> stream, Value<? extends I1> value1, Value<? extends I2> value2);
 
@@ -4020,7 +4020,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I2>   the type of the route argument 2
      * @param <V>    the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, V> ExpectingStream<V, E> stream(Route2Level1<? super I1, ? super I2, ? extends E, ? extends Emitting<? extends V>> stream, Value<? extends I1> value1, Value<? extends I2> value2);
 
@@ -4035,7 +4035,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I2>   the type of the route argument 2
      * @param <V>    the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, V> ExpectingStream<V, E> stream(Route2Level2<? super I1, ? super I2, ? extends RuntimeException, ? extends Emitting<? extends V>> stream, Value<? extends I1> value1, Value<? extends I2> value2);
 
@@ -4050,7 +4050,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I2>   the type of the route argument 2
      * @param <V>    the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, V> ExpectingStream<V, E> stream(Route2Level3<? super I1, ? super I2, E, ? extends Emitting<? extends V>> stream, Value<? extends I1> value1, Value<? extends I2> value2);
 
@@ -4066,7 +4066,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>    the type of the emitting values
      * @param <H>    the type of unexpected exception that might be thrown
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, V, H extends Exception> CatchingStream<V, H, E> stream(ValueLevel0<? extends Evaluable2Throwing1<? super I1, ? super I2, ? extends Emittable<? extends V, ? extends H>, ? extends H>> stream, Value<? extends I1> value1, Value<? extends I2> value2);
 
@@ -4081,7 +4081,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I2>   the type of the route argument 2
      * @param <V>    the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, V> ExpectingStream<V, E> stream(ValueLevel1<? extends Evaluable2Throwing1<? super I1, ? super I2, ? extends Emittable<? extends V, ? extends E>, ? extends E>> stream, Value<? extends I1> value1, Value<? extends I2> value2);
 
@@ -4096,7 +4096,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I2>   the type of the route argument 2
      * @param <V>    the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, V> ExpectingStream<V, E> stream(ValueLevel2<? extends Evaluable2Throwing1<? super I1, ? super I2, ? extends Emittable<? extends V, ? extends RuntimeException>, ? extends RuntimeException>> stream, Value<? extends I1> value1, Value<? extends I2> value2);
 
@@ -4111,7 +4111,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I2>   the type of the route argument 2
      * @param <V>    the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, V> ExpectingStream<V, E> stream(ValueLevel3<? extends Evaluable2Throwing1<? super I1, ? super I2, ? extends Emittable<? extends V, E>, E>> stream, Value<? extends I1> value1, Value<? extends I2> value2);
 
@@ -4123,7 +4123,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param value2 the specified value 2
      * @param route  the specified route definition
      * @return the action choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     ChoosingAction<$F, E> option(Value<Boolean> value1, Value<Boolean> value2, Block<? extends Flowing<?>> route);
 
@@ -4135,7 +4135,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param value2 the specified value 2
      * @param route  the specified route definition
      * @return the action choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     ChoosingAction<$F, E> option(Value<Boolean> value1, Value<Boolean> value2, RouteLevel1<? extends E, ?> route);
 
@@ -4147,7 +4147,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param value2 the specified value 2
      * @param route  the specified route definition
      * @return the action choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     ChoosingAction<$F, E> option(Value<Boolean> value1, Value<Boolean> value2, RouteLevel2<? extends RuntimeException, ?> route);
 
@@ -4159,7 +4159,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param value2 the specified value 2
      * @param route  the specified route definition
      * @return the action choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     ChoosingAction<$F, E> option(Value<Boolean> value1, Value<Boolean> value2, RouteLevel3<E, ?> route);
 
@@ -4172,7 +4172,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param route  the specified route definition
      * @param <V>    the type of the emitting values
      * @return the streaming choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ChoosingStream<V, E> choice(Value<Boolean> value1, Value<Boolean> value2, Block<? extends Emitting<? extends V>> route);
 
@@ -4185,7 +4185,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param route  the specified route definition
      * @param <V>    the type of the emitting values
      * @return the streaming choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ChoosingStream<V, E> choice(Value<Boolean> value1, Value<Boolean> value2, RouteLevel1<? extends E, ? extends Emitting<? extends V>> route);
 
@@ -4198,7 +4198,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param route  the specified route definition
      * @param <V>    the type of the emitting values
      * @return the streaming choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ChoosingStream<V, E> choice(Value<Boolean> value1, Value<Boolean> value2, RouteLevel2<? extends RuntimeException, ? extends Emitting<? extends V>> route);
 
@@ -4211,7 +4211,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param route  the specified route definition
      * @param <V>    the type of the emitting values
      * @return the streaming choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ChoosingStream<V, E> choice(Value<Boolean> value1, Value<Boolean> value2, RouteLevel3<E, ? extends Emitting<? extends V>> route);
 
@@ -4226,7 +4226,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I1>      the type of the input value 1 to check
      * @param <I2>      the type of the input value 2 to check
      * @return the action choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2> ChoosingAction<$F, E> option(Value<? extends I1> value1, Value<? extends I2> value2, Testable2Throwing1<? super I1, ? super I2, ? extends E> predicate, Block<? extends Flowing<?>> route);
 
@@ -4241,7 +4241,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I1>      the type of the input value 1 to check
      * @param <I2>      the type of the input value 2 to check
      * @return the action choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2> ChoosingAction<$F, E> option(Value<? extends I1> value1, Value<? extends I2> value2, Testable2Throwing1<? super I1, ? super I2, ? extends E> predicate, RouteLevel1<? extends E, ?> route);
 
@@ -4256,7 +4256,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I1>      the type of the input value 1 to check
      * @param <I2>      the type of the input value 2 to check
      * @return the action choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2> ChoosingAction<$F, E> option(Value<? extends I1> value1, Value<? extends I2> value2, Testable2Throwing1<? super I1, ? super I2, ? extends E> predicate, RouteLevel2<? extends RuntimeException, ?> route);
 
@@ -4271,7 +4271,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I1>      the type of the input value 1 to check
      * @param <I2>      the type of the input value 2 to check
      * @return the action choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2> ChoosingAction<$F, E> option(Value<? extends I1> value1, Value<? extends I2> value2, Testable2Throwing1<? super I1, ? super I2, ? extends E> predicate, RouteLevel3<E, ?> route);
 
@@ -4287,7 +4287,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I2>      the type of the input value 2 to check
      * @param <V>       the type of the emitting values
      * @return the streaming choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, V> ChoosingStream<V, E> choice(Value<? extends I1> value1, Value<? extends I2> value2, Testable2Throwing1<? super I1, ? super I2, ? extends E> predicate, Block<? extends Emitting<? extends V>> route);
 
@@ -4303,7 +4303,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I2>      the type of the input value 2 to check
      * @param <V>       the type of the emitting values
      * @return the streaming choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, V> ChoosingStream<V, E> choice(Value<? extends I1> value1, Value<? extends I2> value2, Testable2Throwing1<? super I1, ? super I2, ? extends E> predicate, RouteLevel1<? extends E, ? extends Emitting<? extends V>> route);
 
@@ -4319,7 +4319,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I2>      the type of the input value 2 to check
      * @param <V>       the type of the emitting values
      * @return the streaming choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, V> ChoosingStream<V, E> choice(Value<? extends I1> value1, Value<? extends I2> value2, Testable2Throwing1<? super I1, ? super I2, ? extends E> predicate, RouteLevel2<? extends RuntimeException, ? extends Emitting<? extends V>> route);
 
@@ -4335,7 +4335,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I2>      the type of the input value 2 to check
      * @param <V>       the type of the emitting values
      * @return the streaming choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, V> ChoosingStream<V, E> choice(Value<? extends I1> value1, Value<? extends I2> value2, Testable2Throwing1<? super I1, ? super I2, ? extends E> predicate, RouteLevel3<E, ? extends Emitting<? extends V>> route);
 
@@ -4349,7 +4349,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I2>    the type of value 2 of the tuple
      * @param <$R>    the type of the route definition result
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, $R extends Routing<?>> $R expand(Value<? extends Tuple2<? extends I1, ? extends I2>> tuple, Block2<? super I1, ? super I2, ? extends Routing<? extends $R>> handler);
 
@@ -4365,7 +4365,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I2>      the type of argument 2
      * @param <I3>      the type of argument 3
      * @return the flow definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3> ExpectingAction<$F, E> effect(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Executable3Throwing1<? super I1, ? super I2, ? super I3, ? extends E> execution);
 
@@ -4382,7 +4382,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I3>     the type of argument 3
      * @param <V>      the type of the emitting value
      * @return emitting result definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, V> ExpectingStream<V, E> supply(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Evaluable3Throwing1<? super I1, ? super I2, ? super I3, ? extends V, ? extends E> supplier);
 
@@ -4401,7 +4401,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>      the type of the emitting value
      * @param <$R>     the type of the route definition result
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, V, $R extends Routing<?>> $R supply(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Evaluable3Throwing1<? super I1, ? super I2, ? super I3, ? extends V, ? extends E> supplier, Block1<? super V, ? extends Routing<? extends $R>> handler);
 
@@ -4418,7 +4418,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I3>   the type of argument 3
      * @param <V>    the type of the emitting values
      * @return emitting result definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, V> ExpectingStream<V, E> source(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Evaluable3Throwing1<? super I1, ? super I2, ? super I3, ? extends BaseStream<V, ?>, ? extends E> source);
 
@@ -4437,7 +4437,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>     the type of the emitting values
      * @param <$R>    the type of the route definition result
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, V, $R extends Routing<?>> $R source(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Evaluable3Throwing1<? super I1, ? super I2, ? super I3, ? extends BaseStream<V, ?>, ? extends E> source, Block1<? super V, ? extends Routing<? extends $R>> handler);
 
@@ -4453,7 +4453,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I3>   the type of argument 3
      * @param <H>    the type of unexpected exception that might be thrown
      * @return the action attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, H extends Exception> CatchingAction<$F, H, E> action(Route3Level0<? super I1, ? super I2, ? super I3, ? extends H, ?> route, Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3);
 
@@ -4468,7 +4468,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I2>   the type of argument 2
      * @param <I3>   the type of argument 3
      * @return the action attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3> ExpectingAction<$F, E> action(Route3Level1<? super I1, ? super I2, ? super I3, ? extends E, ?> route, Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3);
 
@@ -4483,7 +4483,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I2>   the type of argument 2
      * @param <I3>   the type of argument 3
      * @return the action attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3> ExpectingAction<$F, E> action(Route3Level2<? super I1, ? super I2, ? super I3, ? extends RuntimeException, ?> route, Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3);
 
@@ -4498,7 +4498,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I2>   the type of argument 2
      * @param <I3>   the type of argument 3
      * @return the action attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3> ExpectingAction<$F, E> action(Route3Level3<? super I1, ? super I2, ? super I3, E, ?> route, Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3);
 
@@ -4515,7 +4515,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I3>   the type of argument 3
      * @param <H>    the type of unexpected exception that might be thrown
      * @return the action attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, H extends Exception> CatchingAction<$F, H, E> action(ValueLevel0<? extends Evaluable3Throwing1<? super I1, ? super I2, ? super I3, ? extends Emittable<?, ? extends H>, ? extends H>> route, Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3);
 
@@ -4531,7 +4531,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I2>   the type of argument 2
      * @param <I3>   the type of argument 3
      * @return the action attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3> ExpectingAction<$F, E> action(ValueLevel1<? extends Evaluable3Throwing1<? super I1, ? super I2, ? super I3, ? extends Emittable<?, ? extends E>, ? extends E>> route, Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3);
 
@@ -4547,7 +4547,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I2>   the type of argument 2
      * @param <I3>   the type of argument 3
      * @return the action attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3> ExpectingAction<$F, E> action(ValueLevel2<? extends Evaluable3Throwing1<? super I1, ? super I2, ? super I3, ? extends Emittable<?, ? extends RuntimeException>, ? extends RuntimeException>> route, Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3);
 
@@ -4563,7 +4563,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I2>   the type of argument 2
      * @param <I3>   the type of argument 3
      * @return the action attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3> ExpectingAction<$F, E> action(ValueLevel3<? extends Evaluable3Throwing1<? super I1, ? super I2, ? super I3, ? extends Emittable<?, E>, E>> route, Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3);
 
@@ -4581,7 +4581,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>    the type of the emitting values
      * @param <H>    the type of unexpected exception that might be thrown
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, V, H extends Exception> CatchingStream<V, H, E> stream(Route3Level0<? super I1, ? super I2, ? super I3, ? extends H, ? extends Emitting<? extends V>> stream, Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3);
 
@@ -4598,7 +4598,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I3>   the type of argument 3
      * @param <V>    the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, V> ExpectingStream<V, E> stream(Route3Level1<? super I1, ? super I2, ? super I3, ? extends E, ? extends Emitting<? extends V>> stream, Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3);
 
@@ -4615,7 +4615,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I3>   the type of argument 3
      * @param <V>    the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, V> ExpectingStream<V, E> stream(Route3Level2<? super I1, ? super I2, ? super I3, ? extends RuntimeException, ? extends Emitting<? extends V>> stream, Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3);
 
@@ -4632,7 +4632,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I3>   the type of argument 3
      * @param <V>    the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, V> ExpectingStream<V, E> stream(Route3Level3<? super I1, ? super I2, ? super I3, E, ? extends Emitting<? extends V>> stream, Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3);
 
@@ -4651,7 +4651,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>    the type of the emitting values
      * @param <H>    the type of unexpected exception that might be thrown
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, V, H extends Exception> CatchingStream<V, H, E> stream(ValueLevel0<? extends Evaluable3Throwing1<? super I1, ? super I2, ? super I3, ? extends Emittable<? extends V, ? extends H>, ? extends H>> stream, Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3);
 
@@ -4668,7 +4668,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I3>   the type of argument 3
      * @param <V>    the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, V> ExpectingStream<V, E> stream(ValueLevel1<? extends Evaluable3Throwing1<? super I1, ? super I2, ? super I3, ? extends Emittable<? extends V, ? extends E>, ? extends E>> stream, Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3);
 
@@ -4685,7 +4685,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I3>   the type of argument 3
      * @param <V>    the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, V> ExpectingStream<V, E> stream(ValueLevel2<? extends Evaluable3Throwing1<? super I1, ? super I2, ? super I3, ? extends Emittable<? extends V, ? extends RuntimeException>, ? extends RuntimeException>> stream, Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3);
 
@@ -4702,7 +4702,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I3>   the type of argument 3
      * @param <V>    the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, V> ExpectingStream<V, E> stream(ValueLevel3<? extends Evaluable3Throwing1<? super I1, ? super I2, ? super I3, ? extends Emittable<? extends V, E>, E>> stream, Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3);
 
@@ -4716,7 +4716,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param value3 the specified argument value 3
      * @param route  the specified route definition
      * @return the action choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     ChoosingAction<$F, E> option(Value<Boolean> value1, Value<Boolean> value2, Value<Boolean> value3, Block<? extends Flowing<?>> route);
 
@@ -4729,7 +4729,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param value3 the specified argument value 3
      * @param route  the specified route definition
      * @return the action choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     ChoosingAction<$F, E> option(Value<Boolean> value1, Value<Boolean> value2, Value<Boolean> value3, RouteLevel1<? extends E, ?> route);
 
@@ -4742,7 +4742,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param value3 the specified argument value 3
      * @param route  the specified route definition
      * @return the action choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     ChoosingAction<$F, E> option(Value<Boolean> value1, Value<Boolean> value2, Value<Boolean> value3, RouteLevel2<? extends RuntimeException, ?> route);
 
@@ -4755,7 +4755,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param value3 the specified argument value 3
      * @param route  the specified route definition
      * @return the action choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     ChoosingAction<$F, E> option(Value<Boolean> value1, Value<Boolean> value2, Value<Boolean> value3, RouteLevel3<E, ?> route);
 
@@ -4769,7 +4769,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param route  the specified route definition
      * @param <V>    the type of the emitting values
      * @return the streaming choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ChoosingStream<V, E> choice(Value<Boolean> value1, Value<Boolean> value2, Value<Boolean> value3, Block<? extends Emitting<? extends V>> route);
 
@@ -4783,7 +4783,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param route  the specified route definition
      * @param <V>    the type of the emitting values
      * @return the streaming choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ChoosingStream<V, E> choice(Value<Boolean> value1, Value<Boolean> value2, Value<Boolean> value3, RouteLevel1<? extends E, ? extends Emitting<? extends V>> route);
 
@@ -4797,7 +4797,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param route  the specified route definition
      * @param <V>    the type of the emitting values
      * @return the streaming choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ChoosingStream<V, E> choice(Value<Boolean> value1, Value<Boolean> value2, Value<Boolean> value3, RouteLevel2<? extends RuntimeException, ? extends Emitting<? extends V>> route);
 
@@ -4811,7 +4811,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param route  the specified route definition
      * @param <V>    the type of the emitting values
      * @return the streaming choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ChoosingStream<V, E> choice(Value<Boolean> value1, Value<Boolean> value2, Value<Boolean> value3, RouteLevel3<E, ? extends Emitting<? extends V>> route);
 
@@ -4829,7 +4829,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I2>      the type of argument 2
      * @param <I3>      the type of argument 3
      * @return the action choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3> ChoosingAction<$F, E> option(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Testable3Throwing1<? super I1, ? super I2, ? super I3, ? extends E> predicate, Block<? extends Flowing<?>> route);
 
@@ -4846,7 +4846,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I2>      the type of argument 2
      * @param <I3>      the type of argument 3
      * @return the action choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3> ChoosingAction<$F, E> option(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Testable3Throwing1<? super I1, ? super I2, ? super I3, ? extends E> predicate, RouteLevel1<? extends E, ?> route);
 
@@ -4863,7 +4863,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I2>      the type of argument 2
      * @param <I3>      the type of argument 3
      * @return the action choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3> ChoosingAction<$F, E> option(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Testable3Throwing1<? super I1, ? super I2, ? super I3, ? extends E> predicate, RouteLevel2<? extends RuntimeException, ?> route);
 
@@ -4880,7 +4880,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I2>      the type of argument 2
      * @param <I3>      the type of argument 3
      * @return the action choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3> ChoosingAction<$F, E> option(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Testable3Throwing1<? super I1, ? super I2, ? super I3, ? extends E> predicate, RouteLevel3<E, ?> route);
 
@@ -4898,7 +4898,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I3>      the type of argument 3
      * @param <V>       the type of the emitting values
      * @return the streaming choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, V> ChoosingStream<V, E> choice(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Testable3Throwing1<? super I1, ? super I2, ? super I3, ? extends E> predicate, Block<? extends Emitting<? extends V>> route);
 
@@ -4916,7 +4916,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I3>      the type of argument 3
      * @param <V>       the type of the emitting values
      * @return the streaming choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, V> ChoosingStream<V, E> choice(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Testable3Throwing1<? super I1, ? super I2, ? super I3, ? extends E> predicate, RouteLevel1<? extends E, ? extends Emitting<? extends V>> route);
 
@@ -4934,7 +4934,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I3>      the type of argument 3
      * @param <V>       the type of the emitting values
      * @return the streaming choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, V> ChoosingStream<V, E> choice(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Testable3Throwing1<? super I1, ? super I2, ? super I3, ? extends E> predicate, RouteLevel2<? extends RuntimeException, ? extends Emitting<? extends V>> route);
 
@@ -4952,7 +4952,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I3>      the type of argument 3
      * @param <V>       the type of the emitting values
      * @return the streaming choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, V> ChoosingStream<V, E> choice(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Testable3Throwing1<? super I1, ? super I2, ? super I3, ? extends E> predicate, RouteLevel3<E, ? extends Emitting<? extends V>> route);
 
@@ -4967,7 +4967,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I3>    the type of value 3 of the tuple
      * @param <$R>    the type of the route definition result
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, $R extends Routing<?>> $R expand(Value<? extends Tuple3<? extends I1, ? extends I2, ? extends I3>> tuple, Block3<? super I1, ? super I2, ? super I3, ? extends Routing<? extends $R>> handler);
 
@@ -4984,7 +4984,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I3>      the type of argument 3
      * @param <I4>      the type of argument 4
      * @return the flow definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4> ExpectingAction<$F, E> effect(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Executable4Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? extends E> execution);
 
@@ -5003,7 +5003,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I4>     the type of argument 4
      * @param <V>      the type of the emitting value
      * @return emitting result definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, V> ExpectingStream<V, E> supply(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Evaluable4Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? extends V, ? extends E> supplier);
 
@@ -5024,7 +5024,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>      the type of the emitting value
      * @param <$R>     the type of the route definition result
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, V, $R extends Routing<?>> $R supply(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Evaluable4Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? extends V, ? extends E> supplier, Block1<? super V, ? extends Routing<? extends $R>> handler);
 
@@ -5044,7 +5044,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I4>   the type of argument 4
      * @param <V>    the type of the emitting values
      * @return emitting result definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, V> ExpectingStream<V, E> source(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Evaluable4Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? extends BaseStream<V, ?>, ? extends E> source);
 
@@ -5065,7 +5065,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>     the type of the emitting values
      * @param <$R>    the type of the route definition result
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, V, $R extends Routing<?>> $R source(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Evaluable4Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? extends BaseStream<V, ?>, ? extends E> source, Block1<? super V, ? extends Routing<? extends $R>> handler);
 
@@ -5084,7 +5084,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I4>   the type of argument 4
      * @param <H>    the type of unexpected exception that might be thrown
      * @return the action attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, H extends Exception> CatchingAction<$F, H, E> action(Route4Level0<? super I1, ? super I2, ? super I3, ? super I4, ? extends H, ?> route, Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4);
 
@@ -5101,7 +5101,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I3>   the type of argument 3
      * @param <I4>   the type of argument 4
      * @return the action attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4> ExpectingAction<$F, E> action(Route4Level1<? super I1, ? super I2, ? super I3, ? super I4, ? extends E, ?> route, Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4);
 
@@ -5118,7 +5118,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I3>   the type of argument 3
      * @param <I4>   the type of argument 4
      * @return the action attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4> ExpectingAction<$F, E> action(Route4Level2<? super I1, ? super I2, ? super I3, ? super I4, ? extends RuntimeException, ?> route, Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4);
 
@@ -5135,7 +5135,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I3>   the type of argument 3
      * @param <I4>   the type of argument 4
      * @return the action attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4> ExpectingAction<$F, E> action(Route4Level3<? super I1, ? super I2, ? super I3, ? super I4, E, ?> route, Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4);
 
@@ -5154,7 +5154,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I4>   the type of argument 4
      * @param <H>    the type of unexpected exception that might be thrown
      * @return the action attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, H extends Exception> CatchingAction<$F, H, E> action(ValueLevel0<? extends Evaluable4Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? extends Emittable<?, ? extends H>, ? extends H>> route, Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4);
 
@@ -5172,7 +5172,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I3>   the type of argument 3
      * @param <I4>   the type of argument 4
      * @return the action attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4> ExpectingAction<$F, E> action(ValueLevel1<? extends Evaluable4Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? extends Emittable<?, ? extends E>, ? extends E>> route, Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4);
 
@@ -5190,7 +5190,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I3>   the type of argument 3
      * @param <I4>   the type of argument 4
      * @return the action attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4> ExpectingAction<$F, E> action(ValueLevel2<? extends Evaluable4Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? extends Emittable<?, ? extends RuntimeException>, ? extends RuntimeException>> route, Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4);
 
@@ -5208,7 +5208,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I3>   the type of argument 3
      * @param <I4>   the type of argument 4
      * @return the action attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4> ExpectingAction<$F, E> action(ValueLevel3<? extends Evaluable4Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? extends Emittable<?, E>, E>> route, Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4);
 
@@ -5229,7 +5229,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>    the type of the emitting values
      * @param <H>    the type of unexpected exception that might be thrown
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, V, H extends Exception> CatchingStream<V, H, E> stream(Route4Level0<? super I1, ? super I2, ? super I3, ? super I4, ? extends H, ? extends Emitting<? extends V>> stream, Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4);
 
@@ -5248,7 +5248,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I4>   the type of argument 4
      * @param <V>    the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, V> ExpectingStream<V, E> stream(Route4Level1<? super I1, ? super I2, ? super I3, ? super I4, ? extends E, ? extends Emitting<? extends V>> stream, Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4);
 
@@ -5267,7 +5267,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I4>   the type of argument 4
      * @param <V>    the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, V> ExpectingStream<V, E> stream(Route4Level2<? super I1, ? super I2, ? super I3, ? super I4, ? extends RuntimeException, ? extends Emitting<? extends V>> stream, Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4);
 
@@ -5286,7 +5286,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I4>   the type of argument 4
      * @param <V>    the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, V> ExpectingStream<V, E> stream(Route4Level3<? super I1, ? super I2, ? super I3, ? super I4, E, ? extends Emitting<? extends V>> stream, Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4);
 
@@ -5307,7 +5307,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>    the type of the emitting values
      * @param <H>    the type of unexpected exception that might be thrown
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, V, H extends Exception> CatchingStream<V, H, E> stream(ValueLevel0<? extends Evaluable4Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? extends Emittable<? extends V, ? extends H>, ? extends H>> stream, Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4);
 
@@ -5326,7 +5326,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I4>   the type of argument 4
      * @param <V>    the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, V> ExpectingStream<V, E> stream(ValueLevel1<? extends Evaluable4Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? extends Emittable<? extends V, ? extends E>, ? extends E>> stream, Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4);
 
@@ -5345,7 +5345,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I4>   the type of argument 4
      * @param <V>    the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, V> ExpectingStream<V, E> stream(ValueLevel2<? extends Evaluable4Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? extends Emittable<? extends V, ? extends RuntimeException>, ? extends RuntimeException>> stream, Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4);
 
@@ -5364,7 +5364,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I4>   the type of argument 4
      * @param <V>    the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, V> ExpectingStream<V, E> stream(ValueLevel3<? extends Evaluable4Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? extends Emittable<? extends V, E>, E>> stream, Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4);
 
@@ -5379,7 +5379,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param value4 the specified argument value 4
      * @param route  the specified route definition
      * @return the action choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     ChoosingAction<$F, E> option(Value<Boolean> value1, Value<Boolean> value2, Value<Boolean> value3, Value<Boolean> value4, Block<? extends Flowing<?>> route);
 
@@ -5393,7 +5393,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param value4 the specified argument value 4
      * @param route  the specified route definition
      * @return the action choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     ChoosingAction<$F, E> option(Value<Boolean> value1, Value<Boolean> value2, Value<Boolean> value3, Value<Boolean> value4, RouteLevel1<? extends E, ?> route);
 
@@ -5407,7 +5407,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param value4 the specified argument value 4
      * @param route  the specified route definition
      * @return the action choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     ChoosingAction<$F, E> option(Value<Boolean> value1, Value<Boolean> value2, Value<Boolean> value3, Value<Boolean> value4, RouteLevel2<? extends RuntimeException, ?> route);
 
@@ -5421,7 +5421,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param value4 the specified argument value 4
      * @param route  the specified route definition
      * @return the action choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     ChoosingAction<$F, E> option(Value<Boolean> value1, Value<Boolean> value2, Value<Boolean> value3, Value<Boolean> value4, RouteLevel3<E, ?> route);
 
@@ -5436,7 +5436,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param route  the specified route definition
      * @param <V>    the type of the emitting values
      * @return the streaming choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ChoosingStream<V, E> choice(Value<Boolean> value1, Value<Boolean> value2, Value<Boolean> value3, Value<Boolean> value4, Block<? extends Emitting<? extends V>> route);
 
@@ -5451,7 +5451,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param route  the specified route definition
      * @param <V>    the type of the emitting values
      * @return the streaming choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ChoosingStream<V, E> choice(Value<Boolean> value1, Value<Boolean> value2, Value<Boolean> value3, Value<Boolean> value4, RouteLevel1<? extends E, ? extends Emitting<? extends V>> route);
 
@@ -5466,7 +5466,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param route  the specified route definition
      * @param <V>    the type of the emitting values
      * @return the streaming choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ChoosingStream<V, E> choice(Value<Boolean> value1, Value<Boolean> value2, Value<Boolean> value3, Value<Boolean> value4, RouteLevel2<? extends RuntimeException, ? extends Emitting<? extends V>> route);
 
@@ -5481,7 +5481,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param route  the specified route definition
      * @param <V>    the type of the emitting values
      * @return the streaming choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ChoosingStream<V, E> choice(Value<Boolean> value1, Value<Boolean> value2, Value<Boolean> value3, Value<Boolean> value4, RouteLevel3<E, ? extends Emitting<? extends V>> route);
 
@@ -5501,7 +5501,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I3>      the type of argument 3
      * @param <I4>      the type of argument 4
      * @return the action choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4> ChoosingAction<$F, E> option(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Testable4Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? extends E> predicate, Block<? extends Flowing<?>> route);
 
@@ -5520,7 +5520,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I3>      the type of argument 3
      * @param <I4>      the type of argument 4
      * @return the action choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4> ChoosingAction<$F, E> option(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Testable4Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? extends E> predicate, RouteLevel1<? extends E, ?> route);
 
@@ -5539,7 +5539,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I3>      the type of argument 3
      * @param <I4>      the type of argument 4
      * @return the action choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4> ChoosingAction<$F, E> option(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Testable4Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? extends E> predicate, RouteLevel2<? extends RuntimeException, ?> route);
 
@@ -5558,7 +5558,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I3>      the type of argument 3
      * @param <I4>      the type of argument 4
      * @return the action choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4> ChoosingAction<$F, E> option(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Testable4Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? extends E> predicate, RouteLevel3<E, ?> route);
 
@@ -5578,7 +5578,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I4>      the type of argument 4
      * @param <V>       the type of the emitting values
      * @return the streaming choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, V> ChoosingStream<V, E> choice(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Testable4Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? extends E> predicate, Block<? extends Emitting<? extends V>> route);
 
@@ -5598,7 +5598,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I4>      the type of argument 4
      * @param <V>       the type of the emitting values
      * @return the streaming choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, V> ChoosingStream<V, E> choice(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Testable4Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? extends E> predicate, RouteLevel1<? extends E, ? extends Emitting<? extends V>> route);
 
@@ -5618,7 +5618,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I4>      the type of argument 4
      * @param <V>       the type of the emitting values
      * @return the streaming choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, V> ChoosingStream<V, E> choice(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Testable4Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? extends E> predicate, RouteLevel2<? extends RuntimeException, ? extends Emitting<? extends V>> route);
 
@@ -5638,7 +5638,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I4>      the type of argument 4
      * @param <V>       the type of the emitting values
      * @return the streaming choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, V> ChoosingStream<V, E> choice(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Testable4Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? extends E> predicate, RouteLevel3<E, ? extends Emitting<? extends V>> route);
 
@@ -5654,7 +5654,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I4>    the type of value 4 of the tuple
      * @param <$R>    the type of the route definition result
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, $R extends Routing<?>> $R expand(Value<? extends Tuple4<? extends I1, ? extends I2, ? extends I3, ? extends I4>> tuple, Block4<? super I1, ? super I2, ? super I3, ? super I4, ? extends Routing<? extends $R>> handler);
 
@@ -5673,7 +5673,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I4>      the type of argument 4
      * @param <I5>      the type of argument 5
      * @return the flow definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5> ExpectingAction<$F, E> effect(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Executable5Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? extends E> execution);
 
@@ -5694,7 +5694,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I5>     the type of argument 5
      * @param <V>      the type of the emitting value
      * @return emitting result definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5, V> ExpectingStream<V, E> supply(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Evaluable5Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? extends V, ? extends E> supplier);
 
@@ -5717,7 +5717,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>      the type of the emitting value
      * @param <$R>     the type of the route definition result
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5, V, $R extends Routing<?>> $R supply(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Evaluable5Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? extends V, ? extends E> supplier, Block1<? super V, ? extends Routing<? extends $R>> handler);
 
@@ -5738,7 +5738,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I5>   the type of argument 5
      * @param <V>    the type of the emitting values
      * @return emitting result definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5, V> ExpectingStream<V, E> source(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Evaluable5Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? extends BaseStream<V, ?>, ? extends E> source);
 
@@ -5761,7 +5761,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>     the type of the emitting values
      * @param <$R>    the type of the route definition result
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5, V, $R extends Routing<?>> $R source(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Evaluable5Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? extends BaseStream<V, ?>, ? extends E> source, Block1<? super V, ? extends Routing<? extends $R>> handler);
 
@@ -5782,7 +5782,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I5>   the type of argument 5
      * @param <H>    the type of unexpected exception that might be thrown
      * @return the action attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5, H extends Exception> CatchingAction<$F, H, E> action(Route5Level0<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? extends H, ?> route, Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5);
 
@@ -5801,7 +5801,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I4>   the type of argument 4
      * @param <I5>   the type of argument 5
      * @return the action attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5> ExpectingAction<$F, E> action(Route5Level1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? extends E, ?> route, Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5);
 
@@ -5820,7 +5820,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I4>   the type of argument 4
      * @param <I5>   the type of argument 5
      * @return the action attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5> ExpectingAction<$F, E> action(Route5Level2<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? extends RuntimeException, ?> route, Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5);
 
@@ -5839,7 +5839,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I4>   the type of argument 4
      * @param <I5>   the type of argument 5
      * @return the action attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5> ExpectingAction<$F, E> action(Route5Level3<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, E, ?> route, Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5);
 
@@ -5860,7 +5860,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I5>   the type of argument 5
      * @param <H>    the type of unexpected exception that might be thrown
      * @return the action attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5, H extends Exception> CatchingAction<$F, H, E> action(ValueLevel0<? extends Evaluable5Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? extends Emittable<?, ? extends H>, ? extends H>> route, Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5);
 
@@ -5880,7 +5880,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I4>   the type of argument 4
      * @param <I5>   the type of argument 5
      * @return the action attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5> ExpectingAction<$F, E> action(ValueLevel1<? extends Evaluable5Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? extends Emittable<?, ? extends E>, ? extends E>> route, Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5);
 
@@ -5900,7 +5900,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I4>   the type of argument 4
      * @param <I5>   the type of argument 5
      * @return the action attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5> ExpectingAction<$F, E> action(ValueLevel2<? extends Evaluable5Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? extends Emittable<?, ? extends RuntimeException>, ? extends RuntimeException>> route, Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5);
 
@@ -5920,7 +5920,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I4>   the type of argument 4
      * @param <I5>   the type of argument 5
      * @return the action attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5> ExpectingAction<$F, E> action(ValueLevel3<? extends Evaluable5Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? extends Emittable<?, E>, E>> route, Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5);
 
@@ -5943,7 +5943,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>    the type of the emitting values
      * @param <H>    the type of unexpected exception that might be thrown
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5, V, H extends Exception> CatchingStream<V, H, E> stream(Route5Level0<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? extends H, ? extends Emitting<? extends V>> stream, Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5);
 
@@ -5964,7 +5964,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I5>   the type of argument 5
      * @param <V>    the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5, V> ExpectingStream<V, E> stream(Route5Level1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? extends E, ? extends Emitting<? extends V>> stream, Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5);
 
@@ -5985,7 +5985,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I5>   the type of argument 5
      * @param <V>    the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5, V> ExpectingStream<V, E> stream(Route5Level2<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? extends RuntimeException, ? extends Emitting<? extends V>> stream, Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5);
 
@@ -6006,7 +6006,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I5>   the type of argument 5
      * @param <V>    the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5, V> ExpectingStream<V, E> stream(Route5Level3<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, E, ? extends Emitting<? extends V>> stream, Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5);
 
@@ -6029,7 +6029,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>    the type of the emitting values
      * @param <H>    the type of unexpected exception that might be thrown
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5, V, H extends Exception> CatchingStream<V, H, E> stream(ValueLevel0<? extends Evaluable5Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? extends Emittable<? extends V, ? extends H>, ? extends H>> stream, Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5);
 
@@ -6050,7 +6050,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I5>   the type of argument 5
      * @param <V>    the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5, V> ExpectingStream<V, E> stream(ValueLevel1<? extends Evaluable5Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? extends Emittable<? extends V, ? extends E>, ? extends E>> stream, Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5);
 
@@ -6071,7 +6071,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I5>   the type of argument 5
      * @param <V>    the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5, V> ExpectingStream<V, E> stream(ValueLevel2<? extends Evaluable5Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? extends Emittable<? extends V, ? extends RuntimeException>, ? extends RuntimeException>> stream, Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5);
 
@@ -6092,7 +6092,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I5>   the type of argument 5
      * @param <V>    the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5, V> ExpectingStream<V, E> stream(ValueLevel3<? extends Evaluable5Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? extends Emittable<? extends V, E>, E>> stream, Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5);
 
@@ -6108,7 +6108,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param value5 the specified argument value 5
      * @param route  the specified route definition
      * @return the action choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     ChoosingAction<$F, E> option(Value<Boolean> value1, Value<Boolean> value2, Value<Boolean> value3, Value<Boolean> value4, Value<Boolean> value5, Block<? extends Flowing<?>> route);
 
@@ -6123,7 +6123,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param value5 the specified argument value 5
      * @param route  the specified route definition
      * @return the action choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     ChoosingAction<$F, E> option(Value<Boolean> value1, Value<Boolean> value2, Value<Boolean> value3, Value<Boolean> value4, Value<Boolean> value5, RouteLevel1<? extends E, ?> route);
 
@@ -6138,7 +6138,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param value5 the specified argument value 5
      * @param route  the specified route definition
      * @return the action choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     ChoosingAction<$F, E> option(Value<Boolean> value1, Value<Boolean> value2, Value<Boolean> value3, Value<Boolean> value4, Value<Boolean> value5, RouteLevel2<? extends RuntimeException, ?> route);
 
@@ -6153,7 +6153,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param value5 the specified argument value 5
      * @param route  the specified route definition
      * @return the action choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     ChoosingAction<$F, E> option(Value<Boolean> value1, Value<Boolean> value2, Value<Boolean> value3, Value<Boolean> value4, Value<Boolean> value5, RouteLevel3<E, ?> route);
 
@@ -6169,7 +6169,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param route  the specified route definition
      * @param <V>    the type of the emitting values
      * @return the streaming choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ChoosingStream<V, E> choice(Value<Boolean> value1, Value<Boolean> value2, Value<Boolean> value3, Value<Boolean> value4, Value<Boolean> value5, Block<? extends Emitting<? extends V>> route);
 
@@ -6185,7 +6185,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param route  the specified route definition
      * @param <V>    the type of the emitting values
      * @return the streaming choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ChoosingStream<V, E> choice(Value<Boolean> value1, Value<Boolean> value2, Value<Boolean> value3, Value<Boolean> value4, Value<Boolean> value5, RouteLevel1<? extends E, ? extends Emitting<? extends V>> route);
 
@@ -6201,7 +6201,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param route  the specified route definition
      * @param <V>    the type of the emitting values
      * @return the streaming choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ChoosingStream<V, E> choice(Value<Boolean> value1, Value<Boolean> value2, Value<Boolean> value3, Value<Boolean> value4, Value<Boolean> value5, RouteLevel2<? extends RuntimeException, ? extends Emitting<? extends V>> route);
 
@@ -6217,7 +6217,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param route  the specified route definition
      * @param <V>    the type of the emitting values
      * @return the streaming choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ChoosingStream<V, E> choice(Value<Boolean> value1, Value<Boolean> value2, Value<Boolean> value3, Value<Boolean> value4, Value<Boolean> value5, RouteLevel3<E, ? extends Emitting<? extends V>> route);
 
@@ -6239,7 +6239,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I4>      the type of argument 4
      * @param <I5>      the type of argument 5
      * @return the action choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5> ChoosingAction<$F, E> option(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Testable5Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? extends E> predicate, Block<? extends Flowing<?>> route);
 
@@ -6260,7 +6260,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I4>      the type of argument 4
      * @param <I5>      the type of argument 5
      * @return the action choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5> ChoosingAction<$F, E> option(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Testable5Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? extends E> predicate, RouteLevel1<? extends E, ?> route);
 
@@ -6281,7 +6281,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I4>      the type of argument 4
      * @param <I5>      the type of argument 5
      * @return the action choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5> ChoosingAction<$F, E> option(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Testable5Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? extends E> predicate, RouteLevel2<? extends RuntimeException, ?> route);
 
@@ -6302,7 +6302,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I4>      the type of argument 4
      * @param <I5>      the type of argument 5
      * @return the action choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5> ChoosingAction<$F, E> option(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Testable5Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? extends E> predicate, RouteLevel3<E, ?> route);
 
@@ -6324,7 +6324,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I5>      the type of argument 5
      * @param <V>       the type of the emitting values
      * @return the streaming choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5, V> ChoosingStream<V, E> choice(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Testable5Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? extends E> predicate, Block<? extends Emitting<? extends V>> route);
 
@@ -6346,7 +6346,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I5>      the type of argument 5
      * @param <V>       the type of the emitting values
      * @return the streaming choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5, V> ChoosingStream<V, E> choice(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Testable5Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? extends E> predicate, RouteLevel1<? extends E, ? extends Emitting<? extends V>> route);
 
@@ -6368,7 +6368,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I5>      the type of argument 5
      * @param <V>       the type of the emitting values
      * @return the streaming choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5, V> ChoosingStream<V, E> choice(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Testable5Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? extends E> predicate, RouteLevel2<? extends RuntimeException, ? extends Emitting<? extends V>> route);
 
@@ -6390,7 +6390,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I5>      the type of argument 5
      * @param <V>       the type of the emitting values
      * @return the streaming choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5, V> ChoosingStream<V, E> choice(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Testable5Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? extends E> predicate, RouteLevel3<E, ? extends Emitting<? extends V>> route);
 
@@ -6407,7 +6407,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I5>    the type of value 5 of the tuple
      * @param <$R>    the type of the route definition result
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5, $R extends Routing<?>> $R expand(Value<? extends Tuple5<? extends I1, ? extends I2, ? extends I3, ? extends I4, ? extends I5>> tuple, Block5<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? extends Routing<? extends $R>> handler);
 
@@ -6428,7 +6428,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I5>      the type of argument 5
      * @param <I6>      the type of argument 6
      * @return the flow definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5, I6> ExpectingAction<$F, E> effect(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6, Executable6Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? extends E> execution);
 
@@ -6451,7 +6451,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I6>     the type of argument 6
      * @param <V>      the type of the emitting value
      * @return emitting result definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5, I6, V> ExpectingStream<V, E> supply(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6, Evaluable6Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? extends V, ? extends E> supplier);
 
@@ -6476,7 +6476,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>      the type of the emitting value
      * @param <$R>     the type of the route definition result
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5, I6, V, $R extends Routing<?>> $R supply(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6, Evaluable6Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? extends V, ? extends E> supplier, Block1<? super V, ? extends Routing<? extends $R>> handler);
 
@@ -6500,7 +6500,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I6>   the type of argument 6
      * @param <V>    the type of the emitting values
      * @return emitting result definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5, I6, V> ExpectingStream<V, E> source(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6, Evaluable6Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? extends BaseStream<V, ?>, ? extends E> source);
 
@@ -6525,7 +6525,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>     the type of the emitting values
      * @param <$R>    the type of the route definition result
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5, I6, V, $R extends Routing<?>> $R source(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6, Evaluable6Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? extends BaseStream<V, ?>, ? extends E> source, Block1<? super V, ? extends Routing<? extends $R>> handler);
 
@@ -6548,7 +6548,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I6>   the type of argument 6
      * @param <H>    the type of unexpected exception that might be thrown
      * @return the action attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5, I6, H extends Exception> CatchingAction<$F, H, E> action(Route6Level0<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? extends H, ?> route, Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6);
 
@@ -6569,7 +6569,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I5>   the type of argument 5
      * @param <I6>   the type of argument 6
      * @return the action attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5, I6> ExpectingAction<$F, E> action(Route6Level1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? extends E, ?> route, Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6);
 
@@ -6590,7 +6590,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I5>   the type of argument 5
      * @param <I6>   the type of argument 6
      * @return the action attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5, I6> ExpectingAction<$F, E> action(Route6Level2<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? extends RuntimeException, ?> route, Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6);
 
@@ -6611,7 +6611,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I5>   the type of argument 5
      * @param <I6>   the type of argument 6
      * @return the action attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5, I6> ExpectingAction<$F, E> action(Route6Level3<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, E, ?> route, Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6);
 
@@ -6634,7 +6634,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I6>   the type of argument 6
      * @param <H>    the type of unexpected exception that might be thrown
      * @return the action attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5, I6, H extends Exception> CatchingAction<$F, H, E> action(ValueLevel0<? extends Evaluable6Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? extends Emittable<?, ? extends H>, ? extends H>> route, Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6);
 
@@ -6656,7 +6656,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I5>   the type of argument 5
      * @param <I6>   the type of argument 6
      * @return the action attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5, I6> ExpectingAction<$F, E> action(ValueLevel1<? extends Evaluable6Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? extends Emittable<?, ? extends E>, ? extends E>> route, Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6);
 
@@ -6678,7 +6678,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I5>   the type of argument 5
      * @param <I6>   the type of argument 6
      * @return the action attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5, I6> ExpectingAction<$F, E> action(ValueLevel2<? extends Evaluable6Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? extends Emittable<?, ? extends RuntimeException>, ? extends RuntimeException>> route, Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6);
 
@@ -6700,7 +6700,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I5>   the type of argument 5
      * @param <I6>   the type of argument 6
      * @return the action attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5, I6> ExpectingAction<$F, E> action(ValueLevel3<? extends Evaluable6Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? extends Emittable<?, E>, E>> route, Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6);
 
@@ -6725,7 +6725,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>    the type of the emitting values
      * @param <H>    the type of unexpected exception that might be thrown
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5, I6, V, H extends Exception> CatchingStream<V, H, E> stream(Route6Level0<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? extends H, ? extends Emitting<? extends V>> stream, Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6);
 
@@ -6748,7 +6748,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I6>   the type of argument 6
      * @param <V>    the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5, I6, V> ExpectingStream<V, E> stream(Route6Level1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? extends E, ? extends Emitting<? extends V>> stream, Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6);
 
@@ -6771,7 +6771,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I6>   the type of argument 6
      * @param <V>    the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5, I6, V> ExpectingStream<V, E> stream(Route6Level2<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? extends RuntimeException, ? extends Emitting<? extends V>> stream, Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6);
 
@@ -6794,7 +6794,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I6>   the type of argument 6
      * @param <V>    the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5, I6, V> ExpectingStream<V, E> stream(Route6Level3<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, E, ? extends Emitting<? extends V>> stream, Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6);
 
@@ -6819,7 +6819,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>    the type of the emitting values
      * @param <H>    the type of unexpected exception that might be thrown
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5, I6, V, H extends Exception> CatchingStream<V, H, E> stream(ValueLevel0<? extends Evaluable6Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? extends Emittable<? extends V, ? extends H>, ? extends H>> stream, Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6);
 
@@ -6842,7 +6842,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I6>   the type of argument 6
      * @param <V>    the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5, I6, V> ExpectingStream<V, E> stream(ValueLevel1<? extends Evaluable6Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? extends Emittable<? extends V, ? extends E>, ? extends E>> stream, Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6);
 
@@ -6865,7 +6865,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I6>   the type of argument 6
      * @param <V>    the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5, I6, V> ExpectingStream<V, E> stream(ValueLevel2<? extends Evaluable6Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? extends Emittable<? extends V, ? extends RuntimeException>, ? extends RuntimeException>> stream, Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6);
 
@@ -6888,7 +6888,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I6>   the type of argument 6
      * @param <V>    the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5, I6, V> ExpectingStream<V, E> stream(ValueLevel3<? extends Evaluable6Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? extends Emittable<? extends V, E>, E>> stream, Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6);
 
@@ -6905,7 +6905,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param value6 the specified argument value 6
      * @param route  the specified route definition
      * @return the action choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     ChoosingAction<$F, E> option(Value<Boolean> value1, Value<Boolean> value2, Value<Boolean> value3, Value<Boolean> value4, Value<Boolean> value5, Value<Boolean> value6, Block<? extends Flowing<?>> route);
 
@@ -6921,7 +6921,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param value6 the specified argument value 6
      * @param route  the specified route definition
      * @return the action choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     ChoosingAction<$F, E> option(Value<Boolean> value1, Value<Boolean> value2, Value<Boolean> value3, Value<Boolean> value4, Value<Boolean> value5, Value<Boolean> value6, RouteLevel1<? extends E, ?> route);
 
@@ -6937,7 +6937,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param value6 the specified argument value 6
      * @param route  the specified route definition
      * @return the action choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     ChoosingAction<$F, E> option(Value<Boolean> value1, Value<Boolean> value2, Value<Boolean> value3, Value<Boolean> value4, Value<Boolean> value5, Value<Boolean> value6, RouteLevel2<? extends RuntimeException, ?> route);
 
@@ -6953,7 +6953,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param value6 the specified argument value 6
      * @param route  the specified route definition
      * @return the action choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     ChoosingAction<$F, E> option(Value<Boolean> value1, Value<Boolean> value2, Value<Boolean> value3, Value<Boolean> value4, Value<Boolean> value5, Value<Boolean> value6, RouteLevel3<E, ?> route);
 
@@ -6970,7 +6970,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param route  the specified route definition
      * @param <V>    the type of the emitting values
      * @return the streaming choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ChoosingStream<V, E> choice(Value<Boolean> value1, Value<Boolean> value2, Value<Boolean> value3, Value<Boolean> value4, Value<Boolean> value5, Value<Boolean> value6, Block<? extends Emitting<? extends V>> route);
 
@@ -6987,7 +6987,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param route  the specified route definition
      * @param <V>    the type of the emitting values
      * @return the streaming choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ChoosingStream<V, E> choice(Value<Boolean> value1, Value<Boolean> value2, Value<Boolean> value3, Value<Boolean> value4, Value<Boolean> value5, Value<Boolean> value6, RouteLevel1<? extends E, ? extends Emitting<? extends V>> route);
 
@@ -7004,7 +7004,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param route  the specified route definition
      * @param <V>    the type of the emitting values
      * @return the streaming choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ChoosingStream<V, E> choice(Value<Boolean> value1, Value<Boolean> value2, Value<Boolean> value3, Value<Boolean> value4, Value<Boolean> value5, Value<Boolean> value6, RouteLevel2<? extends RuntimeException, ? extends Emitting<? extends V>> route);
 
@@ -7021,7 +7021,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param route  the specified route definition
      * @param <V>    the type of the emitting values
      * @return the streaming choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ChoosingStream<V, E> choice(Value<Boolean> value1, Value<Boolean> value2, Value<Boolean> value3, Value<Boolean> value4, Value<Boolean> value5, Value<Boolean> value6, RouteLevel3<E, ? extends Emitting<? extends V>> route);
 
@@ -7045,7 +7045,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I5>      the type of argument 5
      * @param <I6>      the type of argument 6
      * @return the action choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5, I6> ChoosingAction<$F, E> option(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6, Testable6Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? extends E> predicate, Block<? extends Flowing<?>> route);
 
@@ -7068,7 +7068,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I5>      the type of argument 5
      * @param <I6>      the type of argument 6
      * @return the action choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5, I6> ChoosingAction<$F, E> option(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6, Testable6Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? extends E> predicate, RouteLevel1<? extends E, ?> route);
 
@@ -7091,7 +7091,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I5>      the type of argument 5
      * @param <I6>      the type of argument 6
      * @return the action choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5, I6> ChoosingAction<$F, E> option(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6, Testable6Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? extends E> predicate, RouteLevel2<? extends RuntimeException, ?> route);
 
@@ -7114,7 +7114,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I5>      the type of argument 5
      * @param <I6>      the type of argument 6
      * @return the action choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5, I6> ChoosingAction<$F, E> option(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6, Testable6Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? extends E> predicate, RouteLevel3<E, ?> route);
 
@@ -7138,7 +7138,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I6>      the type of argument 6
      * @param <V>       the type of the emitting values
      * @return the streaming choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5, I6, V> ChoosingStream<V, E> choice(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6, Testable6Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? extends E> predicate, Block<? extends Emitting<? extends V>> route);
 
@@ -7162,7 +7162,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I6>      the type of argument 6
      * @param <V>       the type of the emitting values
      * @return the streaming choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5, I6, V> ChoosingStream<V, E> choice(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6, Testable6Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? extends E> predicate, RouteLevel1<? extends E, ? extends Emitting<? extends V>> route);
 
@@ -7186,7 +7186,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I6>      the type of argument 6
      * @param <V>       the type of the emitting values
      * @return the streaming choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5, I6, V> ChoosingStream<V, E> choice(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6, Testable6Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? extends E> predicate, RouteLevel2<? extends RuntimeException, ? extends Emitting<? extends V>> route);
 
@@ -7210,7 +7210,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I6>      the type of argument 6
      * @param <V>       the type of the emitting values
      * @return the streaming choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5, I6, V> ChoosingStream<V, E> choice(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6, Testable6Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? extends E> predicate, RouteLevel3<E, ? extends Emitting<? extends V>> route);
 
@@ -7228,7 +7228,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I6>    the type of value 6 of the tuple
      * @param <$R>    the type of the route definition result
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5, I6, $R extends Routing<?>> $R expand(Value<? extends Tuple6<? extends I1, ? extends I2, ? extends I3, ? extends I4, ? extends I5, ? extends I6>> tuple, Block6<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? extends Routing<? extends $R>> handler);
 
@@ -7251,7 +7251,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I6>      the type of argument 6
      * @param <I7>      the type of argument 7
      * @return the flow definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5, I6, I7> ExpectingAction<$F, E> effect(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6, Value<? extends I7> value7, Executable7Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? super I7, ? extends E> execution);
 
@@ -7276,7 +7276,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I7>     the type of argument 7
      * @param <V>      the type of the emitting value
      * @return emitting result definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5, I6, I7, V> ExpectingStream<V, E> supply(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6, Value<? extends I7> value7, Evaluable7Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? super I7, ? extends V, ? extends E> supplier);
 
@@ -7303,7 +7303,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>      the type of the emitting value
      * @param <$R>     the type of the route definition result
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5, I6, I7, V, $R extends Routing<?>> $R supply(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6, Value<? extends I7> value7, Evaluable7Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? super I7, ? extends V, ? extends E> supplier, Block1<? super V, ? extends Routing<? extends $R>> handler);
 
@@ -7328,7 +7328,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I7>   the type of argument 7
      * @param <V>    the type of the emitting values
      * @return emitting result definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5, I6, I7, V> ExpectingStream<V, E> source(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6, Value<? extends I7> value7, Evaluable7Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? super I7, ? extends BaseStream<V, ?>, ? extends E> source);
 
@@ -7355,7 +7355,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>     the type of the emitting values
      * @param <$R>    the type of the route definition result
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5, I6, I7, V, $R extends Routing<?>> $R source(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6, Value<? extends I7> value7, Evaluable7Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? super I7, ? extends BaseStream<V, ?>, ? extends E> source, Block1<? super V, ? extends Routing<? extends $R>> handler);
 
@@ -7380,7 +7380,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I7>   the type of argument 7
      * @param <H>    the type of unexpected exception that might be thrown
      * @return the action attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5, I6, I7, H extends Exception> CatchingAction<$F, H, E> action(Route7Level0<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? super I7, ? extends H, ?> route, Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6, Value<? extends I7> value7);
 
@@ -7403,7 +7403,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I6>   the type of argument 6
      * @param <I7>   the type of argument 7
      * @return the action attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5, I6, I7> ExpectingAction<$F, E> action(Route7Level1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? super I7, ? extends E, ?> route, Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6, Value<? extends I7> value7);
 
@@ -7426,7 +7426,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I6>   the type of argument 6
      * @param <I7>   the type of argument 7
      * @return the action attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5, I6, I7> ExpectingAction<$F, E> action(Route7Level2<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? super I7, ? extends RuntimeException, ?> route, Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6, Value<? extends I7> value7);
 
@@ -7449,7 +7449,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I6>   the type of argument 6
      * @param <I7>   the type of argument 7
      * @return the action attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5, I6, I7> ExpectingAction<$F, E> action(Route7Level3<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? super I7, E, ?> route, Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6, Value<? extends I7> value7);
 
@@ -7474,7 +7474,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I7>   the type of argument 7
      * @param <H>    the type of unexpected exception that might be thrown
      * @return the action attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5, I6, I7, H extends Exception> CatchingAction<$F, H, E> action(ValueLevel0<? extends Evaluable7Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? super I7, ? extends Emittable<?, ? extends H>, ? extends H>> route, Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6, Value<? extends I7> value7);
 
@@ -7498,7 +7498,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I6>   the type of argument 6
      * @param <I7>   the type of argument 7
      * @return the action attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5, I6, I7> ExpectingAction<$F, E> action(ValueLevel1<? extends Evaluable7Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? super I7, ? extends Emittable<?, ? extends E>, ? extends E>> route, Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6, Value<? extends I7> value7);
 
@@ -7522,7 +7522,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I6>   the type of argument 6
      * @param <I7>   the type of argument 7
      * @return the action attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5, I6, I7> ExpectingAction<$F, E> action(ValueLevel2<? extends Evaluable7Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? super I7, ? extends Emittable<?, ? extends RuntimeException>, ? extends RuntimeException>> route, Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6, Value<? extends I7> value7);
 
@@ -7546,7 +7546,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I6>   the type of argument 6
      * @param <I7>   the type of argument 7
      * @return the action attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5, I6, I7> ExpectingAction<$F, E> action(ValueLevel3<? extends Evaluable7Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? super I7, ? extends Emittable<?, E>, E>> route, Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6, Value<? extends I7> value7);
 
@@ -7573,7 +7573,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>    the type of the emitting values
      * @param <H>    the type of unexpected exception that might be thrown
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5, I6, I7, V, H extends Exception> CatchingStream<V, H, E> stream(Route7Level0<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? super I7, ? extends H, ? extends Emitting<? extends V>> stream, Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6, Value<? extends I7> value7);
 
@@ -7598,7 +7598,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I7>   the type of argument 7
      * @param <V>    the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5, I6, I7, V> ExpectingStream<V, E> stream(Route7Level1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? super I7, ? extends E, ? extends Emitting<? extends V>> stream, Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6, Value<? extends I7> value7);
 
@@ -7623,7 +7623,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I7>   the type of argument 7
      * @param <V>    the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5, I6, I7, V> ExpectingStream<V, E> stream(Route7Level2<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? super I7, ? extends RuntimeException, ? extends Emitting<? extends V>> stream, Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6, Value<? extends I7> value7);
 
@@ -7648,7 +7648,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I7>   the type of argument 7
      * @param <V>    the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5, I6, I7, V> ExpectingStream<V, E> stream(Route7Level3<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? super I7, E, ? extends Emitting<? extends V>> stream, Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6, Value<? extends I7> value7);
 
@@ -7675,7 +7675,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>    the type of the emitting values
      * @param <H>    the type of unexpected exception that might be thrown
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5, I6, I7, V, H extends Exception> CatchingStream<V, H, E> stream(ValueLevel0<? extends Evaluable7Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? super I7, ? extends Emittable<? extends V, ? extends H>, ? extends H>> stream, Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6, Value<? extends I7> value7);
 
@@ -7700,7 +7700,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I7>   the type of argument 7
      * @param <V>    the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5, I6, I7, V> ExpectingStream<V, E> stream(ValueLevel1<? extends Evaluable7Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? super I7, ? extends Emittable<? extends V, ? extends E>, ? extends E>> stream, Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6, Value<? extends I7> value7);
 
@@ -7725,7 +7725,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I7>   the type of argument 7
      * @param <V>    the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5, I6, I7, V> ExpectingStream<V, E> stream(ValueLevel2<? extends Evaluable7Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? super I7, ? extends Emittable<? extends V, ? extends RuntimeException>, ? extends RuntimeException>> stream, Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6, Value<? extends I7> value7);
 
@@ -7750,7 +7750,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I7>   the type of argument 7
      * @param <V>    the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5, I6, I7, V> ExpectingStream<V, E> stream(ValueLevel3<? extends Evaluable7Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? super I7, ? extends Emittable<? extends V, E>, E>> stream, Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6, Value<? extends I7> value7);
 
@@ -7768,7 +7768,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param value7 the specified argument value 7
      * @param route  the specified route definition
      * @return the action choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     ChoosingAction<$F, E> option(Value<Boolean> value1, Value<Boolean> value2, Value<Boolean> value3, Value<Boolean> value4, Value<Boolean> value5, Value<Boolean> value6, Value<Boolean> value7, Block<? extends Flowing<?>> route);
 
@@ -7785,7 +7785,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param value7 the specified argument value 7
      * @param route  the specified route definition
      * @return the action choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     ChoosingAction<$F, E> option(Value<Boolean> value1, Value<Boolean> value2, Value<Boolean> value3, Value<Boolean> value4, Value<Boolean> value5, Value<Boolean> value6, Value<Boolean> value7, RouteLevel1<? extends E, ?> route);
 
@@ -7802,7 +7802,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param value7 the specified argument value 7
      * @param route  the specified route definition
      * @return the action choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     ChoosingAction<$F, E> option(Value<Boolean> value1, Value<Boolean> value2, Value<Boolean> value3, Value<Boolean> value4, Value<Boolean> value5, Value<Boolean> value6, Value<Boolean> value7, RouteLevel2<? extends RuntimeException, ?> route);
 
@@ -7819,7 +7819,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param value7 the specified argument value 7
      * @param route  the specified route definition
      * @return the action choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     ChoosingAction<$F, E> option(Value<Boolean> value1, Value<Boolean> value2, Value<Boolean> value3, Value<Boolean> value4, Value<Boolean> value5, Value<Boolean> value6, Value<Boolean> value7, RouteLevel3<E, ?> route);
 
@@ -7837,7 +7837,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param route  the specified route definition
      * @param <V>    the type of the emitting values
      * @return the streaming choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ChoosingStream<V, E> choice(Value<Boolean> value1, Value<Boolean> value2, Value<Boolean> value3, Value<Boolean> value4, Value<Boolean> value5, Value<Boolean> value6, Value<Boolean> value7, Block<? extends Emitting<? extends V>> route);
 
@@ -7855,7 +7855,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param route  the specified route definition
      * @param <V>    the type of the emitting values
      * @return the streaming choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ChoosingStream<V, E> choice(Value<Boolean> value1, Value<Boolean> value2, Value<Boolean> value3, Value<Boolean> value4, Value<Boolean> value5, Value<Boolean> value6, Value<Boolean> value7, RouteLevel1<? extends E, ? extends Emitting<? extends V>> route);
 
@@ -7873,7 +7873,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param route  the specified route definition
      * @param <V>    the type of the emitting values
      * @return the streaming choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ChoosingStream<V, E> choice(Value<Boolean> value1, Value<Boolean> value2, Value<Boolean> value3, Value<Boolean> value4, Value<Boolean> value5, Value<Boolean> value6, Value<Boolean> value7, RouteLevel2<? extends RuntimeException, ? extends Emitting<? extends V>> route);
 
@@ -7891,7 +7891,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param route  the specified route definition
      * @param <V>    the type of the emitting values
      * @return the streaming choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ChoosingStream<V, E> choice(Value<Boolean> value1, Value<Boolean> value2, Value<Boolean> value3, Value<Boolean> value4, Value<Boolean> value5, Value<Boolean> value6, Value<Boolean> value7, RouteLevel3<E, ? extends Emitting<? extends V>> route);
 
@@ -7917,7 +7917,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I6>      the type of argument 6
      * @param <I7>      the type of argument 7
      * @return the action choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5, I6, I7> ChoosingAction<$F, E> option(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6, Value<? extends I7> value7, Testable7Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? super I7, ? extends E> predicate, Block<? extends Flowing<?>> route);
 
@@ -7942,7 +7942,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I6>      the type of argument 6
      * @param <I7>      the type of argument 7
      * @return the action choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5, I6, I7> ChoosingAction<$F, E> option(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6, Value<? extends I7> value7, Testable7Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? super I7, ? extends E> predicate, RouteLevel1<? extends E, ?> route);
 
@@ -7967,7 +7967,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I6>      the type of argument 6
      * @param <I7>      the type of argument 7
      * @return the action choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5, I6, I7> ChoosingAction<$F, E> option(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6, Value<? extends I7> value7, Testable7Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? super I7, ? extends E> predicate, RouteLevel2<? extends RuntimeException, ?> route);
 
@@ -7992,7 +7992,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I6>      the type of argument 6
      * @param <I7>      the type of argument 7
      * @return the action choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5, I6, I7> ChoosingAction<$F, E> option(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6, Value<? extends I7> value7, Testable7Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? super I7, ? extends E> predicate, RouteLevel3<E, ?> route);
 
@@ -8018,7 +8018,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I7>      the type of argument 7
      * @param <V>       the type of the emitting values
      * @return the streaming choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5, I6, I7, V> ChoosingStream<V, E> choice(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6, Value<? extends I7> value7, Testable7Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? super I7, ? extends E> predicate, Block<? extends Emitting<? extends V>> route);
 
@@ -8044,7 +8044,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I7>      the type of argument 7
      * @param <V>       the type of the emitting values
      * @return the streaming choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5, I6, I7, V> ChoosingStream<V, E> choice(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6, Value<? extends I7> value7, Testable7Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? super I7, ? extends E> predicate, RouteLevel1<? extends E, ? extends Emitting<? extends V>> route);
 
@@ -8070,7 +8070,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I7>      the type of argument 7
      * @param <V>       the type of the emitting values
      * @return the streaming choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5, I6, I7, V> ChoosingStream<V, E> choice(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6, Value<? extends I7> value7, Testable7Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? super I7, ? extends E> predicate, RouteLevel2<? extends RuntimeException, ? extends Emitting<? extends V>> route);
 
@@ -8096,7 +8096,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I7>      the type of argument 7
      * @param <V>       the type of the emitting values
      * @return the streaming choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5, I6, I7, V> ChoosingStream<V, E> choice(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6, Value<? extends I7> value7, Testable7Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? super I7, ? extends E> predicate, RouteLevel3<E, ? extends Emitting<? extends V>> route);
 
@@ -8115,7 +8115,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I7>    the type of value 7 of the tuple
      * @param <$R>    the type of the route definition result
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5, I6, I7, $R extends Routing<?>> $R expand(Value<? extends Tuple7<? extends I1, ? extends I2, ? extends I3, ? extends I4, ? extends I5, ? extends I6, ? extends I7>> tuple, Block7<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? super I7, ? extends Routing<? extends $R>> handler);
 
@@ -8140,7 +8140,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I7>      the type of argument 7
      * @param <I8>      the type of argument 8
      * @return the flow definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5, I6, I7, I8> ExpectingAction<$F, E> effect(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6, Value<? extends I7> value7, Value<? extends I8> value8, Executable8Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? super I7, ? super I8, ? extends E> execution);
 
@@ -8168,7 +8168,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I8>     the type of argument 8
      * @param <V>      the type of the emitting value
      * @return emitting result definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5, I6, I7, I8, V> ExpectingStream<V, E> supply(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6, Value<? extends I7> value7, Value<? extends I8> value8, Evaluable8Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? super I7, ? super I8, ? extends V, ? extends E> supplier);
 
@@ -8197,7 +8197,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>      the type of the emitting value
      * @param <$R>     the type of the route definition result
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5, I6, I7, I8, V, $R extends Routing<?>> $R supply(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6, Value<? extends I7> value7, Value<? extends I8> value8, Evaluable8Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? super I7, ? super I8, ? extends V, ? extends E> supplier, Block1<? super V, ? extends Routing<? extends $R>> handler);
 
@@ -8225,7 +8225,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I8>   the type of argument 8
      * @param <V>    the type of the emitting values
      * @return emitting result definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5, I6, I7, I8, V> ExpectingStream<V, E> source(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6, Value<? extends I7> value7, Value<? extends I8> value8, Evaluable8Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? super I7, ? super I8, ? extends BaseStream<V, ?>, ? extends E> source);
 
@@ -8254,7 +8254,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>     the type of the emitting values
      * @param <$R>    the type of the route definition result
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5, I6, I7, I8, V, $R extends Routing<?>> $R source(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6, Value<? extends I7> value7, Value<? extends I8> value8, Evaluable8Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? super I7, ? super I8, ? extends BaseStream<V, ?>, ? extends E> source, Block1<? super V, ? extends Routing<? extends $R>> handler);
 
@@ -8281,7 +8281,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I8>   the type of argument 8
      * @param <H>    the type of unexpected exception that might be thrown
      * @return the action attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5, I6, I7, I8, H extends Exception> CatchingAction<$F, H, E> action(Route8Level0<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? super I7, ? super I8, ? extends H, ?> route, Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6, Value<? extends I7> value7, Value<? extends I8> value8);
 
@@ -8306,7 +8306,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I7>   the type of argument 7
      * @param <I8>   the type of argument 8
      * @return the action attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5, I6, I7, I8> ExpectingAction<$F, E> action(Route8Level1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? super I7, ? super I8, ? extends E, ?> route, Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6, Value<? extends I7> value7, Value<? extends I8> value8);
 
@@ -8331,7 +8331,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I7>   the type of argument 7
      * @param <I8>   the type of argument 8
      * @return the action attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5, I6, I7, I8> ExpectingAction<$F, E> action(Route8Level2<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? super I7, ? super I8, ? extends RuntimeException, ?> route, Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6, Value<? extends I7> value7, Value<? extends I8> value8);
 
@@ -8356,7 +8356,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I7>   the type of argument 7
      * @param <I8>   the type of argument 8
      * @return the action attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5, I6, I7, I8> ExpectingAction<$F, E> action(Route8Level3<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? super I7, ? super I8, E, ?> route, Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6, Value<? extends I7> value7, Value<? extends I8> value8);
 
@@ -8383,7 +8383,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I8>   the type of argument 8
      * @param <H>    the type of unexpected exception that might be thrown
      * @return the action attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5, I6, I7, I8, H extends Exception> CatchingAction<$F, H, E> action(ValueLevel0<? extends Evaluable8Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? super I7, ? super I8, ? extends Emittable<?, ? extends H>, ? extends H>> route, Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6, Value<? extends I7> value7, Value<? extends I8> value8);
 
@@ -8409,7 +8409,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I7>   the type of argument 7
      * @param <I8>   the type of argument 8
      * @return the action attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5, I6, I7, I8> ExpectingAction<$F, E> action(ValueLevel1<? extends Evaluable8Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? super I7, ? super I8, ? extends Emittable<?, ? extends E>, ? extends E>> route, Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6, Value<? extends I7> value7, Value<? extends I8> value8);
 
@@ -8435,7 +8435,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I7>   the type of argument 7
      * @param <I8>   the type of argument 8
      * @return the action attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5, I6, I7, I8> ExpectingAction<$F, E> action(ValueLevel2<? extends Evaluable8Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? super I7, ? super I8, ? extends Emittable<?, ? extends RuntimeException>, ? extends RuntimeException>> route, Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6, Value<? extends I7> value7, Value<? extends I8> value8);
 
@@ -8461,7 +8461,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I7>   the type of argument 7
      * @param <I8>   the type of argument 8
      * @return the action attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5, I6, I7, I8> ExpectingAction<$F, E> action(ValueLevel3<? extends Evaluable8Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? super I7, ? super I8, ? extends Emittable<?, E>, E>> route, Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6, Value<? extends I7> value7, Value<? extends I8> value8);
 
@@ -8490,7 +8490,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>    the type of the emitting values
      * @param <H>    the type of unexpected exception that might be thrown
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5, I6, I7, I8, V, H extends Exception> CatchingStream<V, H, E> stream(Route8Level0<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? super I7, ? super I8, ? extends H, ? extends Emitting<? extends V>> stream, Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6, Value<? extends I7> value7, Value<? extends I8> value8);
 
@@ -8517,7 +8517,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I8>   the type of argument 8
      * @param <V>    the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5, I6, I7, I8, V> ExpectingStream<V, E> stream(Route8Level1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? super I7, ? super I8, ? extends E, ? extends Emitting<? extends V>> stream, Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6, Value<? extends I7> value7, Value<? extends I8> value8);
 
@@ -8544,7 +8544,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I8>   the type of argument 8
      * @param <V>    the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5, I6, I7, I8, V> ExpectingStream<V, E> stream(Route8Level2<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? super I7, ? super I8, ? extends RuntimeException, ? extends Emitting<? extends V>> stream, Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6, Value<? extends I7> value7, Value<? extends I8> value8);
 
@@ -8571,7 +8571,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I8>   the type of argument 8
      * @param <V>    the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5, I6, I7, I8, V> ExpectingStream<V, E> stream(Route8Level3<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? super I7, ? super I8, E, ? extends Emitting<? extends V>> stream, Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6, Value<? extends I7> value7, Value<? extends I8> value8);
 
@@ -8600,7 +8600,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <V>    the type of the emitting values
      * @param <H>    the type of unexpected exception that might be thrown
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5, I6, I7, I8, V, H extends Exception> CatchingStream<V, H, E> stream(ValueLevel0<? extends Evaluable8Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? super I7, ? super I8, ? extends Emittable<? extends V, ? extends H>, ? extends H>> stream, Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6, Value<? extends I7> value7, Value<? extends I8> value8);
 
@@ -8627,7 +8627,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I8>   the type of argument 8
      * @param <V>    the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5, I6, I7, I8, V> ExpectingStream<V, E> stream(ValueLevel1<? extends Evaluable8Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? super I7, ? super I8, ? extends Emittable<? extends V, ? extends E>, ? extends E>> stream, Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6, Value<? extends I7> value7, Value<? extends I8> value8);
 
@@ -8654,7 +8654,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I8>   the type of argument 8
      * @param <V>    the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5, I6, I7, I8, V> ExpectingStream<V, E> stream(ValueLevel2<? extends Evaluable8Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? super I7, ? super I8, ? extends Emittable<? extends V, ? extends RuntimeException>, ? extends RuntimeException>> stream, Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6, Value<? extends I7> value7, Value<? extends I8> value8);
 
@@ -8681,7 +8681,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I8>   the type of argument 8
      * @param <V>    the type of the emitting values
      * @return the emitting attempt definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5, I6, I7, I8, V> ExpectingStream<V, E> stream(ValueLevel3<? extends Evaluable8Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? super I7, ? super I8, ? extends Emittable<? extends V, E>, E>> stream, Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6, Value<? extends I7> value7, Value<? extends I8> value8);
 
@@ -8700,7 +8700,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param value8 the specified argument value 8
      * @param route  the specified route definition
      * @return the action choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     ChoosingAction<$F, E> option(Value<Boolean> value1, Value<Boolean> value2, Value<Boolean> value3, Value<Boolean> value4, Value<Boolean> value5, Value<Boolean> value6, Value<Boolean> value7, Value<Boolean> value8, Block<? extends Flowing<?>> route);
 
@@ -8718,7 +8718,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param value8 the specified argument value 8
      * @param route  the specified route definition
      * @return the action choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     ChoosingAction<$F, E> option(Value<Boolean> value1, Value<Boolean> value2, Value<Boolean> value3, Value<Boolean> value4, Value<Boolean> value5, Value<Boolean> value6, Value<Boolean> value7, Value<Boolean> value8, RouteLevel1<? extends E, ?> route);
 
@@ -8736,7 +8736,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param value8 the specified argument value 8
      * @param route  the specified route definition
      * @return the action choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     ChoosingAction<$F, E> option(Value<Boolean> value1, Value<Boolean> value2, Value<Boolean> value3, Value<Boolean> value4, Value<Boolean> value5, Value<Boolean> value6, Value<Boolean> value7, Value<Boolean> value8, RouteLevel2<? extends RuntimeException, ?> route);
 
@@ -8754,7 +8754,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param value8 the specified argument value 8
      * @param route  the specified route definition
      * @return the action choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     ChoosingAction<$F, E> option(Value<Boolean> value1, Value<Boolean> value2, Value<Boolean> value3, Value<Boolean> value4, Value<Boolean> value5, Value<Boolean> value6, Value<Boolean> value7, Value<Boolean> value8, RouteLevel3<E, ?> route);
 
@@ -8773,7 +8773,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param route  the specified route definition
      * @param <V>    the type of the emitting values
      * @return the streaming choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ChoosingStream<V, E> choice(Value<Boolean> value1, Value<Boolean> value2, Value<Boolean> value3, Value<Boolean> value4, Value<Boolean> value5, Value<Boolean> value6, Value<Boolean> value7, Value<Boolean> value8, Block<? extends Emitting<? extends V>> route);
 
@@ -8792,7 +8792,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param route  the specified route definition
      * @param <V>    the type of the emitting values
      * @return the streaming choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ChoosingStream<V, E> choice(Value<Boolean> value1, Value<Boolean> value2, Value<Boolean> value3, Value<Boolean> value4, Value<Boolean> value5, Value<Boolean> value6, Value<Boolean> value7, Value<Boolean> value8, RouteLevel1<? extends E, ? extends Emitting<? extends V>> route);
 
@@ -8811,7 +8811,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param route  the specified route definition
      * @param <V>    the type of the emitting values
      * @return the streaming choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ChoosingStream<V, E> choice(Value<Boolean> value1, Value<Boolean> value2, Value<Boolean> value3, Value<Boolean> value4, Value<Boolean> value5, Value<Boolean> value6, Value<Boolean> value7, Value<Boolean> value8, RouteLevel2<? extends RuntimeException, ? extends Emitting<? extends V>> route);
 
@@ -8830,7 +8830,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param route  the specified route definition
      * @param <V>    the type of the emitting values
      * @return the streaming choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <V> ChoosingStream<V, E> choice(Value<Boolean> value1, Value<Boolean> value2, Value<Boolean> value3, Value<Boolean> value4, Value<Boolean> value5, Value<Boolean> value6, Value<Boolean> value7, Value<Boolean> value8, RouteLevel3<E, ? extends Emitting<? extends V>> route);
 
@@ -8858,7 +8858,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I7>      the type of argument 7
      * @param <I8>      the type of argument 8
      * @return the action choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5, I6, I7, I8> ChoosingAction<$F, E> option(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6, Value<? extends I7> value7, Value<? extends I8> value8, Testable8Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? super I7, ? super I8, ? extends E> predicate, Block<? extends Flowing<?>> route);
 
@@ -8885,7 +8885,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I7>      the type of argument 7
      * @param <I8>      the type of argument 8
      * @return the action choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5, I6, I7, I8> ChoosingAction<$F, E> option(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6, Value<? extends I7> value7, Value<? extends I8> value8, Testable8Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? super I7, ? super I8, ? extends E> predicate, RouteLevel1<? extends E, ?> route);
 
@@ -8912,7 +8912,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I7>      the type of argument 7
      * @param <I8>      the type of argument 8
      * @return the action choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5, I6, I7, I8> ChoosingAction<$F, E> option(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6, Value<? extends I7> value7, Value<? extends I8> value8, Testable8Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? super I7, ? super I8, ? extends E> predicate, RouteLevel2<? extends RuntimeException, ?> route);
 
@@ -8939,7 +8939,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I7>      the type of argument 7
      * @param <I8>      the type of argument 8
      * @return the action choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5, I6, I7, I8> ChoosingAction<$F, E> option(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6, Value<? extends I7> value7, Value<? extends I8> value8, Testable8Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? super I7, ? super I8, ? extends E> predicate, RouteLevel3<E, ?> route);
 
@@ -8967,7 +8967,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I8>      the type of argument 8
      * @param <V>       the type of the emitting values
      * @return the streaming choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5, I6, I7, I8, V> ChoosingStream<V, E> choice(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6, Value<? extends I7> value7, Value<? extends I8> value8, Testable8Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? super I7, ? super I8, ? extends E> predicate, Block<? extends Emitting<? extends V>> route);
 
@@ -8995,7 +8995,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I8>      the type of argument 8
      * @param <V>       the type of the emitting values
      * @return the streaming choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5, I6, I7, I8, V> ChoosingStream<V, E> choice(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6, Value<? extends I7> value7, Value<? extends I8> value8, Testable8Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? super I7, ? super I8, ? extends E> predicate, RouteLevel1<? extends E, ? extends Emitting<? extends V>> route);
 
@@ -9023,7 +9023,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I8>      the type of argument 8
      * @param <V>       the type of the emitting values
      * @return the streaming choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5, I6, I7, I8, V> ChoosingStream<V, E> choice(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6, Value<? extends I7> value7, Value<? extends I8> value8, Testable8Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? super I7, ? super I8, ? extends E> predicate, RouteLevel2<? extends RuntimeException, ? extends Emitting<? extends V>> route);
 
@@ -9051,7 +9051,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I8>      the type of argument 8
      * @param <V>       the type of the emitting values
      * @return the streaming choice definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5, I6, I7, I8, V> ChoosingStream<V, E> choice(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6, Value<? extends I7> value7, Value<? extends I8> value8, Testable8Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? super I7, ? super I8, ? extends E> predicate, RouteLevel3<E, ? extends Emitting<? extends V>> route);
 
@@ -9070,7 +9070,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <I8>    the type of value 8 of the tuple
      * @param <$R>    the type of the route definition result
      * @return handling route definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     <I1, I2, I3, I4, I5, I6, I7, I8, $R extends Routing<?>> $R expand(Value<? extends Tuple8<? extends I1, ? extends I2, ? extends I3, ? extends I4, ? extends I5, ? extends I6, ? extends I7, ? extends I8>> tuple, Block8<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? super I7, ? super I8, ? extends Routing<? extends $R>> handler);
 
@@ -9088,7 +9088,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          *
          * @param route the specified route to execute after the streaming completion
          * @return the streaming result definition object
-         * @throws RouteException an exception in case of route definition error
+         * @throws RuntimeException an exception in case of route definition error
          */
         Emitting<V> follow(Block<? extends Flowing<?>> route);
 
@@ -9097,7 +9097,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          *
          * @param route the specified route to execute after the streaming completion
          * @return the streaming result definition object
-         * @throws RouteException an exception in case of route definition error
+         * @throws RuntimeException an exception in case of route definition error
          */
         Emitting<V> follow(RouteLevel1<? extends E, ?> route);
 
@@ -9106,7 +9106,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          *
          * @param route the specified route to execute after the streaming completion
          * @return the streaming result definition object
-         * @throws RouteException an exception in case of route definition error
+         * @throws RuntimeException an exception in case of route definition error
          */
         Emitting<V> follow(RouteLevel2<? extends RuntimeException, ?> route);
 
@@ -9115,7 +9115,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          *
          * @param route the specified route to execute after the streaming completion
          * @return the streaming result definition object
-         * @throws RouteException an exception in case of route definition error
+         * @throws RuntimeException an exception in case of route definition error
          */
         Emitting<V> follow(RouteLevel3<E, ?> route);
     }
@@ -9134,7 +9134,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          *
          * @param retries the number of retries
          * @return attempt definition object
-         * @throws RouteException an exception in case of route definition error
+         * @throws RuntimeException an exception in case of route definition error
          */
         $A repair(long retries);
 
@@ -9144,7 +9144,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @param type  the specified exception type
          * @param route the specified exception route
          * @return attempt definition object
-         * @throws RouteException an exception in case of route definition error
+         * @throws RuntimeException an exception in case of route definition error
          */
         $A caught(Class<? extends Throwable> type, Block<? extends Routing<? extends $R>> route);
 
@@ -9155,7 +9155,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @param route the specified exception handling route
          * @param <C>   the type of the exception to handle
          * @return attempt definition object
-         * @throws RouteException an exception in case of route definition error
+         * @throws RuntimeException an exception in case of route definition error
          */
         <C extends Throwable> $A caught(Class<? extends C> type, Block1<? super C, ? extends Routing<? extends $R>> route);
 
@@ -9166,7 +9166,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @param route the specified exception handling route
          * @param <C>   the type of the exception to handle
          * @return attempt definition object
-         * @throws RouteException an exception in case of route definition error
+         * @throws RuntimeException an exception in case of route definition error
          */
         <C extends Throwable> $A caught(Class<? extends C> type, Route1Level1<? super C, ? extends E, ? extends $R> route);
 
@@ -9177,7 +9177,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @param route the specified exception handling route
          * @param <C>   the type of the exception to handle
          * @return attempt definition object
-         * @throws RouteException an exception in case of route definition error
+         * @throws RuntimeException an exception in case of route definition error
          */
         <C extends Throwable> $A caught(Class<? extends C> type, Route1Level2<? super C, ? extends RuntimeException, ? extends $R> route);
 
@@ -9188,7 +9188,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @param route the specified exception handling route
          * @param <C>   the type of the exception to handle
          * @return attempt definition object
-         * @throws RouteException an exception in case of route definition error
+         * @throws RuntimeException an exception in case of route definition error
          */
         <C extends Throwable> $A caught(Class<? extends C> type, Route1Level3<? super C, E, ? extends $R> route);
     }
@@ -9229,7 +9229,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          *
          * @param route the specified exception route
          * @return attempt definition object
-         * @throws RouteException an exception in case of route definition error
+         * @throws RuntimeException an exception in case of route definition error
          */
         $A caught(Block<? extends Routing<? extends $R>> route);
 
@@ -9238,7 +9238,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          *
          * @param route the specified exception handling route
          * @return attempt definition object
-         * @throws RouteException an exception in case of route definition error
+         * @throws RuntimeException an exception in case of route definition error
          */
         $A caught(Block1<? super H, ? extends Routing<? extends $R>> route);
 
@@ -9247,7 +9247,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          *
          * @param route the specified exception handling route
          * @return attempt definition object
-         * @throws RouteException an exception in case of route definition error
+         * @throws RuntimeException an exception in case of route definition error
          */
         $A caught(Route1Level1<? super H, ? extends E, ? extends $R> route);
 
@@ -9256,7 +9256,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          *
          * @param route the specified exception handling route
          * @return attempt definition object
-         * @throws RouteException an exception in case of route definition error
+         * @throws RuntimeException an exception in case of route definition error
          */
         $A caught(Route1Level2<? super H, ? extends RuntimeException, ? extends $R> route);
 
@@ -9265,7 +9265,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          *
          * @param route the specified exception handling route
          * @return attempt definition object
-         * @throws RouteException an exception in case of route definition error
+         * @throws RuntimeException an exception in case of route definition error
          */
         $A caught(Route1Level3<? super H, E, ? extends $R> route);
     }
@@ -9308,7 +9308,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          *
          * @param route the specified route definition
          * @return the conditional route definition result
-         * @throws RouteException an exception in case of route definition error
+         * @throws RuntimeException an exception in case of route definition error
          */
         $E either(Block<? extends Routing<? extends $R>> route);
 
@@ -9317,7 +9317,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          *
          * @param route the specified route definition
          * @return the conditional route definition result
-         * @throws RouteException an exception in case of route definition error
+         * @throws RuntimeException an exception in case of route definition error
          */
         $E either(RouteLevel1<? extends E, ? extends Routing<? extends $R>> route);
 
@@ -9326,7 +9326,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          *
          * @param route the specified route definition
          * @return the conditional route definition result
-         * @throws RouteException an exception in case of route definition error
+         * @throws RuntimeException an exception in case of route definition error
          */
         $E either(RouteLevel2<? extends RuntimeException, ? extends Routing<? extends $R>> route);
 
@@ -9335,7 +9335,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          *
          * @param route the specified route definition
          * @return the conditional route definition result
-         * @throws RouteException an exception in case of route definition error
+         * @throws RuntimeException an exception in case of route definition error
          */
         $E either(RouteLevel3<E, ? extends Routing<? extends $R>> route);
 
@@ -9345,7 +9345,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @param predicate the specified boolean result value
          * @param route     the specified conditional route definition
          * @return conditional route definition object
-         * @throws RouteException an exception in case of route definition error
+         * @throws RuntimeException an exception in case of route definition error
          */
         $C either(Value<Boolean> predicate, Block<? extends Routing<? extends $R>> route);
 
@@ -9355,7 +9355,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @param predicate the specified boolean result value
          * @param route     the specified conditional route definition
          * @return conditional route definition object
-         * @throws RouteException an exception in case of route definition error
+         * @throws RuntimeException an exception in case of route definition error
          */
         $C either(Value<Boolean> predicate, RouteLevel1<? extends E, ? extends Routing<? extends $R>> route);
 
@@ -9365,7 +9365,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @param predicate the specified boolean result value
          * @param route     the specified conditional route definition
          * @return conditional route definition object
-         * @throws RouteException an exception in case of route definition error
+         * @throws RuntimeException an exception in case of route definition error
          */
         $C either(Value<Boolean> predicate, RouteLevel2<? extends RuntimeException, ? extends Routing<? extends $R>> route);
 
@@ -9375,7 +9375,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @param predicate the specified boolean result value
          * @param route     the specified conditional route definition
          * @return conditional route definition object
-         * @throws RouteException an exception in case of route definition error
+         * @throws RuntimeException an exception in case of route definition error
          */
         $C either(Value<Boolean> predicate, RouteLevel3<E, ? extends Routing<? extends $R>> route);
 
@@ -9385,7 +9385,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @param predicate the specified {@link Testable}
          * @param route     the specified route definition
          * @return conditional route definition object
-         * @throws RouteException an exception in case of route definition error
+         * @throws RuntimeException an exception in case of route definition error
          */
         $C either(TestableThrowing1<? extends E> predicate, Block<? extends Routing<? extends $R>> route);
 
@@ -9395,7 +9395,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @param predicate the specified {@link Testable}
          * @param route     the specified route definition
          * @return conditional route definition object
-         * @throws RouteException an exception in case of route definition error
+         * @throws RuntimeException an exception in case of route definition error
          */
         $C either(TestableThrowing1<? extends E> predicate, RouteLevel1<? extends E, ? extends Routing<? extends $R>> route);
 
@@ -9405,7 +9405,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @param predicate the specified {@link Testable}
          * @param route     the specified route definition
          * @return conditional route definition object
-         * @throws RouteException an exception in case of route definition error
+         * @throws RuntimeException an exception in case of route definition error
          */
         $C either(TestableThrowing1<? extends E> predicate, RouteLevel2<? extends RuntimeException, ? extends Routing<? extends $R>> route);
 
@@ -9415,7 +9415,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @param predicate the specified {@link Testable}
          * @param route     the specified route definition
          * @return conditional route definition object
-         * @throws RouteException an exception in case of route definition error
+         * @throws RuntimeException an exception in case of route definition error
          */
         $C either(TestableThrowing1<? extends E> predicate, RouteLevel3<E, ? extends Routing<? extends $R>> route);
 
@@ -9428,7 +9428,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @param route     the specified route definition
          * @param <I>       the type of the argument
          * @return conditional route definition object
-         * @throws RouteException an exception in case of route definition error
+         * @throws RuntimeException an exception in case of route definition error
          */
         <I> $C either(Value<? extends I> value, Testable1Throwing1<? super I, ? extends E> predicate, Block<? extends Routing<? extends $R>> route);
 
@@ -9441,7 +9441,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @param route     the specified route definition
          * @param <I>       the type of the argument
          * @return conditional route definition object
-         * @throws RouteException an exception in case of route definition error
+         * @throws RuntimeException an exception in case of route definition error
          */
         <I> $C either(Value<? extends I> value, Testable1Throwing1<? super I, ? extends E> predicate, RouteLevel1<? extends E, ? extends Routing<? extends $R>> route);
 
@@ -9454,7 +9454,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @param route     the specified route definition
          * @param <I>       the type of the argument
          * @return conditional route definition object
-         * @throws RouteException an exception in case of route definition error
+         * @throws RuntimeException an exception in case of route definition error
          */
         <I> $C either(Value<? extends I> value, Testable1Throwing1<? super I, ? extends E> predicate, RouteLevel2<? extends RuntimeException, ? extends Routing<? extends $R>> route);
 
@@ -9467,7 +9467,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @param route     the specified route definition
          * @param <I>       the type of the argument
          * @return conditional route definition object
-         * @throws RouteException an exception in case of route definition error
+         * @throws RuntimeException an exception in case of route definition error
          */
         <I> $C either(Value<? extends I> value, Testable1Throwing1<? super I, ? extends E> predicate, RouteLevel3<E, ? extends Routing<? extends $R>> route);
 
@@ -9479,7 +9479,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @param value2 the specified argument value 2
          * @param route  the specified route definition
          * @return conditional route definition object
-         * @throws RouteException an exception in case of route definition error
+         * @throws RuntimeException an exception in case of route definition error
          */
         $C either(Value<Boolean> value1, Value<Boolean> value2, Block<? extends Routing<? extends $R>> route);
 
@@ -9491,7 +9491,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @param value2 the specified argument value 2
          * @param route  the specified route definition
          * @return conditional route definition object
-         * @throws RouteException an exception in case of route definition error
+         * @throws RuntimeException an exception in case of route definition error
          */
         $C either(Value<Boolean> value1, Value<Boolean> value2, RouteLevel1<? extends E, ? extends Routing<? extends $R>> route);
 
@@ -9503,7 +9503,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @param value2 the specified argument value 2
          * @param route  the specified route definition
          * @return conditional route definition object
-         * @throws RouteException an exception in case of route definition error
+         * @throws RuntimeException an exception in case of route definition error
          */
         $C either(Value<Boolean> value1, Value<Boolean> value2, RouteLevel2<? extends RuntimeException, ? extends Routing<? extends $R>> route);
 
@@ -9515,7 +9515,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @param value2 the specified argument value 2
          * @param route  the specified route definition
          * @return conditional route definition object
-         * @throws RouteException an exception in case of route definition error
+         * @throws RuntimeException an exception in case of route definition error
          */
         $C either(Value<Boolean> value1, Value<Boolean> value2, RouteLevel3<E, ? extends Routing<? extends $R>> route);
 
@@ -9530,7 +9530,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @param <I1>      the type of argument 1
          * @param <I2>      the type of argument 2
          * @return conditional route definition object
-         * @throws RouteException an exception in case of route definition error
+         * @throws RuntimeException an exception in case of route definition error
          */
         <I1, I2> $C either(Value<? extends I1> value1, Value<? extends I2> value2, Testable2Throwing1<? super I1, ? super I2, ? extends E> predicate, Block<? extends Routing<? extends $R>> route);
 
@@ -9545,7 +9545,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @param <I1>      the type of argument 1
          * @param <I2>      the type of argument 2
          * @return conditional route definition object
-         * @throws RouteException an exception in case of route definition error
+         * @throws RuntimeException an exception in case of route definition error
          */
         <I1, I2> $C either(Value<? extends I1> value1, Value<? extends I2> value2, Testable2Throwing1<? super I1, ? super I2, ? extends E> predicate, RouteLevel1<? extends E, ? extends Routing<? extends $R>> route);
 
@@ -9560,7 +9560,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @param <I1>      the type of argument 1
          * @param <I2>      the type of argument 2
          * @return conditional route definition object
-         * @throws RouteException an exception in case of route definition error
+         * @throws RuntimeException an exception in case of route definition error
          */
         <I1, I2> $C either(Value<? extends I1> value1, Value<? extends I2> value2, Testable2Throwing1<? super I1, ? super I2, ? extends E> predicate, RouteLevel2<? extends RuntimeException, ? extends Routing<? extends $R>> route);
 
@@ -9575,7 +9575,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @param <I1>      the type of argument 1
          * @param <I2>      the type of argument 2
          * @return conditional route definition object
-         * @throws RouteException an exception in case of route definition error
+         * @throws RuntimeException an exception in case of route definition error
          */
         <I1, I2> $C either(Value<? extends I1> value1, Value<? extends I2> value2, Testable2Throwing1<? super I1, ? super I2, ? extends E> predicate, RouteLevel3<E, ? extends Routing<? extends $R>> route);
 
@@ -9588,7 +9588,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @param value3 the specified argument value 3
          * @param route  the specified route definition
          * @return conditional route definition object
-         * @throws RouteException an exception in case of route definition error
+         * @throws RuntimeException an exception in case of route definition error
          */
         $C either(Value<Boolean> value1, Value<Boolean> value2, Value<Boolean> value3, Block<? extends Routing<? extends $R>> route);
 
@@ -9601,7 +9601,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @param value3 the specified argument value 3
          * @param route  the specified route definition
          * @return conditional route definition object
-         * @throws RouteException an exception in case of route definition error
+         * @throws RuntimeException an exception in case of route definition error
          */
         $C either(Value<Boolean> value1, Value<Boolean> value2, Value<Boolean> value3, RouteLevel1<? extends E, ? extends Routing<? extends $R>> route);
 
@@ -9614,7 +9614,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @param value3 the specified argument value 3
          * @param route  the specified route definition
          * @return conditional route definition object
-         * @throws RouteException an exception in case of route definition error
+         * @throws RuntimeException an exception in case of route definition error
          */
         $C either(Value<Boolean> value1, Value<Boolean> value2, Value<Boolean> value3, RouteLevel2<? extends RuntimeException, ? extends Routing<? extends $R>> route);
 
@@ -9627,7 +9627,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @param value3 the specified argument value 3
          * @param route  the specified route definition
          * @return conditional route definition object
-         * @throws RouteException an exception in case of route definition error
+         * @throws RuntimeException an exception in case of route definition error
          */
         $C either(Value<Boolean> value1, Value<Boolean> value2, Value<Boolean> value3, RouteLevel3<E, ? extends Routing<? extends $R>> route);
 
@@ -9644,7 +9644,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @param <I2>      the type of argument 2
          * @param <I3>      the type of argument 3
          * @return conditional route definition object
-         * @throws RouteException an exception in case of route definition error
+         * @throws RuntimeException an exception in case of route definition error
          */
         <I1, I2, I3> $C either(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Testable3Throwing1<? super I1, ? super I2, ? super I3, ? extends E> predicate, Block<? extends Routing<? extends $R>> route);
 
@@ -9661,7 +9661,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @param <I2>      the type of argument 2
          * @param <I3>      the type of argument 3
          * @return conditional route definition object
-         * @throws RouteException an exception in case of route definition error
+         * @throws RuntimeException an exception in case of route definition error
          */
         <I1, I2, I3> $C either(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Testable3Throwing1<? super I1, ? super I2, ? super I3, ? extends E> predicate, RouteLevel1<? extends E, ? extends Routing<? extends $R>> route);
 
@@ -9678,7 +9678,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @param <I2>      the type of argument 2
          * @param <I3>      the type of argument 3
          * @return conditional route definition object
-         * @throws RouteException an exception in case of route definition error
+         * @throws RuntimeException an exception in case of route definition error
          */
         <I1, I2, I3> $C either(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Testable3Throwing1<? super I1, ? super I2, ? super I3, ? extends E> predicate, RouteLevel2<? extends RuntimeException, ? extends Routing<? extends $R>> route);
 
@@ -9695,7 +9695,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @param <I2>      the type of argument 2
          * @param <I3>      the type of argument 3
          * @return conditional route definition object
-         * @throws RouteException an exception in case of route definition error
+         * @throws RuntimeException an exception in case of route definition error
          */
         <I1, I2, I3> $C either(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Testable3Throwing1<? super I1, ? super I2, ? super I3, ? extends E> predicate, RouteLevel3<E, ? extends Routing<? extends $R>> route);
 
@@ -9709,7 +9709,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @param value4 the specified argument value 4
          * @param route  the specified route definition
          * @return conditional route definition object
-         * @throws RouteException an exception in case of route definition error
+         * @throws RuntimeException an exception in case of route definition error
          */
         $C either(Value<Boolean> value1, Value<Boolean> value2, Value<Boolean> value3, Value<Boolean> value4, Block<? extends Routing<? extends $R>> route);
 
@@ -9723,7 +9723,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @param value4 the specified argument value 4
          * @param route  the specified route definition
          * @return conditional route definition object
-         * @throws RouteException an exception in case of route definition error
+         * @throws RuntimeException an exception in case of route definition error
          */
         $C either(Value<Boolean> value1, Value<Boolean> value2, Value<Boolean> value3, Value<Boolean> value4, RouteLevel1<? extends E, ? extends Routing<? extends $R>> route);
 
@@ -9737,7 +9737,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @param value4 the specified argument value 4
          * @param route  the specified route definition
          * @return conditional route definition object
-         * @throws RouteException an exception in case of route definition error
+         * @throws RuntimeException an exception in case of route definition error
          */
         $C either(Value<Boolean> value1, Value<Boolean> value2, Value<Boolean> value3, Value<Boolean> value4, RouteLevel2<? extends RuntimeException, ? extends Routing<? extends $R>> route);
 
@@ -9751,7 +9751,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @param value4 the specified argument value 4
          * @param route  the specified route definition
          * @return conditional route definition object
-         * @throws RouteException an exception in case of route definition error
+         * @throws RuntimeException an exception in case of route definition error
          */
         $C either(Value<Boolean> value1, Value<Boolean> value2, Value<Boolean> value3, Value<Boolean> value4, RouteLevel3<E, ? extends Routing<? extends $R>> route);
 
@@ -9770,7 +9770,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @param <I3>      the type of argument 3
          * @param <I4>      the type of argument 4
          * @return conditional route definition object
-         * @throws RouteException an exception in case of route definition error
+         * @throws RuntimeException an exception in case of route definition error
          */
         <I1, I2, I3, I4> $C either(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Testable4Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? extends E> predicate, Block<? extends Routing<? extends $R>> route);
 
@@ -9789,7 +9789,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @param <I3>      the type of argument 3
          * @param <I4>      the type of argument 4
          * @return conditional route definition object
-         * @throws RouteException an exception in case of route definition error
+         * @throws RuntimeException an exception in case of route definition error
          */
         <I1, I2, I3, I4> $C either(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Testable4Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? extends E> predicate, RouteLevel1<? extends E, ? extends Routing<? extends $R>> route);
 
@@ -9808,7 +9808,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @param <I3>      the type of argument 3
          * @param <I4>      the type of argument 4
          * @return conditional route definition object
-         * @throws RouteException an exception in case of route definition error
+         * @throws RuntimeException an exception in case of route definition error
          */
         <I1, I2, I3, I4> $C either(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Testable4Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? extends E> predicate, RouteLevel2<? extends RuntimeException, ? extends Routing<? extends $R>> route);
 
@@ -9827,7 +9827,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @param <I3>      the type of argument 3
          * @param <I4>      the type of argument 4
          * @return conditional route definition object
-         * @throws RouteException an exception in case of route definition error
+         * @throws RuntimeException an exception in case of route definition error
          */
         <I1, I2, I3, I4> $C either(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Testable4Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? extends E> predicate, RouteLevel3<E, ? extends Routing<? extends $R>> route);
 
@@ -9842,7 +9842,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @param value5 the specified argument value 5
          * @param route  the specified route definition
          * @return conditional route definition object
-         * @throws RouteException an exception in case of route definition error
+         * @throws RuntimeException an exception in case of route definition error
          */
         $C either(Value<Boolean> value1, Value<Boolean> value2, Value<Boolean> value3, Value<Boolean> value4, Value<Boolean> value5, Block<? extends Routing<? extends $R>> route);
 
@@ -9857,7 +9857,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @param value5 the specified argument value 5
          * @param route  the specified route definition
          * @return conditional route definition object
-         * @throws RouteException an exception in case of route definition error
+         * @throws RuntimeException an exception in case of route definition error
          */
         $C either(Value<Boolean> value1, Value<Boolean> value2, Value<Boolean> value3, Value<Boolean> value4, Value<Boolean> value5, RouteLevel1<? extends E, ? extends Routing<? extends $R>> route);
 
@@ -9872,7 +9872,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @param value5 the specified argument value 5
          * @param route  the specified route definition
          * @return conditional route definition object
-         * @throws RouteException an exception in case of route definition error
+         * @throws RuntimeException an exception in case of route definition error
          */
         $C either(Value<Boolean> value1, Value<Boolean> value2, Value<Boolean> value3, Value<Boolean> value4, Value<Boolean> value5, RouteLevel2<? extends RuntimeException, ? extends Routing<? extends $R>> route);
 
@@ -9887,7 +9887,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @param value5 the specified argument value 5
          * @param route  the specified route definition
          * @return conditional route definition object
-         * @throws RouteException an exception in case of route definition error
+         * @throws RuntimeException an exception in case of route definition error
          */
         $C either(Value<Boolean> value1, Value<Boolean> value2, Value<Boolean> value3, Value<Boolean> value4, Value<Boolean> value5, RouteLevel3<E, ? extends Routing<? extends $R>> route);
 
@@ -9908,7 +9908,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @param <I4>      the type of argument 4
          * @param <I5>      the type of argument 5
          * @return conditional route definition object
-         * @throws RouteException an exception in case of route definition error
+         * @throws RuntimeException an exception in case of route definition error
          */
         <I1, I2, I3, I4, I5> $C either(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Testable5Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? extends E> predicate, Block<? extends Routing<? extends $R>> route);
 
@@ -9929,7 +9929,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @param <I4>      the type of argument 4
          * @param <I5>      the type of argument 5
          * @return conditional route definition object
-         * @throws RouteException an exception in case of route definition error
+         * @throws RuntimeException an exception in case of route definition error
          */
         <I1, I2, I3, I4, I5> $C either(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Testable5Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? extends E> predicate, RouteLevel1<? extends E, ? extends Routing<? extends $R>> route);
 
@@ -9950,7 +9950,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @param <I4>      the type of argument 4
          * @param <I5>      the type of argument 5
          * @return conditional route definition object
-         * @throws RouteException an exception in case of route definition error
+         * @throws RuntimeException an exception in case of route definition error
          */
         <I1, I2, I3, I4, I5> $C either(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Testable5Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? extends E> predicate, RouteLevel2<? extends RuntimeException, ? extends Routing<? extends $R>> route);
 
@@ -9971,7 +9971,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @param <I4>      the type of argument 4
          * @param <I5>      the type of argument 5
          * @return conditional route definition object
-         * @throws RouteException an exception in case of route definition error
+         * @throws RuntimeException an exception in case of route definition error
          */
         <I1, I2, I3, I4, I5> $C either(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Testable5Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? extends E> predicate, RouteLevel3<E, ? extends Routing<? extends $R>> route);
 
@@ -9987,7 +9987,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @param value6 the specified argument value 6
          * @param route  the specified route definition
          * @return conditional route definition object
-         * @throws RouteException an exception in case of route definition error
+         * @throws RuntimeException an exception in case of route definition error
          */
         $C either(Value<Boolean> value1, Value<Boolean> value2, Value<Boolean> value3, Value<Boolean> value4, Value<Boolean> value5, Value<Boolean> value6, Block<? extends Routing<? extends $R>> route);
 
@@ -10003,7 +10003,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @param value6 the specified argument value 6
          * @param route  the specified route definition
          * @return conditional route definition object
-         * @throws RouteException an exception in case of route definition error
+         * @throws RuntimeException an exception in case of route definition error
          */
         $C either(Value<Boolean> value1, Value<Boolean> value2, Value<Boolean> value3, Value<Boolean> value4, Value<Boolean> value5, Value<Boolean> value6, RouteLevel1<? extends E, ? extends Routing<? extends $R>> route);
 
@@ -10019,7 +10019,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @param value6 the specified argument value 6
          * @param route  the specified route definition
          * @return conditional route definition object
-         * @throws RouteException an exception in case of route definition error
+         * @throws RuntimeException an exception in case of route definition error
          */
         $C either(Value<Boolean> value1, Value<Boolean> value2, Value<Boolean> value3, Value<Boolean> value4, Value<Boolean> value5, Value<Boolean> value6, RouteLevel2<? extends RuntimeException, ? extends Routing<? extends $R>> route);
 
@@ -10035,7 +10035,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @param value6 the specified argument value 6
          * @param route  the specified route definition
          * @return conditional route definition object
-         * @throws RouteException an exception in case of route definition error
+         * @throws RuntimeException an exception in case of route definition error
          */
         $C either(Value<Boolean> value1, Value<Boolean> value2, Value<Boolean> value3, Value<Boolean> value4, Value<Boolean> value5, Value<Boolean> value6, RouteLevel3<E, ? extends Routing<? extends $R>> route);
 
@@ -10058,7 +10058,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @param <I5>      the type of argument 5
          * @param <I6>      the type of argument 6
          * @return conditional route definition object
-         * @throws RouteException an exception in case of route definition error
+         * @throws RuntimeException an exception in case of route definition error
          */
         <I1, I2, I3, I4, I5, I6> $C either(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6, Testable6Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? extends E> predicate, Block<? extends Routing<? extends $R>> route);
 
@@ -10081,7 +10081,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @param <I5>      the type of argument 5
          * @param <I6>      the type of argument 6
          * @return conditional route definition object
-         * @throws RouteException an exception in case of route definition error
+         * @throws RuntimeException an exception in case of route definition error
          */
         <I1, I2, I3, I4, I5, I6> $C either(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6, Testable6Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? extends E> predicate, RouteLevel1<? extends E, ? extends Routing<? extends $R>> route);
 
@@ -10104,7 +10104,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @param <I5>      the type of argument 5
          * @param <I6>      the type of argument 6
          * @return conditional route definition object
-         * @throws RouteException an exception in case of route definition error
+         * @throws RuntimeException an exception in case of route definition error
          */
         <I1, I2, I3, I4, I5, I6> $C either(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6, Testable6Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? extends E> predicate, RouteLevel2<? extends RuntimeException, ? extends Routing<? extends $R>> route);
 
@@ -10127,7 +10127,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @param <I5>      the type of argument 5
          * @param <I6>      the type of argument 6
          * @return conditional route definition object
-         * @throws RouteException an exception in case of route definition error
+         * @throws RuntimeException an exception in case of route definition error
          */
         <I1, I2, I3, I4, I5, I6> $C either(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6, Testable6Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? extends E> predicate, RouteLevel3<E, ? extends Routing<? extends $R>> route);
 
@@ -10144,7 +10144,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @param value7 the specified argument value 7
          * @param route  the specified route definition
          * @return conditional route definition object
-         * @throws RouteException an exception in case of route definition error
+         * @throws RuntimeException an exception in case of route definition error
          */
         $C either(Value<Boolean> value1, Value<Boolean> value2, Value<Boolean> value3, Value<Boolean> value4, Value<Boolean> value5, Value<Boolean> value6, Value<Boolean> value7, Block<? extends Routing<? extends $R>> route);
 
@@ -10161,7 +10161,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @param value7 the specified argument value 7
          * @param route  the specified route definition
          * @return conditional route definition object
-         * @throws RouteException an exception in case of route definition error
+         * @throws RuntimeException an exception in case of route definition error
          */
         $C either(Value<Boolean> value1, Value<Boolean> value2, Value<Boolean> value3, Value<Boolean> value4, Value<Boolean> value5, Value<Boolean> value6, Value<Boolean> value7, RouteLevel1<? extends E, ? extends Routing<? extends $R>> route);
 
@@ -10178,7 +10178,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @param value7 the specified argument value 7
          * @param route  the specified route definition
          * @return conditional route definition object
-         * @throws RouteException an exception in case of route definition error
+         * @throws RuntimeException an exception in case of route definition error
          */
         $C either(Value<Boolean> value1, Value<Boolean> value2, Value<Boolean> value3, Value<Boolean> value4, Value<Boolean> value5, Value<Boolean> value6, Value<Boolean> value7, RouteLevel2<? extends RuntimeException, ? extends Routing<? extends $R>> route);
 
@@ -10195,7 +10195,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @param value7 the specified argument value 7
          * @param route  the specified route definition
          * @return conditional route definition object
-         * @throws RouteException an exception in case of route definition error
+         * @throws RuntimeException an exception in case of route definition error
          */
         $C either(Value<Boolean> value1, Value<Boolean> value2, Value<Boolean> value3, Value<Boolean> value4, Value<Boolean> value5, Value<Boolean> value6, Value<Boolean> value7, RouteLevel3<E, ? extends Routing<? extends $R>> route);
 
@@ -10220,7 +10220,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @param <I6>      the type of argument 6
          * @param <I7>      the type of argument 7
          * @return conditional route definition object
-         * @throws RouteException an exception in case of route definition error
+         * @throws RuntimeException an exception in case of route definition error
          */
         <I1, I2, I3, I4, I5, I6, I7> $C either(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6, Value<? extends I7> value7, Testable7Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? super I7, ? extends E> predicate, Block<? extends Routing<? extends $R>> route);
 
@@ -10245,7 +10245,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @param <I6>      the type of argument 6
          * @param <I7>      the type of argument 7
          * @return conditional route definition object
-         * @throws RouteException an exception in case of route definition error
+         * @throws RuntimeException an exception in case of route definition error
          */
         <I1, I2, I3, I4, I5, I6, I7> $C either(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6, Value<? extends I7> value7, Testable7Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? super I7, ? extends E> predicate, RouteLevel1<? extends E, ? extends Routing<? extends $R>> route);
 
@@ -10270,7 +10270,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @param <I6>      the type of argument 6
          * @param <I7>      the type of argument 7
          * @return conditional route definition object
-         * @throws RouteException an exception in case of route definition error
+         * @throws RuntimeException an exception in case of route definition error
          */
         <I1, I2, I3, I4, I5, I6, I7> $C either(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6, Value<? extends I7> value7, Testable7Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? super I7, ? extends E> predicate, RouteLevel2<? extends RuntimeException, ? extends Routing<? extends $R>> route);
 
@@ -10295,7 +10295,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @param <I6>      the type of argument 6
          * @param <I7>      the type of argument 7
          * @return conditional route definition object
-         * @throws RouteException an exception in case of route definition error
+         * @throws RuntimeException an exception in case of route definition error
          */
         <I1, I2, I3, I4, I5, I6, I7> $C either(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6, Value<? extends I7> value7, Testable7Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? super I7, ? extends E> predicate, RouteLevel3<E, ? extends Routing<? extends $R>> route);
 
@@ -10313,7 +10313,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @param value8 the specified argument value 8
          * @param route  the specified route definition
          * @return conditional route definition object
-         * @throws RouteException an exception in case of route definition error
+         * @throws RuntimeException an exception in case of route definition error
          */
         $C either(Value<Boolean> value1, Value<Boolean> value2, Value<Boolean> value3, Value<Boolean> value4, Value<Boolean> value5, Value<Boolean> value6, Value<Boolean> value7, Value<Boolean> value8, Block<? extends Routing<? extends $R>> route);
 
@@ -10331,7 +10331,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @param value8 the specified argument value 8
          * @param route  the specified route definition
          * @return conditional route definition object
-         * @throws RouteException an exception in case of route definition error
+         * @throws RuntimeException an exception in case of route definition error
          */
         $C either(Value<Boolean> value1, Value<Boolean> value2, Value<Boolean> value3, Value<Boolean> value4, Value<Boolean> value5, Value<Boolean> value6, Value<Boolean> value7, Value<Boolean> value8, RouteLevel1<? extends E, ? extends Routing<? extends $R>> route);
 
@@ -10349,7 +10349,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @param value8 the specified argument value 8
          * @param route  the specified route definition
          * @return conditional route definition object
-         * @throws RouteException an exception in case of route definition error
+         * @throws RuntimeException an exception in case of route definition error
          */
         $C either(Value<Boolean> value1, Value<Boolean> value2, Value<Boolean> value3, Value<Boolean> value4, Value<Boolean> value5, Value<Boolean> value6, Value<Boolean> value7, Value<Boolean> value8, RouteLevel2<? extends RuntimeException, ? extends Routing<? extends $R>> route);
 
@@ -10367,7 +10367,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @param value8 the specified argument value 8
          * @param route  the specified route definition
          * @return conditional route definition object
-         * @throws RouteException an exception in case of route definition error
+         * @throws RuntimeException an exception in case of route definition error
          */
         $C either(Value<Boolean> value1, Value<Boolean> value2, Value<Boolean> value3, Value<Boolean> value4, Value<Boolean> value5, Value<Boolean> value6, Value<Boolean> value7, Value<Boolean> value8, RouteLevel3<E, ? extends Routing<? extends $R>> route);
 
@@ -10394,7 +10394,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @param <I7>      the type of argument 7
          * @param <I8>      the type of argument 8
          * @return conditional route definition object
-         * @throws RouteException an exception in case of route definition error
+         * @throws RuntimeException an exception in case of route definition error
          */
         <I1, I2, I3, I4, I5, I6, I7, I8> $C either(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6, Value<? extends I7> value7, Value<? extends I8> value8, Testable8Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? super I7, ? super I8, ? extends E> predicate, Block<? extends Routing<? extends $R>> route);
 
@@ -10421,7 +10421,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @param <I7>      the type of argument 7
          * @param <I8>      the type of argument 8
          * @return conditional route definition object
-         * @throws RouteException an exception in case of route definition error
+         * @throws RuntimeException an exception in case of route definition error
          */
         <I1, I2, I3, I4, I5, I6, I7, I8> $C either(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6, Value<? extends I7> value7, Value<? extends I8> value8, Testable8Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? super I7, ? super I8, ? extends E> predicate, RouteLevel1<? extends E, ? extends Routing<? extends $R>> route);
 
@@ -10448,7 +10448,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @param <I7>      the type of argument 7
          * @param <I8>      the type of argument 8
          * @return conditional route definition object
-         * @throws RouteException an exception in case of route definition error
+         * @throws RuntimeException an exception in case of route definition error
          */
         <I1, I2, I3, I4, I5, I6, I7, I8> $C either(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6, Value<? extends I7> value7, Value<? extends I8> value8, Testable8Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? super I7, ? super I8, ? extends E> predicate, RouteLevel2<? extends RuntimeException, ? extends Routing<? extends $R>> route);
 
@@ -10475,7 +10475,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @param <I7>      the type of argument 7
          * @param <I8>      the type of argument 8
          * @return conditional route definition object
-         * @throws RouteException an exception in case of route definition error
+         * @throws RuntimeException an exception in case of route definition error
          */
         <I1, I2, I3, I4, I5, I6, I7, I8> $C either(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6, Value<? extends I7> value7, Value<? extends I8> value8, Testable8Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? super I7, ? super I8, ? extends E> predicate, RouteLevel3<E, ? extends Routing<? extends $R>> route);
     }

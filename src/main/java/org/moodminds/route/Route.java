@@ -14,7 +14,7 @@ public interface Route<$F extends Flow<?, ?>, $R extends Routing<?>> {
      *
      * @param flow the specified flow definition object
      * @return a route definition result by the flow definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     $R route($F flow);
 }

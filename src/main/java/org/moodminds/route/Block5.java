@@ -22,7 +22,7 @@ public interface Block5<I1, I2, I3, I4, I5, $R extends Routing<?>> {
      * @param value4 the specified argument value 4
      * @param value5 the specified argument value 5
      * @return a route block definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     $R block(Value<I1> value1, Value<I2> value2, Value<I3> value3, Value<I4> value4, Value<I5> value5);
 }

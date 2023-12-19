@@ -20,7 +20,7 @@ public interface Route3<$F extends Flow<?, ?>, I1, I2, I3, $R extends Routing<?>
      * @param value2 the specified argument value 2
      * @param value3 the specified argument value 3
      * @return a route definition result by the flow definition object
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     $R route($F flow, Value<I1> value1, Value<I2> value2, Value<I3> value3);
 }

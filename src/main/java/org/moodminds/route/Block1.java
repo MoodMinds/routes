@@ -14,7 +14,7 @@ public interface Block1<I, $R extends Routing<?>> {
      *
      * @param value the specified argument value
      * @return a route block definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     $R block(Value<I> value);
 }

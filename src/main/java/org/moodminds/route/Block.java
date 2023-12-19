@@ -12,7 +12,7 @@ public interface Block<$R extends Routing<?>> {
      * Define the route block.
      *
      * @return a route block definition result
-     * @throws RouteException an exception in case of route definition error
+     * @throws RuntimeException an exception in case of route definition error
      */
     $R block();
 }
