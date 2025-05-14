@@ -75,62 +75,62 @@ import static java.util.logging.Level.WARNING;
 
 class Sample {
 
-    static final Logger LOG = Logger.getLogger(Sample.class.getName());
+  static final Logger LOG = Logger.getLogger(Sample.class.getName());
 
 
-    static final Action<IOException> EXECUTION = $ -> $
-            .effect(() -> LOG.info("Executing..."))
-            .effect(() -> {
-                throw new IOException("Error occurred");
-            });
+  static final Action<IOException> EXECUTION = $ -> $
+          .effect(() -> LOG.info("Executing..."))
+          .effect(() -> {
+            throw new IOException("Error occurred");
+          });
 
-    static final Stream<Long, Exception> LONGS = $ -> $.repeat(0L, l -> l + 1L, l -> l < 10);
+  static final Stream<Long, Exception> LONGS = $ -> $.repeat(0L, l -> l + 1L, l -> l < 10);
 
-    static final Stream<String, RuntimeException> STRINGS = $ -> $.source("A", "B", "C");
+  static final Stream<String, RuntimeException> STRINGS = $ -> $.source("A", "B", "C");
 
-    static final Stream1<String, Character, RuntimeException> CHARACTERS = ($, str) -> $
-            .source(str, s -> s.chars().mapToObj(i -> (char) i));
+  static final Stream1<String, Character, RuntimeException> CHARACTERS = ($, str) -> $
+          .source(str, s -> s.chars().mapToObj(i -> (char) i));
 
-    static final Action1<String, RuntimeException> PEEKING = ($, str) -> $
-            .effect(str, s -> LOG.info(s));
+  static final Action1<String, RuntimeException> PEEKING = ($, str) -> $
+          .effect(str, s -> LOG.info(s));
 
-    static final Stream<String, RuntimeException> FILTERING = $ -> $
-            .filter(STRINGS, s -> s.length() > 1, filtered -> $
-                .effect(filtered, s -> LOG.info(s))
-                .expect(filtered));
+  static final Stream<String, RuntimeException> FILTERING = $ -> $
+          .filter(STRINGS, s -> s.length() > 1, filtered -> $
+              .effect(filtered, s -> LOG.info(s))
+              .expect(filtered));
 
-    static final Stream<String, RuntimeException> MAPPING = $ -> $
-            .map(FILTERING, String::toLowerCase, lower -> $
-                .action(PEEKING, lower)
-                .supply(lower, String::toUpperCase));
+  static final Stream<String, RuntimeException> MAPPING = $ -> $
+          .map(FILTERING, String::toLowerCase, lower -> $
+              .action(PEEKING, lower)
+              .supply(lower, String::toUpperCase));
 
-    static final Stream<Character, Exception> FLATTENING = $ -> $
-            .stream(STRINGS, str -> $
-                .stream(CHARACTERS, str));
+  static final Stream<Character, Exception> FLATTENING = $ -> $
+          .stream(STRINGS, str -> $
+              .stream(CHARACTERS, str));
 
-    static final Stream<Serializable, Exception> CONCATENATING = $ -> $
-            .concat(LONGS, STRINGS, val -> $
-                .effect(val, o -> LOG.info("Concatenated: " + o))
-                .expect(val));
+  static final Stream<Serializable, Exception> CONCATENATING = $ -> $
+          .concat(LONGS, STRINGS, val -> $
+              .effect(val, o -> LOG.info("Concatenated: " + o))
+              .expect(val));
 
-    static final Stream2<Boolean, String, String, Exception> CHOOSING = ($, bool, str) -> $
-            .either(bool, MAPPING)
-            .option(str, String::isEmpty, () -> $
-                .supply(() -> {
-                    throw new Exception(":(");
-                }))
-            .option(str, "WW"::equals, FILTERING)
-            .option(STRINGS);
+  static final Stream2<Boolean, String, String, Exception> CHOOSING = ($, bool, str) -> $
+          .either(bool, MAPPING)
+          .option(str, String::isEmpty, () -> $
+              .supply(() -> {
+                throw new Exception(":(");
+              }))
+          .option(str, "WW"::equals, FILTERING)
+          .option(STRINGS);
 
-    static final Stream<Long, IOException> CATCHING = $ -> $
-            .stream(LONGS)
-            .caught(ex -> $
-                .effect(ex, e -> LOG.log(SEVERE, "Exception occur", e))
-                .action(EXECUTION)
-                .source(1L, 3L, 7L))
-            .caught(ParseException.class, parseEx -> $
-                .effect(parseEx, e -> LOG.log(WARNING, "Exception occur", e))
-                .supply(parseEx, IOException::new, $::except));
+  static final Stream<Long, IOException> CATCHING = $ -> $
+          .stream(LONGS)
+              .caught(Exception.class, ex -> $
+                  .effect(ex, e -> LOG.log(SEVERE, "Exception occur", e))
+              .action(EXECUTION)
+              .source(1L, 3L, 7L))
+              .caught(ParseException.class, parseEx -> $
+                  .effect(parseEx, e -> LOG.log(WARNING, "Exception occur", e))
+                  .supply(parseEx, IOException::new, $::except));
 }
 ```
 

@@ -8360,40 +8360,44 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
         $A caught(Block<? extends Routing<? extends $R>> route);
 
         /**
-         * Define the specified handling route for caught exception.
+         * Define the specified handling route for exceptions of the specified type.
          *
+         * @param type  the specified exception type
          * @param route the specified exception handling route
          * @return attempt definition object
          * @throws RuntimeException an exception in case of route definition error
          */
-        $A caught(Block1<? super H, ? extends Routing<? extends $R>> route);
+        $A caught(Class<H> type, Block1<? super H, ? extends Routing<? extends $R>> route);
 
         /**
-         * Define the specified handling route for caught exception.
+         * Define the specified handling route for exceptions of the specified type.
          *
+         * @param type  the specified exception type
          * @param route the specified exception handling route
          * @return attempt definition object
          * @throws RuntimeException an exception in case of route definition error
          */
-        $A caught(Route1Level1<? super H, ? extends E, ? extends $R> route);
+        $A caught(Class<H> type, Route1Level1<? super H, ? extends E, ? extends $R> route);
 
         /**
-         * Define the specified handling route for caught exception.
+         * Define the specified handling route for exceptions of the specified type.
          *
+         * @param type  the specified exception type
          * @param route the specified exception handling route
          * @return attempt definition object
          * @throws RuntimeException an exception in case of route definition error
          */
-        $A caught(Route1Level2<? super H, ? extends RuntimeException, ? extends $R> route);
+        $A caught(Class<H> type, Route1Level2<? super H, ? extends RuntimeException, ? extends $R> route);
 
         /**
-         * Define the specified handling route for caught exception.
+         * Define the specified handling route for exceptions of the specified type.
          *
+         * @param type  the specified exception type
          * @param route the specified exception handling route
          * @return attempt definition object
          * @throws RuntimeException an exception in case of route definition error
          */
-        $A caught(Route1Level3<? super H, E, ? extends $R> route);
+        $A caught(Class<H> type, Route1Level3<? super H, E, ? extends $R> route);
     }
 
     /**
