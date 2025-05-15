@@ -8272,7 +8272,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @return attempt definition object
          * @throws RuntimeException an exception in case of route definition error
          */
-        $A caught(Class<? extends Throwable> type, Block<? extends Routing<? extends $R>> route);
+        $A caught(Class<? extends Exception> type, Block<? extends Routing<? extends $R>> route);
 
         /**
          * Define the specified handling route for exceptions of the specified type.
@@ -8283,7 +8283,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @return attempt definition object
          * @throws RuntimeException an exception in case of route definition error
          */
-        <C extends Throwable> $A caught(Class<? extends C> type, Block1<? super C, ? extends Routing<? extends $R>> route);
+        <C extends Exception> $A caught(Class<? extends C> type, Block1<? super C, ? extends Routing<? extends $R>> route);
 
         /**
          * Define the specified handling route for exceptions of the specified type.
@@ -8294,7 +8294,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @return attempt definition object
          * @throws RuntimeException an exception in case of route definition error
          */
-        <C extends Throwable> $A caught(Class<? extends C> type, Route1Level1<? super C, ? extends E, ? extends $R> route);
+        <C extends Exception> $A caught(Class<? extends C> type, Route1Level1<? super C, ? extends E, ? extends $R> route);
 
         /**
          * Define the specified handling route for exceptions of the specified type.
@@ -8305,7 +8305,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @return attempt definition object
          * @throws RuntimeException an exception in case of route definition error
          */
-        <C extends Throwable> $A caught(Class<? extends C> type, Route1Level2<? super C, ? extends RuntimeException, ? extends $R> route);
+        <C extends Exception> $A caught(Class<? extends C> type, Route1Level2<? super C, ? extends RuntimeException, ? extends $R> route);
 
         /**
          * Define the specified handling route for exceptions of the specified type.
@@ -8316,7 +8316,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @return attempt definition object
          * @throws RuntimeException an exception in case of route definition error
          */
-        <C extends Throwable> $A caught(Class<? extends C> type, Route1Level3<? super C, E, ? extends $R> route);
+        <C extends Exception> $A caught(Class<? extends C> type, Route1Level3<? super C, E, ? extends $R> route);
     }
 
     /**
