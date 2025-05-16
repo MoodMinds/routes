@@ -126,8 +126,8 @@ class Sample {
           .stream(LONGS)
               .caught(Exception.class, ex -> $
                   .effect(ex, e -> LOG.log(SEVERE, "Exception occur", e))
-              .action(EXECUTION)
-              .source(1L, 3L, 7L))
+                  .action(EXECUTION)
+                  .source(1L, 3L, 7L))
               .caught(ParseException.class, parseEx -> $
                   .effect(parseEx, e -> LOG.log(WARNING, "Exception occur", e))
                   .supply(parseEx, IOException::new, $::except));
