@@ -704,7 +704,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @return handling route definition result
      * @throws RuntimeException an exception in case of route definition error
      */
-    <O, $R extends Routing<?>> $R handle(ValueLevel2<? extends Resource<? extends O, ? extends E>> stream, Block1<? super O, ? extends Routing<? extends $R>> handler);
+    <O, $R extends Routing<?>> $R handle(ValueLevel1<? extends Resource<? extends O, ? extends E>> stream, Block1<? super O, ? extends Routing<? extends $R>> handler);
 
     /**
      * Continue route definition in the given handler of values of the {@link Resource} specified by the definition object.
@@ -716,7 +716,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @return handling route definition result
      * @throws RuntimeException an exception in case of route definition error
      */
-    <O, $R extends Routing<?>> $R handle(ValueLevel3<? extends Resource<? extends O, ? extends RuntimeException>> stream, Block1<? super O, ? extends Routing<? extends $R>> handler);
+    <O, $R extends Routing<?>> $R handle(ValueLevel2<? extends Resource<? extends O, ? extends RuntimeException>> stream, Block1<? super O, ? extends Routing<? extends $R>> handler);
 
     /**
      * Continue route definition in the given handler of values of the {@link Resource} specified by the definition object.
@@ -728,7 +728,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @return handling route definition result
      * @throws RuntimeException an exception in case of route definition error
      */
-    <O, $R extends Routing<?>> $R handle(Value<? extends Resource<? extends O, E>> stream, Block1<? super O, ? extends Routing<? extends $R>> handler);
+    <O, $R extends Routing<?>> $R handle(ValueLevel3<? extends Resource<? extends O, E>> stream, Block1<? super O, ? extends Routing<? extends $R>> handler);
 
     /**
      * Complete route definition as such that sorts and emits {@link Comparable} values
