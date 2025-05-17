@@ -2481,7 +2481,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @return the emitting attempt definition object
      * @throws RuntimeException an exception in case of route definition error
      */
-    <V> ExpectingStream<V, E> reduce(Block<? extends Emitting<? extends V>> stream, Evaluable2<? super V, ? super V, ? extends V> accumulator);
+    <V> ExpectingStream<V, E> reduce(Block<? extends Emitting<? extends V>> stream, Evaluable2Throwing1<? super V, ? super V, ? extends V, ? extends E> accumulator);
 
     /**
      * Continue route definition in the given handler of the reduction operation result of the values
@@ -2495,7 +2495,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @return handling route definition result
      * @throws RuntimeException an exception in case of route definition error
      */
-    <V, $R extends Routing<?>> $R reduce(Block<? extends Emitting<? extends V>> stream, Evaluable2<? super V, ? super V, ? extends V> accumulator, Block1<? super V, ? extends Routing<? extends $R>> handler);
+    <V, $R extends Routing<?>> $R reduce(Block<? extends Emitting<? extends V>> stream, Evaluable2Throwing1<? super V, ? super V, ? extends V, ? extends E> accumulator, Block1<? super V, ? extends Routing<? extends $R>> handler);
 
     /**
      * Complete route definition as such that emits the reduction operation result of the values
@@ -2507,33 +2507,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @return the emitting attempt definition object
      * @throws RuntimeException an exception in case of route definition error
      */
-    <V> ExpectingStream<V, E> reduce(RouteLevel1<? extends E, ? extends Emitting<? extends V>> stream, Evaluable2<? super V, ? super V, ? extends V> accumulator);
-
-    /**
-     * Continue route definition in the given handler of the reduction operation result of the values
-     * defined in the specified streaming route using the specified combination function.
-     *
-     * @param <V>         the type of the emitting values
-     * @param <$R>        the type of the route definition result
-     * @param stream      the specified streaming route
-     * @param accumulator two values combination function
-     * @param handler     the given reduction value handling route
-     * @return handling route definition result
-     * @throws RuntimeException an exception in case of route definition error
-     */
-    <V, $R extends Routing<?>> $R reduce(RouteLevel1<? extends E, ? extends Emitting<? extends V>> stream, Evaluable2<? super V, ? super V, ? extends V> accumulator, Block1<? super V, ? extends Routing<? extends $R>> handler);
-
-    /**
-     * Complete route definition as such that emits the reduction operation result of the values
-     * defined in the specified streaming route using the specified combination function.
-     *
-     * @param <V>         the type of the emitting values
-     * @param stream      the specified streaming route
-     * @param accumulator two values combination function
-     * @return the emitting attempt definition object
-     * @throws RuntimeException an exception in case of route definition error
-     */
-    <V> ExpectingStream<V, E> reduce(RouteLevel2<? extends RuntimeException, ? extends Emitting<? extends V>> stream, Evaluable2<? super V, ? super V, ? extends V> accumulator);
+    <V> ExpectingStream<V, E> reduce(RouteLevel1<? extends E, ? extends Emitting<? extends V>> stream, Evaluable2Throwing1<? super V, ? super V, ? extends V, ? extends E> accumulator);
 
     /**
      * Continue route definition in the given handler of the reduction operation result of the values
@@ -2547,7 +2521,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @return handling route definition result
      * @throws RuntimeException an exception in case of route definition error
      */
-    <V, $R extends Routing<?>> $R reduce(RouteLevel2<? extends RuntimeException, ? extends Emitting<? extends V>> stream, Evaluable2<? super V, ? super V, ? extends V> accumulator, Block1<? super V, ? extends Routing<? extends $R>> handler);
+    <V, $R extends Routing<?>> $R reduce(RouteLevel1<? extends E, ? extends Emitting<? extends V>> stream, Evaluable2Throwing1<? super V, ? super V, ? extends V, ? extends E> accumulator, Block1<? super V, ? extends Routing<? extends $R>> handler);
 
     /**
      * Complete route definition as such that emits the reduction operation result of the values
@@ -2559,7 +2533,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @return the emitting attempt definition object
      * @throws RuntimeException an exception in case of route definition error
      */
-    <V> ExpectingStream<V, E> reduce(RouteLevel3<E, ? extends Emitting<? extends V>> stream, Evaluable2<? super V, ? super V, ? extends V> accumulator);
+    <V> ExpectingStream<V, E> reduce(RouteLevel2<? extends RuntimeException, ? extends Emitting<? extends V>> stream, Evaluable2Throwing1<? super V, ? super V, ? extends V, ? extends E> accumulator);
 
     /**
      * Continue route definition in the given handler of the reduction operation result of the values
@@ -2573,7 +2547,33 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @return handling route definition result
      * @throws RuntimeException an exception in case of route definition error
      */
-    <V, $R extends Routing<?>> $R reduce(RouteLevel3<E, ? extends Emitting<? extends V>> stream, Evaluable2<? super V, ? super V, ? extends V> accumulator, Block1<? super V, ? extends Routing<? extends $R>> handler);
+    <V, $R extends Routing<?>> $R reduce(RouteLevel2<? extends RuntimeException, ? extends Emitting<? extends V>> stream, Evaluable2Throwing1<? super V, ? super V, ? extends V, ? extends E> accumulator, Block1<? super V, ? extends Routing<? extends $R>> handler);
+
+    /**
+     * Complete route definition as such that emits the reduction operation result of the values
+     * defined in the specified streaming route using the specified combination function.
+     *
+     * @param <V>         the type of the emitting values
+     * @param stream      the specified streaming route
+     * @param accumulator two values combination function
+     * @return the emitting attempt definition object
+     * @throws RuntimeException an exception in case of route definition error
+     */
+    <V> ExpectingStream<V, E> reduce(RouteLevel3<E, ? extends Emitting<? extends V>> stream, Evaluable2Throwing1<? super V, ? super V, ? extends V, ? extends E> accumulator);
+
+    /**
+     * Continue route definition in the given handler of the reduction operation result of the values
+     * defined in the specified streaming route using the specified combination function.
+     *
+     * @param <V>         the type of the emitting values
+     * @param <$R>        the type of the route definition result
+     * @param stream      the specified streaming route
+     * @param accumulator two values combination function
+     * @param handler     the given reduction value handling route
+     * @return handling route definition result
+     * @throws RuntimeException an exception in case of route definition error
+     */
+    <V, $R extends Routing<?>> $R reduce(RouteLevel3<E, ? extends Emitting<? extends V>> stream, Evaluable2Throwing1<? super V, ? super V, ? extends V, ? extends E> accumulator, Block1<? super V, ? extends Routing<? extends $R>> handler);
 
 
     /**
@@ -2588,7 +2588,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @return the emitting attempt definition object
      * @throws RuntimeException an exception in case of route definition error
      */
-    <O, V> ExpectingStream<V, E> reduce(V initial, Block<? extends Emitting<? extends O>> stream, Evaluable2<? super V, ? super O, ? extends V> accumulator);
+    <O, V> ExpectingStream<V, E> reduce(V initial, Block<? extends Emitting<? extends O>> stream, Evaluable2Throwing1<? super V, ? super O, ? extends V, ? extends E> accumulator);
 
     /**
      * Continue route definition in the given handler of the reduction operation result of the values
@@ -2604,7 +2604,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @return handling route definition result
      * @throws RuntimeException an exception in case of route definition error
      */
-    <O, V, $R extends Routing<?>> $R reduce(V initial, Block<? extends Emitting<? extends O>> stream, Evaluable2<? super V, ? super O, ? extends V> accumulator, Block1<? super V, ? extends Routing<? extends $R>> handler);
+    <O, V, $R extends Routing<?>> $R reduce(V initial, Block<? extends Emitting<? extends O>> stream, Evaluable2Throwing1<? super V, ? super O, ? extends V, ? extends E> accumulator, Block1<? super V, ? extends Routing<? extends $R>> handler);
 
     /**
      * Complete route definition as such that emits the reduction operation result of the values
@@ -2618,7 +2618,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @return the emitting attempt definition object
      * @throws RuntimeException an exception in case of route definition error
      */
-    <O, V> ExpectingStream<V, E> reduce(V initial, RouteLevel1<? extends E, ? extends Emitting<? extends O>> stream, Evaluable2<? super V, ? super O, ? extends V> accumulator);
+    <O, V> ExpectingStream<V, E> reduce(V initial, RouteLevel1<? extends E, ? extends Emitting<? extends O>> stream, Evaluable2Throwing1<? super V, ? super O, ? extends V, ? extends E> accumulator);
 
     /**
      * Continue route definition in the given handler of the reduction operation result of the values
@@ -2634,7 +2634,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @return handling route definition result
      * @throws RuntimeException an exception in case of route definition error
      */
-    <O, V, $R extends Routing<?>> $R reduce(V initial, RouteLevel1<? extends E, ? extends Emitting<? extends O>> stream, Evaluable2<? super V, ? super O, ? extends V> accumulator, Block1<? super V, ? extends Routing<? extends $R>> handler);
+    <O, V, $R extends Routing<?>> $R reduce(V initial, RouteLevel1<? extends E, ? extends Emitting<? extends O>> stream, Evaluable2Throwing1<? super V, ? super O, ? extends V, ? extends E> accumulator, Block1<? super V, ? extends Routing<? extends $R>> handler);
 
     /**
      * Complete route definition as such that emits the reduction operation result of the values
@@ -2648,7 +2648,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @return the emitting attempt definition object
      * @throws RuntimeException an exception in case of route definition error
      */
-    <O, V> ExpectingStream<V, E> reduce(V initial, RouteLevel2<? extends RuntimeException, ? extends Emitting<? extends O>> stream, Evaluable2<? super V, ? super O, ? extends V> accumulator);
+    <O, V> ExpectingStream<V, E> reduce(V initial, RouteLevel2<? extends RuntimeException, ? extends Emitting<? extends O>> stream, Evaluable2Throwing1<? super V, ? super O, ? extends V, ? extends E> accumulator);
 
     /**
      * Continue route definition in the given handler of the reduction operation result of the values
@@ -2664,7 +2664,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @return handling route definition result
      * @throws RuntimeException an exception in case of route definition error
      */
-    <O, V, $R extends Routing<?>> $R reduce(V initial, RouteLevel2<? extends RuntimeException, ? extends Emitting<? extends O>> stream, Evaluable2<? super V, ? super O, ? extends V> accumulator, Block1<? super V, ? extends Routing<? extends $R>> handler);
+    <O, V, $R extends Routing<?>> $R reduce(V initial, RouteLevel2<? extends RuntimeException, ? extends Emitting<? extends O>> stream, Evaluable2Throwing1<? super V, ? super O, ? extends V, ? extends E> accumulator, Block1<? super V, ? extends Routing<? extends $R>> handler);
 
     /**
      * Complete route definition as such that emits the reduction operation result of the values
@@ -2678,7 +2678,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @return the emitting attempt definition object
      * @throws RuntimeException an exception in case of route definition error
      */
-    <O, V> ExpectingStream<V, E> reduce(V initial, RouteLevel3<E, ? extends Emitting<? extends O>> stream, Evaluable2<? super V, ? super O, ? extends V> accumulator);
+    <O, V> ExpectingStream<V, E> reduce(V initial, RouteLevel3<E, ? extends Emitting<? extends O>> stream, Evaluable2Throwing1<? super V, ? super O, ? extends V, ? extends E> accumulator);
 
     /**
      * Continue route definition in the given handler of the reduction operation result of the values
@@ -2694,7 +2694,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @return handling route definition result
      * @throws RuntimeException an exception in case of route definition error
      */
-    <O, V, $R extends Routing<?>> $R reduce(V initial, RouteLevel3<E, ? extends Emitting<? extends O>> stream, Evaluable2<? super V, ? super O, ? extends V> accumulator, Block1<? super V, ? extends Routing<? extends $R>> handler);
+    <O, V, $R extends Routing<?>> $R reduce(V initial, RouteLevel3<E, ? extends Emitting<? extends O>> stream, Evaluable2Throwing1<? super V, ? super O, ? extends V, ? extends E> accumulator, Block1<? super V, ? extends Routing<? extends $R>> handler);
 
 
     /**
