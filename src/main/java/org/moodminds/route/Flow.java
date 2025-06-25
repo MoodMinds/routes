@@ -9207,7 +9207,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <E>  the type of possible exception
      */
     interface ChoosingAction<$F extends Flow<?, E>, E extends Exception>
-            extends Choosing<ChoosingAction<$F, E>, Flow<$F, E>, Flowing<?>, E>, Flow<$F, E> {
+            extends Choosing<ChoosingAction<$F, E>, $F, Flowing<?>, E>, Flow<$F, E> {
     }
 
     /**
