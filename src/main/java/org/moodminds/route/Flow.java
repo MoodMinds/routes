@@ -8260,10 +8260,12 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * Throwing expected exception route attempt definition object.
      *
      * @param <$A> the type of the route attempt definition object
+     * @param <$E> the type of the expected route definition result
      * @param <$R> the type of the route definition result
      * @param <E>  the type of possible exception
      */
-    interface Expecting<$A extends Expecting<$A, $R, E>, $R extends Routing<?>, E extends Exception> {
+    interface Expecting<$A extends Expecting<$A, $E, $R, E>, $E extends Routing<?>, $R extends Routing<?>, E extends Exception>
+            extends Routing<$R> {
 
         /**
          * Define the number of retries after route execution failures.
@@ -8282,7 +8284,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @return attempt definition object
          * @throws RuntimeException an exception in case of route definition error
          */
-        $A caught(Class<? extends Throwable> type, Block<? extends Routing<? extends $R>> route);
+        $A caught(Class<? extends Throwable> type, Block<? extends Routing<? extends $E>> route);
 
         /**
          * Define the specified handling route for exceptions of the specified type.
@@ -8293,7 +8295,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @return attempt definition object
          * @throws RuntimeException an exception in case of route definition error
          */
-        <C extends Throwable> $A caught(Class<? extends C> type, Block1<? super C, ? extends Routing<? extends $R>> route);
+        <C extends Throwable> $A caught(Class<? extends C> type, Block1<? super C, ? extends Routing<? extends $E>> route);
 
         /**
          * Define the specified handling route for exceptions of the specified type.
@@ -8304,7 +8306,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @return attempt definition object
          * @throws RuntimeException an exception in case of route definition error
          */
-        <C extends Throwable> $A caught(Class<? extends C> type, Route1Level1<? super C, ? extends E, ? extends Routing<? extends $R>> route);
+        <C extends Throwable> $A caught(Class<? extends C> type, Route1Level1<? super C, ? extends E, ? extends Routing<? extends $E>> route);
 
         /**
          * Define the specified handling route for exceptions of the specified type.
@@ -8315,7 +8317,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @return attempt definition object
          * @throws RuntimeException an exception in case of route definition error
          */
-        <C extends Throwable> $A caught(Class<? extends C> type, Route1Level2<? super C, ? extends RuntimeException, ? extends Routing<? extends $R>> route);
+        <C extends Throwable> $A caught(Class<? extends C> type, Route1Level2<? super C, ? extends RuntimeException, ? extends Routing<? extends $E>> route);
 
         /**
          * Define the specified handling route for exceptions of the specified type.
@@ -8326,7 +8328,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @return attempt definition object
          * @throws RuntimeException an exception in case of route definition error
          */
-        <C extends Throwable> $A caught(Class<? extends C> type, Route1Level3<? super C, E, ? extends Routing<? extends $R>> route);
+        <C extends Throwable> $A caught(Class<? extends C> type, Route1Level3<? super C, E, ? extends Routing<? extends $E>> route);
     }
 
     /**
@@ -8336,7 +8338,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <E>  the type of possible exception
      */
     interface ExpectingAction<$F extends Flow<?, E>, E extends Exception>
-            extends Expecting<ExpectingAction<$F, E>, Flowing<?>, E>, Flow<$F, E> {
+            extends Expecting<ExpectingAction<$F, E>, Flowing<?>, $F, E>, Flow<$F, E> {
     }
 
     /**
@@ -8346,7 +8348,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <E> the type of possible exception that might be thrown
      */
     interface ExpectingStream<V, E extends Exception>
-            extends Expecting<ExpectingStream<V, E>, Emitting<? extends V>, E>, Following<V, E> {
+            extends Expecting<ExpectingStream<V, E>, Emitting<? extends V>, Emitting<V>, E>, Following<V, E> {
     }
 
 
@@ -8354,11 +8356,11 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * Throwing the unexpected exception route attempt definition object.
      *
      * @param <$A> the type of the throwing expected exception attempt definition object
-     * @param <$R> the type of the route definition result
+     * @param <$E> the type of the expected route definition result
      * @param <H>  the type of possible unexpected exception that might be thrown
      * @param <E>  the type of possible expected exception that might be thrown
      */
-    interface Catching<$A extends Expecting<$A, $R, E>, $R extends Routing<?>, H extends Exception, E extends Exception> {
+    interface Catching<$A extends Expecting<$A, $E, ?, E>, $E extends Routing<?>, H extends Exception, E extends Exception> {
 
         /**
          * Define the specified route for caught exception.
@@ -8367,7 +8369,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @return attempt definition object
          * @throws RuntimeException an exception in case of route definition error
          */
-        $A caught(Block<? extends Routing<? extends $R>> route);
+        $A caught(Block<? extends Routing<? extends $E>> route);
 
         /**
          * Define the specified handling route for exceptions of the specified type.
@@ -8377,7 +8379,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @return attempt definition object
          * @throws RuntimeException an exception in case of route definition error
          */
-        $A caught(Class<H> type, Block1<? super H, ? extends Routing<? extends $R>> route);
+        $A caught(Class<H> type, Block1<? super H, ? extends Routing<? extends $E>> route);
 
         /**
          * Define the specified handling route for exceptions of the specified type.
@@ -8387,7 +8389,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @return attempt definition object
          * @throws RuntimeException an exception in case of route definition error
          */
-        $A caught(Class<H> type, Route1Level1<? super H, ? extends E, ? extends $R> route);
+        $A caught(Class<H> type, Route1Level1<? super H, ? extends E, ? extends $E> route);
 
         /**
          * Define the specified handling route for exceptions of the specified type.
@@ -8397,7 +8399,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @return attempt definition object
          * @throws RuntimeException an exception in case of route definition error
          */
-        $A caught(Class<H> type, Route1Level2<? super H, ? extends RuntimeException, ? extends $R> route);
+        $A caught(Class<H> type, Route1Level2<? super H, ? extends RuntimeException, ? extends $E> route);
 
         /**
          * Define the specified handling route for exceptions of the specified type.
@@ -8407,7 +8409,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @return attempt definition object
          * @throws RuntimeException an exception in case of route definition error
          */
-        $A caught(Class<H> type, Route1Level3<? super H, E, ? extends $R> route);
+        $A caught(Class<H> type, Route1Level3<? super H, E, ? extends $E> route);
     }
 
     /**
@@ -8437,11 +8439,12 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * Route conditional definition object.
      *
      * @param <$C> the type of the route conditional definition object
-     * @param <$E> the type of the conditional route definition result
-     * @param <$R> the type of the route definition result
+     * @param <$E> the type of the expected route definition result
+     * @param <$R> the type of the conditional route definition result
      * @param <E>  the type of possible exception
      */
-    interface Choosing<$C extends Choosing<$C, $E, $R, E>, $E extends Routing<?>, $R extends Routing<?>, E extends Exception> {
+    interface Choosing<$C extends Choosing<$C, $E, $R, E>, $E extends Routing<?>, $R extends Routing<?>, E extends Exception>
+            extends Routing<$R> {
 
         /**
          * Complete conditional definition specifying the route to execute if no previous cases' conditions match.
@@ -8450,7 +8453,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @return the conditional route definition result
          * @throws RuntimeException an exception in case of route definition error
          */
-        $E option(Block<? extends Routing<? extends $R>> route);
+        $R option(Block<? extends Routing<? extends $E>> route);
 
         /**
          * Complete conditional definition specifying the route to execute if no previous cases' conditions match.
@@ -8459,7 +8462,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @return the conditional route definition result
          * @throws RuntimeException an exception in case of route definition error
          */
-        $E option(RouteLevel1<? extends E, ? extends Routing<? extends $R>> route);
+        $R option(RouteLevel1<? extends E, ? extends Routing<? extends $E>> route);
 
         /**
          * Complete conditional definition specifying the route to execute if no previous cases' conditions match.
@@ -8468,7 +8471,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @return the conditional route definition result
          * @throws RuntimeException an exception in case of route definition error
          */
-        $E option(RouteLevel2<? extends RuntimeException, ? extends Routing<? extends $R>> route);
+        $R option(RouteLevel2<? extends RuntimeException, ? extends Routing<? extends $E>> route);
 
         /**
          * Complete conditional definition specifying the route to execute if no previous cases' conditions match.
@@ -8477,7 +8480,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @return the conditional route definition result
          * @throws RuntimeException an exception in case of route definition error
          */
-        $E option(RouteLevel3<E, ? extends Routing<? extends $R>> route);
+        $R option(RouteLevel3<E, ? extends Routing<? extends $E>> route);
 
         /**
          * Add the specified route conditional execution depending on the specified boolean result flag match.
@@ -8487,7 +8490,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @return conditional route definition object
          * @throws RuntimeException an exception in case of route definition error
          */
-        $C option(Value<Boolean> predicate, Block<? extends Routing<? extends $R>> route);
+        $C option(Value<Boolean> predicate, Block<? extends Routing<? extends $E>> route);
 
         /**
          * Add the specified route conditional execution depending on the specified boolean result flag match.
@@ -8497,7 +8500,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @return conditional route definition object
          * @throws RuntimeException an exception in case of route definition error
          */
-        $C option(Value<Boolean> predicate, RouteLevel1<? extends E, ? extends Routing<? extends $R>> route);
+        $C option(Value<Boolean> predicate, RouteLevel1<? extends E, ? extends Routing<? extends $E>> route);
 
         /**
          * Add the specified route conditional execution depending on the specified boolean result flag match.
@@ -8507,7 +8510,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @return conditional route definition object
          * @throws RuntimeException an exception in case of route definition error
          */
-        $C option(Value<Boolean> predicate, RouteLevel2<? extends RuntimeException, ? extends Routing<? extends $R>> route);
+        $C option(Value<Boolean> predicate, RouteLevel2<? extends RuntimeException, ? extends Routing<? extends $E>> route);
 
         /**
          * Add the specified route conditional execution depending on the specified boolean result flag match.
@@ -8517,7 +8520,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @return conditional route definition object
          * @throws RuntimeException an exception in case of route definition error
          */
-        $C option(Value<Boolean> predicate, RouteLevel3<E, ? extends Routing<? extends $R>> route);
+        $C option(Value<Boolean> predicate, RouteLevel3<E, ? extends Routing<? extends $E>> route);
 
         /**
          * Add the specified route conditional execution depending on the specified {@link Testable} match.
@@ -8527,7 +8530,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @return conditional route definition object
          * @throws RuntimeException an exception in case of route definition error
          */
-        $C option(TestableThrowing1<? extends E> predicate, Block<? extends Routing<? extends $R>> route);
+        $C option(TestableThrowing1<? extends E> predicate, Block<? extends Routing<? extends $E>> route);
 
         /**
          * Add the specified route conditional execution depending on the specified {@link Testable} match.
@@ -8537,7 +8540,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @return conditional route definition object
          * @throws RuntimeException an exception in case of route definition error
          */
-        $C option(TestableThrowing1<? extends E> predicate, RouteLevel1<? extends E, ? extends Routing<? extends $R>> route);
+        $C option(TestableThrowing1<? extends E> predicate, RouteLevel1<? extends E, ? extends Routing<? extends $E>> route);
 
         /**
          * Add the specified route conditional execution depending on the specified {@link Testable} match.
@@ -8547,7 +8550,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @return conditional route definition object
          * @throws RuntimeException an exception in case of route definition error
          */
-        $C option(TestableThrowing1<? extends E> predicate, RouteLevel2<? extends RuntimeException, ? extends Routing<? extends $R>> route);
+        $C option(TestableThrowing1<? extends E> predicate, RouteLevel2<? extends RuntimeException, ? extends Routing<? extends $E>> route);
 
         /**
          * Add the specified route conditional execution depending on the specified {@link Testable} match.
@@ -8557,7 +8560,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @return conditional route definition object
          * @throws RuntimeException an exception in case of route definition error
          */
-        $C option(TestableThrowing1<? extends E> predicate, RouteLevel3<E, ? extends Routing<? extends $R>> route);
+        $C option(TestableThrowing1<? extends E> predicate, RouteLevel3<E, ? extends Routing<? extends $E>> route);
 
         /**
          * Add the specified route conditional execution depending on the specified
@@ -8570,7 +8573,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @return conditional route definition object
          * @throws RuntimeException an exception in case of route definition error
          */
-        <I> $C option(Value<? extends I> value, Testable1Throwing1<? super I, ? extends E> predicate, Block<? extends Routing<? extends $R>> route);
+        <I> $C option(Value<? extends I> value, Testable1Throwing1<? super I, ? extends E> predicate, Block<? extends Routing<? extends $E>> route);
 
         /**
          * Add the specified route conditional execution depending on the specified
@@ -8583,7 +8586,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @return conditional route definition object
          * @throws RuntimeException an exception in case of route definition error
          */
-        <I> $C option(Value<? extends I> value, Testable1Throwing1<? super I, ? extends E> predicate, RouteLevel1<? extends E, ? extends Routing<? extends $R>> route);
+        <I> $C option(Value<? extends I> value, Testable1Throwing1<? super I, ? extends E> predicate, RouteLevel1<? extends E, ? extends Routing<? extends $E>> route);
 
         /**
          * Add the specified route conditional execution depending on the specified
@@ -8596,7 +8599,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @return conditional route definition object
          * @throws RuntimeException an exception in case of route definition error
          */
-        <I> $C option(Value<? extends I> value, Testable1Throwing1<? super I, ? extends E> predicate, RouteLevel2<? extends RuntimeException, ? extends Routing<? extends $R>> route);
+        <I> $C option(Value<? extends I> value, Testable1Throwing1<? super I, ? extends E> predicate, RouteLevel2<? extends RuntimeException, ? extends Routing<? extends $E>> route);
 
         /**
          * Add the specified route conditional execution depending on the specified
@@ -8609,7 +8612,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @return conditional route definition object
          * @throws RuntimeException an exception in case of route definition error
          */
-        <I> $C option(Value<? extends I> value, Testable1Throwing1<? super I, ? extends E> predicate, RouteLevel3<E, ? extends Routing<? extends $R>> route);
+        <I> $C option(Value<? extends I> value, Testable1Throwing1<? super I, ? extends E> predicate, RouteLevel3<E, ? extends Routing<? extends $E>> route);
 
         /**
          * Add the specified route conditional execution depending on the specified
@@ -8624,7 +8627,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @return conditional route definition object
          * @throws RuntimeException an exception in case of route definition error
          */
-        <I1, I2> $C option(Value<? extends I1> value1, Value<? extends I2> value2, Testable2Throwing1<? super I1, ? super I2, ? extends E> predicate, Block<? extends Routing<? extends $R>> route);
+        <I1, I2> $C option(Value<? extends I1> value1, Value<? extends I2> value2, Testable2Throwing1<? super I1, ? super I2, ? extends E> predicate, Block<? extends Routing<? extends $E>> route);
 
         /**
          * Add the specified route conditional execution depending on the specified
@@ -8639,7 +8642,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @return conditional route definition object
          * @throws RuntimeException an exception in case of route definition error
          */
-        <I1, I2> $C option(Value<? extends I1> value1, Value<? extends I2> value2, Testable2Throwing1<? super I1, ? super I2, ? extends E> predicate, RouteLevel1<? extends E, ? extends Routing<? extends $R>> route);
+        <I1, I2> $C option(Value<? extends I1> value1, Value<? extends I2> value2, Testable2Throwing1<? super I1, ? super I2, ? extends E> predicate, RouteLevel1<? extends E, ? extends Routing<? extends $E>> route);
 
         /**
          * Add the specified route conditional execution depending on the specified
@@ -8654,7 +8657,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @return conditional route definition object
          * @throws RuntimeException an exception in case of route definition error
          */
-        <I1, I2> $C option(Value<? extends I1> value1, Value<? extends I2> value2, Testable2Throwing1<? super I1, ? super I2, ? extends E> predicate, RouteLevel2<? extends RuntimeException, ? extends Routing<? extends $R>> route);
+        <I1, I2> $C option(Value<? extends I1> value1, Value<? extends I2> value2, Testable2Throwing1<? super I1, ? super I2, ? extends E> predicate, RouteLevel2<? extends RuntimeException, ? extends Routing<? extends $E>> route);
 
         /**
          * Add the specified route conditional execution depending on the specified
@@ -8669,7 +8672,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @return conditional route definition object
          * @throws RuntimeException an exception in case of route definition error
          */
-        <I1, I2> $C option(Value<? extends I1> value1, Value<? extends I2> value2, Testable2Throwing1<? super I1, ? super I2, ? extends E> predicate, RouteLevel3<E, ? extends Routing<? extends $R>> route);
+        <I1, I2> $C option(Value<? extends I1> value1, Value<? extends I2> value2, Testable2Throwing1<? super I1, ? super I2, ? extends E> predicate, RouteLevel3<E, ? extends Routing<? extends $E>> route);
 
         /**
          * Add the specified route conditional execution depending on the specified
@@ -8686,7 +8689,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @return conditional route definition object
          * @throws RuntimeException an exception in case of route definition error
          */
-        <I1, I2, I3> $C option(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Testable3Throwing1<? super I1, ? super I2, ? super I3, ? extends E> predicate, Block<? extends Routing<? extends $R>> route);
+        <I1, I2, I3> $C option(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Testable3Throwing1<? super I1, ? super I2, ? super I3, ? extends E> predicate, Block<? extends Routing<? extends $E>> route);
 
         /**
          * Add the specified route conditional execution depending on the specified
@@ -8703,7 +8706,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @return conditional route definition object
          * @throws RuntimeException an exception in case of route definition error
          */
-        <I1, I2, I3> $C option(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Testable3Throwing1<? super I1, ? super I2, ? super I3, ? extends E> predicate, RouteLevel1<? extends E, ? extends Routing<? extends $R>> route);
+        <I1, I2, I3> $C option(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Testable3Throwing1<? super I1, ? super I2, ? super I3, ? extends E> predicate, RouteLevel1<? extends E, ? extends Routing<? extends $E>> route);
 
         /**
          * Add the specified route conditional execution depending on the specified
@@ -8720,7 +8723,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @return conditional route definition object
          * @throws RuntimeException an exception in case of route definition error
          */
-        <I1, I2, I3> $C option(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Testable3Throwing1<? super I1, ? super I2, ? super I3, ? extends E> predicate, RouteLevel2<? extends RuntimeException, ? extends Routing<? extends $R>> route);
+        <I1, I2, I3> $C option(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Testable3Throwing1<? super I1, ? super I2, ? super I3, ? extends E> predicate, RouteLevel2<? extends RuntimeException, ? extends Routing<? extends $E>> route);
 
         /**
          * Add the specified route conditional execution depending on the specified
@@ -8737,7 +8740,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @return conditional route definition object
          * @throws RuntimeException an exception in case of route definition error
          */
-        <I1, I2, I3> $C option(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Testable3Throwing1<? super I1, ? super I2, ? super I3, ? extends E> predicate, RouteLevel3<E, ? extends Routing<? extends $R>> route);
+        <I1, I2, I3> $C option(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Testable3Throwing1<? super I1, ? super I2, ? super I3, ? extends E> predicate, RouteLevel3<E, ? extends Routing<? extends $E>> route);
 
         /**
          * Add the specified route conditional execution depending on the specified
@@ -8756,7 +8759,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @return conditional route definition object
          * @throws RuntimeException an exception in case of route definition error
          */
-        <I1, I2, I3, I4> $C option(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Testable4Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? extends E> predicate, Block<? extends Routing<? extends $R>> route);
+        <I1, I2, I3, I4> $C option(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Testable4Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? extends E> predicate, Block<? extends Routing<? extends $E>> route);
 
         /**
          * Add the specified route conditional execution depending on the specified
@@ -8775,7 +8778,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @return conditional route definition object
          * @throws RuntimeException an exception in case of route definition error
          */
-        <I1, I2, I3, I4> $C option(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Testable4Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? extends E> predicate, RouteLevel1<? extends E, ? extends Routing<? extends $R>> route);
+        <I1, I2, I3, I4> $C option(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Testable4Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? extends E> predicate, RouteLevel1<? extends E, ? extends Routing<? extends $E>> route);
 
         /**
          * Add the specified route conditional execution depending on the specified
@@ -8794,7 +8797,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @return conditional route definition object
          * @throws RuntimeException an exception in case of route definition error
          */
-        <I1, I2, I3, I4> $C option(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Testable4Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? extends E> predicate, RouteLevel2<? extends RuntimeException, ? extends Routing<? extends $R>> route);
+        <I1, I2, I3, I4> $C option(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Testable4Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? extends E> predicate, RouteLevel2<? extends RuntimeException, ? extends Routing<? extends $E>> route);
 
         /**
          * Add the specified route conditional execution depending on the specified
@@ -8813,7 +8816,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @return conditional route definition object
          * @throws RuntimeException an exception in case of route definition error
          */
-        <I1, I2, I3, I4> $C option(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Testable4Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? extends E> predicate, RouteLevel3<E, ? extends Routing<? extends $R>> route);
+        <I1, I2, I3, I4> $C option(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Testable4Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? extends E> predicate, RouteLevel3<E, ? extends Routing<? extends $E>> route);
 
         /**
          * Add the specified route conditional execution depending on the specified
@@ -8834,7 +8837,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @return conditional route definition object
          * @throws RuntimeException an exception in case of route definition error
          */
-        <I1, I2, I3, I4, I5> $C option(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Testable5Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? extends E> predicate, Block<? extends Routing<? extends $R>> route);
+        <I1, I2, I3, I4, I5> $C option(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Testable5Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? extends E> predicate, Block<? extends Routing<? extends $E>> route);
 
         /**
          * Add the specified route conditional execution depending on the specified
@@ -8855,7 +8858,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @return conditional route definition object
          * @throws RuntimeException an exception in case of route definition error
          */
-        <I1, I2, I3, I4, I5> $C option(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Testable5Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? extends E> predicate, RouteLevel1<? extends E, ? extends Routing<? extends $R>> route);
+        <I1, I2, I3, I4, I5> $C option(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Testable5Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? extends E> predicate, RouteLevel1<? extends E, ? extends Routing<? extends $E>> route);
 
         /**
          * Add the specified route conditional execution depending on the specified
@@ -8876,7 +8879,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @return conditional route definition object
          * @throws RuntimeException an exception in case of route definition error
          */
-        <I1, I2, I3, I4, I5> $C option(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Testable5Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? extends E> predicate, RouteLevel2<? extends RuntimeException, ? extends Routing<? extends $R>> route);
+        <I1, I2, I3, I4, I5> $C option(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Testable5Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? extends E> predicate, RouteLevel2<? extends RuntimeException, ? extends Routing<? extends $E>> route);
 
         /**
          * Add the specified route conditional execution depending on the specified
@@ -8897,7 +8900,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @return conditional route definition object
          * @throws RuntimeException an exception in case of route definition error
          */
-        <I1, I2, I3, I4, I5> $C option(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Testable5Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? extends E> predicate, RouteLevel3<E, ? extends Routing<? extends $R>> route);
+        <I1, I2, I3, I4, I5> $C option(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Testable5Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? extends E> predicate, RouteLevel3<E, ? extends Routing<? extends $E>> route);
 
         /**
          * Add the specified route conditional execution depending on the specified
@@ -8920,7 +8923,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @return conditional route definition object
          * @throws RuntimeException an exception in case of route definition error
          */
-        <I1, I2, I3, I4, I5, I6> $C option(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6, Testable6Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? extends E> predicate, Block<? extends Routing<? extends $R>> route);
+        <I1, I2, I3, I4, I5, I6> $C option(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6, Testable6Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? extends E> predicate, Block<? extends Routing<? extends $E>> route);
 
         /**
          * Add the specified route conditional execution depending on the specified
@@ -8943,7 +8946,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @return conditional route definition object
          * @throws RuntimeException an exception in case of route definition error
          */
-        <I1, I2, I3, I4, I5, I6> $C option(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6, Testable6Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? extends E> predicate, RouteLevel1<? extends E, ? extends Routing<? extends $R>> route);
+        <I1, I2, I3, I4, I5, I6> $C option(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6, Testable6Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? extends E> predicate, RouteLevel1<? extends E, ? extends Routing<? extends $E>> route);
 
         /**
          * Add the specified route conditional execution depending on the specified
@@ -8966,7 +8969,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @return conditional route definition object
          * @throws RuntimeException an exception in case of route definition error
          */
-        <I1, I2, I3, I4, I5, I6> $C option(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6, Testable6Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? extends E> predicate, RouteLevel2<? extends RuntimeException, ? extends Routing<? extends $R>> route);
+        <I1, I2, I3, I4, I5, I6> $C option(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6, Testable6Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? extends E> predicate, RouteLevel2<? extends RuntimeException, ? extends Routing<? extends $E>> route);
 
         /**
          * Add the specified route conditional execution depending on the specified
@@ -8989,7 +8992,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @return conditional route definition object
          * @throws RuntimeException an exception in case of route definition error
          */
-        <I1, I2, I3, I4, I5, I6> $C option(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6, Testable6Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? extends E> predicate, RouteLevel3<E, ? extends Routing<? extends $R>> route);
+        <I1, I2, I3, I4, I5, I6> $C option(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6, Testable6Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? extends E> predicate, RouteLevel3<E, ? extends Routing<? extends $E>> route);
 
         /**
          * Add the specified route conditional execution depending on the specified
@@ -9014,7 +9017,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @return conditional route definition object
          * @throws RuntimeException an exception in case of route definition error
          */
-        <I1, I2, I3, I4, I5, I6, I7> $C option(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6, Value<? extends I7> value7, Testable7Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? super I7, ? extends E> predicate, Block<? extends Routing<? extends $R>> route);
+        <I1, I2, I3, I4, I5, I6, I7> $C option(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6, Value<? extends I7> value7, Testable7Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? super I7, ? extends E> predicate, Block<? extends Routing<? extends $E>> route);
 
         /**
          * Add the specified route conditional execution depending on the specified
@@ -9039,7 +9042,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @return conditional route definition object
          * @throws RuntimeException an exception in case of route definition error
          */
-        <I1, I2, I3, I4, I5, I6, I7> $C option(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6, Value<? extends I7> value7, Testable7Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? super I7, ? extends E> predicate, RouteLevel1<? extends E, ? extends Routing<? extends $R>> route);
+        <I1, I2, I3, I4, I5, I6, I7> $C option(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6, Value<? extends I7> value7, Testable7Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? super I7, ? extends E> predicate, RouteLevel1<? extends E, ? extends Routing<? extends $E>> route);
 
         /**
          * Add the specified route conditional execution depending on the specified
@@ -9064,7 +9067,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @return conditional route definition object
          * @throws RuntimeException an exception in case of route definition error
          */
-        <I1, I2, I3, I4, I5, I6, I7> $C option(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6, Value<? extends I7> value7, Testable7Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? super I7, ? extends E> predicate, RouteLevel2<? extends RuntimeException, ? extends Routing<? extends $R>> route);
+        <I1, I2, I3, I4, I5, I6, I7> $C option(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6, Value<? extends I7> value7, Testable7Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? super I7, ? extends E> predicate, RouteLevel2<? extends RuntimeException, ? extends Routing<? extends $E>> route);
 
         /**
          * Add the specified route conditional execution depending on the specified
@@ -9089,7 +9092,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @return conditional route definition object
          * @throws RuntimeException an exception in case of route definition error
          */
-        <I1, I2, I3, I4, I5, I6, I7> $C option(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6, Value<? extends I7> value7, Testable7Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? super I7, ? extends E> predicate, RouteLevel3<E, ? extends Routing<? extends $R>> route);
+        <I1, I2, I3, I4, I5, I6, I7> $C option(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6, Value<? extends I7> value7, Testable7Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? super I7, ? extends E> predicate, RouteLevel3<E, ? extends Routing<? extends $E>> route);
 
         /**
          * Add the specified route conditional execution depending on the specified
@@ -9116,7 +9119,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @return conditional route definition object
          * @throws RuntimeException an exception in case of route definition error
          */
-        <I1, I2, I3, I4, I5, I6, I7, I8> $C option(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6, Value<? extends I7> value7, Value<? extends I8> value8, Testable8Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? super I7, ? super I8, ? extends E> predicate, Block<? extends Routing<? extends $R>> route);
+        <I1, I2, I3, I4, I5, I6, I7, I8> $C option(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6, Value<? extends I7> value7, Value<? extends I8> value8, Testable8Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? super I7, ? super I8, ? extends E> predicate, Block<? extends Routing<? extends $E>> route);
 
         /**
          * Add the specified route conditional execution depending on the specified
@@ -9143,7 +9146,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @return conditional route definition object
          * @throws RuntimeException an exception in case of route definition error
          */
-        <I1, I2, I3, I4, I5, I6, I7, I8> $C option(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6, Value<? extends I7> value7, Value<? extends I8> value8, Testable8Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? super I7, ? super I8, ? extends E> predicate, RouteLevel1<? extends E, ? extends Routing<? extends $R>> route);
+        <I1, I2, I3, I4, I5, I6, I7, I8> $C option(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6, Value<? extends I7> value7, Value<? extends I8> value8, Testable8Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? super I7, ? super I8, ? extends E> predicate, RouteLevel1<? extends E, ? extends Routing<? extends $E>> route);
 
         /**
          * Add the specified route conditional execution depending on the specified
@@ -9170,7 +9173,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @return conditional route definition object
          * @throws RuntimeException an exception in case of route definition error
          */
-        <I1, I2, I3, I4, I5, I6, I7, I8> $C option(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6, Value<? extends I7> value7, Value<? extends I8> value8, Testable8Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? super I7, ? super I8, ? extends E> predicate, RouteLevel2<? extends RuntimeException, ? extends Routing<? extends $R>> route);
+        <I1, I2, I3, I4, I5, I6, I7, I8> $C option(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6, Value<? extends I7> value7, Value<? extends I8> value8, Testable8Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? super I7, ? super I8, ? extends E> predicate, RouteLevel2<? extends RuntimeException, ? extends Routing<? extends $E>> route);
 
         /**
          * Add the specified route conditional execution depending on the specified
@@ -9197,7 +9200,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
          * @return conditional route definition object
          * @throws RuntimeException an exception in case of route definition error
          */
-        <I1, I2, I3, I4, I5, I6, I7, I8> $C option(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6, Value<? extends I7> value7, Value<? extends I8> value8, Testable8Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? super I7, ? super I8, ? extends E> predicate, RouteLevel3<E, ? extends Routing<? extends $R>> route);
+        <I1, I2, I3, I4, I5, I6, I7, I8> $C option(Value<? extends I1> value1, Value<? extends I2> value2, Value<? extends I3> value3, Value<? extends I4> value4, Value<? extends I5> value5, Value<? extends I6> value6, Value<? extends I7> value7, Value<? extends I8> value8, Testable8Throwing1<? super I1, ? super I2, ? super I3, ? super I4, ? super I5, ? super I6, ? super I7, ? super I8, ? extends E> predicate, RouteLevel3<E, ? extends Routing<? extends $E>> route);
     }
 
     /**
@@ -9207,7 +9210,7 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <E>  the type of possible exception
      */
     interface ChoosingAction<$F extends Flow<?, E>, E extends Exception>
-            extends Choosing<ChoosingAction<$F, E>, $F, Flowing<?>, E>, Flow<$F, E> {
+            extends Choosing<ChoosingAction<$F, E>, Flowing<?>, $F, E>, Flow<$F, E> {
     }
 
     /**
@@ -9217,6 +9220,6 @@ public interface Flow<$F extends Flow<?, E>, E extends Exception> extends Flowin
      * @param <E> the type of possible exception that might be thrown
      */
     interface ChoosingStream<V, E extends Exception>
-            extends Choosing<ChoosingStream<V, E>, Emitting<V>, Emitting<? extends V>, E> {
+            extends Choosing<ChoosingStream<V, E>, Emitting<? extends V>, Emitting<V>, E> {
     }
 }
